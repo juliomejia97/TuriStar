@@ -33,11 +33,11 @@ public class City {
 
     public HashMap<String, String> data()
     {
-        HashMap<String, String> result = new HashMap<String, String>() {{
+        HashMap<String, String> data = new HashMap<>() {{
             put("id", cityId.value());
             put("name", cityName.value());
             put("country", cityCountry.value());
         }};
-        return result;
+        return data;
     }
 }
