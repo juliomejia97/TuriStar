@@ -22,8 +22,8 @@ public class InMemoryCityRepository implements CityRepository {
     }};
 
     @Override
-    public void update(City city) {
-        Optional<City> cityToupdate = this.cites.stream().filter(c -> c.equalsbyId(city)).findFirst();
+    public void update(String cityId,City city) {
+        Optional<City> cityToupdate = find(cityId);
         cityToupdate.ifPresent(value -> this.cites.remove(value));
         this.cites.add(city);
     }

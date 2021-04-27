@@ -21,7 +21,7 @@ public class CityModifier {
         }
         City cityToUpdate = cityUpdated.get();
         cityToUpdate.updateCity(cityName,cityCountry);
-        this.cityRepository.update(cityToUpdate);
+        this.cityRepository.update(cityId,cityToUpdate);
 
     }
 }

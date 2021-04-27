@@ -46,7 +46,6 @@ public class CitiesTest {
         Mockito.when(cityRepository.all()).thenReturn(Optional.of(cities));
         //instanciar caso de uso
         CitiesAll citiesAll = new CitiesAll(cityRepository);
-
         assertEquals(cities, citiesAll.execute());
     }
 
@@ -56,6 +55,6 @@ public class CitiesTest {
         Mockito.when(cityRepository.find("a0619482-a621-11eb-bcbc-0242ac130002")).thenReturn(Optional.of(cities.get(0)));
         CityModifier cityModifier = new CityModifier(cityRepository);
         cityModifier.execute("a0619482-a621-11eb-bcbc-0242ac130002","Tunja","Colombia");
-        verify(cityRepository,atLeastOnce()).update(cityToUpdate);
+        verify(cityRepository,atLeastOnce()).update("a0619482-a621-11eb-bcbc-0242ac130002",cityToUpdate);
     }
 }

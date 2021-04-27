@@ -19,23 +19,14 @@ public class UpdateCityPutController {
     private CityModifier cityModifier;
 
     @PutMapping(value="/{idCity}")
-    public ResponseEntity<String> execute(@PathVariable int idCity, @RequestBody Request request){
-        cityModifier.execute(request.getCityId(), request.getCityName(), request.getCityCountry());
+    public ResponseEntity<String> execute(@PathVariable String idCity, @RequestBody Request request){
+        cityModifier.execute(idCity, request.getCityName(), request.getCityCountry());
         return ResponseEntity.status(HttpStatus.OK).body("City "+ request.getCityName()+" has been modified");
     }
 
     private static class Request{
-        private String cityId;
         private String cityName;
         private String cityCountry;
-
-        public String getCityId() {
-            return cityId;
-        }
-
-        public void setCityId(String cityId) {
-            this.cityId = cityId;
-        }
 
         public String getCityName() {
             return cityName;

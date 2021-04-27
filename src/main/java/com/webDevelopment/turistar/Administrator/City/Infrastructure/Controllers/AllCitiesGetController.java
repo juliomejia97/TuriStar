@@ -24,5 +24,4 @@ public class AllCitiesGetController {
         CitiesAllResponse response = new CitiesAllResponse(citiesAll.execute());
         return ResponseEntity.status(HttpStatus.OK).body(response.response());
     }
-
 }
