@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface CityRepository {
     void update(City product);
-    Optional<City> find (String ProductId);
+    Optional<City> find(String CityId);
     void save(City product);
     Optional<List<City>> all();
 }

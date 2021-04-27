@@ -1,17 +1,55 @@
 package com.webDevelopment.turistar.Administrator.City.Infrastructure.Controllers;
 
 import com.webDevelopment.turistar.Administrator.City.Application.Update.CityModifier;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityCountry;
+import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityName;
+import com.webDevelopment.turistar.Shared.Domain.City.CityId;
+import org.apache.coyote.Response;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "admin/City")
 public class UpdateCityPutController {
 
-    CityModifier cityModifier;
+    //TODO: Crear el bean en xml
+    private CityModifier cityModifier;
 
-    /*@PutMapping
-    public
-    */
+    @PutMapping(value="/{idCity}")
+    public ResponseEntity<String> execute(@PathVariable int idCity, @RequestBody Request request){
+        cityModifier.execute(request.getCityId(), request.getCityName(), request.cityCountry);
+    }
+
+
+    private static class Request{
+        private String cityId;
+        private String cityName;
+        private String cityCountry;
+
+        public String getCityId() {
+            return cityId;
+        }
+
+        public void setCityId(String cityId) {
+            this.cityId = cityId;
+        }
+
+        public String getCityName() {
+            return cityName;
+        }
+
+        public void setCityName(String cityName) {
+            this.cityName = cityName;
+        }
+
+        public String getCityCountry() {
+            return cityCountry;
+        }
+
+        public void setCityCountry(String cityCountry) {
+            this.cityCountry = cityCountry;
+        }
+    }
+
 }

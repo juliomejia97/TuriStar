@@ -40,4 +40,9 @@ public class City {
         }};
         return data;
     }
+
+    public void updateCity(String cityName,  String cityCountry){
+        this.cityName = new CityName(cityName);
+        this.cityCountry = new CityCountry(cityCountry);
+    }
 }
