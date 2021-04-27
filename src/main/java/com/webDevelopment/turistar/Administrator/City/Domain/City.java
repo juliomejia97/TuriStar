@@ -45,4 +45,17 @@ public class City {
         this.cityName = new CityName(cityName);
         this.cityCountry = new CityCountry(cityCountry);
     }
+
+    public boolean equalsbyId(City city){
+        CityId cityToUpdate= city.getCityId();
+        return equalsbyId(cityToUpdate.value());
+    }
+
+    public boolean equalsbyId(String cityId){
+        return this.cityId.equals(new CityId(cityId));
+    }
+
+    private CityId getCityId(){
+        return this.cityId;
+    }
 }

@@ -13,13 +13,13 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("admin/City")
+@RequestMapping(value = "/admin")
 public class AllCitiesGetController {
 
     @Autowired
     private CitiesAll citiesAll;
 
-    @GetMapping("/")
+    @GetMapping(value="/City/")
     public ResponseEntity<List<HashMap<String,String>>> execute(){
         CitiesAllResponse response = new CitiesAllResponse(citiesAll.execute());
         return ResponseEntity.status(HttpStatus.OK).body(response.response());

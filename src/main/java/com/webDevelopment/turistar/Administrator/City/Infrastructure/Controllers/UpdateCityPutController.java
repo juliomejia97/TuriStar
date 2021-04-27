@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "admin/City")
+@RequestMapping(value = "/admin/City")
 public class UpdateCityPutController {
 
     @Autowired
