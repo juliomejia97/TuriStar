@@ -3,7 +3,6 @@ package com.webDevelopment.turistar.Administrator.City.Application.Update;
 import com.webDevelopment.turistar.Administrator.City.Domain.City;
 import com.webDevelopment.turistar.Administrator.City.Domain.Exceptions.CitiesNotExist;
 import com.webDevelopment.turistar.Administrator.City.Domain.Ports.CityRepository;
-import com.webDevelopment.turistar.Administrator.City.Infrastructure.Controllers.UpdateCityPutController;
 
 import java.util.Optional;
 
