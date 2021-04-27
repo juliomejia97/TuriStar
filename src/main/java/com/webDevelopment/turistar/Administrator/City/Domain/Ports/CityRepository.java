@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CityRepository {
-    void update(City product);
+    void update(City city);
     Optional<City> find(String CityId);
-    void save(City product);
+    void save(City city);
     Optional<List<City>> all();
 }

@@ -5,6 +5,8 @@ import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityCo
 import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityName;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
 import org.apache.coyote.Response;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +15,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "admin/City")
 public class UpdateCityPutController {
 
-    //TODO: Crear el bean en xml
+    @Autowired
     private CityModifier cityModifier;
 
     @PutMapping(value="/{idCity}")
     public ResponseEntity<String> execute(@PathVariable int idCity, @RequestBody Request request){
-        cityModifier.execute(request.getCityId(), request.getCityName(), request.cityCountry);
+        cityModifier.execute(request.getCityId(), request.getCityName(), request.getCityCountry());
+        return ResponseEntity.status(HttpStatus.OK).body("City "+ request.getCityName()+" has been modified");
     }
-
 
     private static class Request{
         private String cityId;

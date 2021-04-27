@@ -2,6 +2,7 @@ package com.webDevelopment.turistar.Administrator.City.Infrastructure.Controller
 
 import com.webDevelopment.turistar.Administrator.City.Application.All.CitiesAll;
 import com.webDevelopment.turistar.Administrator.City.Application.All.CitiesAllResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,7 @@ import java.util.List;
 @RequestMapping("admin/City")
 public class AllCitiesGetController {
 
-    //TODO: realizar inyección
+    @Autowired
     private CitiesAll citiesAll;
 
     @GetMapping("/")

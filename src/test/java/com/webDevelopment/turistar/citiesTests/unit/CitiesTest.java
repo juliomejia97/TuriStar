@@ -1,6 +1,7 @@
 package com.webDevelopment.turistar.citiesTests.unit;
 
 import com.webDevelopment.turistar.Administrator.City.Application.All.CitiesAll;
+import com.webDevelopment.turistar.Administrator.City.Application.Update.CityModifier;
 import com.webDevelopment.turistar.Administrator.City.Domain.City;
 import com.webDevelopment.turistar.Administrator.City.Domain.Ports.CityRepository;
 
@@ -12,7 +13,10 @@ import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityNa
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import java.util.Optional;
 
@@ -21,7 +25,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CitiesTest {
 
-    List<City> cities;
+    private List<City> cities;
+    private City cityToUpdate;
 
     @BeforeEach
     public void init(){
@@ -29,6 +34,8 @@ public class CitiesTest {
         cities.add( new City(new CityId("a0619482-a621-11eb-bcbc-0242ac130002"), new CityName("Bogotá"),new CityCountry("Colombia")) );
         cities.add( new City(new CityId("a06197e8-a621-11eb-bcbc-0242ac130002"), new CityName("Medellín"),new CityCountry("Colombia")) );
         cities.add( new City(new CityId("a06198e2-a621-11eb-bcbc-0242ac130002"), new CityName("Bucaramanga"),new CityCountry("Colombia")) );
+
+        cityToUpdate = new City(new CityId("a0619482-a621-11eb-bcbc-0242ac130002"), new CityName("Tunja"),new CityCountry("Colombia"));
     }
 
     @Test
@@ -41,5 +48,14 @@ public class CitiesTest {
         CitiesAll citiesAll = new CitiesAll(cityRepository);
 
         assertEquals(cities, citiesAll.execute());
+    }
+
+    @Test
+    public void updateCityTest(){
+        CityRepository cityRepository = mock(CityRepository.class);
+        Mockito.when(cityRepository.find("a0619482-a621-11eb-bcbc-0242ac130002")).thenReturn(Optional.of(cities.get(0)));
+        CityModifier cityModifier = new CityModifier(cityRepository);
+        cityModifier.execute("a0619482-a621-11eb-bcbc-0242ac130002","Tunja","Colombia");
+        verify(cityRepository,atLeastOnce()).update(cityToUpdate);
     }
 }

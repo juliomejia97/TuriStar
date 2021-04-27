@@ -9,7 +9,6 @@ import java.util.Optional;
 
 public class CitiesAll {
 
-    //TODO: realizar inyección
     private CityRepository cityRepository;
 
     public CitiesAll(CityRepository cityRepository){

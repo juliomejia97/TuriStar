@@ -5,6 +5,8 @@ import com.webDevelopment.turistar.Shared.Domain.StringValueObject;
 
 public class CityName extends StringValueObject {
 
+    //TODO: Servicio para consultar que la ciudad existe
+
     public CityName(String name){
         this.validate(name);
         this.value = name;

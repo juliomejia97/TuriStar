@@ -8,7 +8,6 @@ import java.util.Optional;
 
 public class CityModifier {
 
-    //TODO: Inyectar dependencia
     private CityRepository cityRepository;
 
     public CityModifier(CityRepository cityRepository) {
@@ -22,7 +21,7 @@ public class CityModifier {
         }
         City cityToUpdate = cityUpdated.get();
         cityToUpdate.updateCity(cityName,cityCountry);
-        this.cityRepository.save(cityToUpdate);
+        this.cityRepository.update(cityToUpdate);
 
     }
 }
