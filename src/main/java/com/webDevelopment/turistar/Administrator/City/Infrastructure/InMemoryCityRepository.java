@@ -40,6 +40,7 @@ public class InMemoryCityRepository implements CityRepository {
 
     @Override
     public Optional<List<City>> all() {
+
         return Optional.ofNullable(this.cites);
     }
 }

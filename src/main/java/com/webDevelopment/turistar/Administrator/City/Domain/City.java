@@ -1,5 +1,6 @@
 package com.webDevelopment.turistar.Administrator.City.Domain;
 
+import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityActive;
 import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityCountry;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
 import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityName;
@@ -12,6 +13,8 @@ public class City {
     private CityId cityId;
     private CityName cityName;
     private CityCountry cityCountry;
+    private CityActive cityActive;
+
 
     private City(){}
 
@@ -19,6 +22,7 @@ public class City {
         this.cityId = cityId;
         this.cityName = cityName;
         this.cityCountry = cityCountry;
+        this.cityActive= new CityActive(true);
     }
 
     @Override
@@ -28,7 +32,8 @@ public class City {
         City city = (City) o;
         return Objects.equals(cityId, city.cityId) &&
                 Objects.equals(cityCountry, city.cityCountry) &&
-                Objects.equals(cityName, city.cityName) ;
+                Objects.equals(cityName, city.cityName) &&
+                Objects.equals(cityActive, city.cityActive);
     }
 
     public HashMap<String, String> data()
@@ -37,6 +42,7 @@ public class City {
             put("id", cityId.value());
             put("name", cityName.value());
             put("country", cityCountry.value());
+            put("cityActive", cityActive.value().toString());
         }};
         return data;
     }
@@ -44,6 +50,10 @@ public class City {
     public void updateCity(String cityName,  String cityCountry){
         this.cityName = new CityName(cityName);
         this.cityCountry = new CityCountry(cityCountry);
+    }
+
+    public void deleteCity(){
+        this.cityActive = new CityActive(false);
     }
 
     public boolean equalsbyId(String cityId){
