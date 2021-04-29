@@ -5,8 +5,6 @@ import com.webDevelopment.turistar.Shared.Domain.StringValueObject;
 
 public class CityName extends StringValueObject {
 
-    //TODO: Servicio para consultar que la ciudad existe
-
     public CityName(String name){
         this.validate(name);
         this.value = name;
@@ -14,7 +12,10 @@ public class CityName extends StringValueObject {
 
     private void validate(String name){
       if( name.length() < 1 ){
-          throw new LengthNotValid("Number of characters invalid");
+          throw new LengthNotValid("The city name can not be empty");
       }
+    }
+
+    private CityName() {
     }
 }
