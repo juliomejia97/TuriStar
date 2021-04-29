@@ -13,7 +13,7 @@ public class City {
     private CityId cityId;
     private CityName cityName;
     private CityCountry cityCountry;
-    private CityActive cityActive;
+    private CityActive cityActive ;
 
 
     private City(){}
@@ -38,13 +38,12 @@ public class City {
 
     public HashMap<String, String> data()
     {
-        HashMap<String, String> data = new HashMap<>() {{
+        return new HashMap<>() {{
             put("id", cityId.value());
             put("name", cityName.value());
             put("country", cityCountry.value());
             put("cityActive", cityActive.value().toString());
         }};
-        return data;
     }
 
     public void updateCity(String cityName,  String cityCountry){

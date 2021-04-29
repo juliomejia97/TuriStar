@@ -4,6 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="inMemoryCityRepository" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.InMemoryCityRepository"/>
+    <bean id="inMemoryTicketRepository" class="com.webDevelopment.turistar.Hotel.Ticket.Infrastructure.InMemoryTicketRepository"/>
 
     <bean id="cityModifier" class="com.webDevelopment.turistar.Administrator.City.Application.Update.CityModifier">
         <constructor-arg ref="inMemoryCityRepository"/>
@@ -17,4 +18,15 @@
         <constructor-arg ref="inMemoryCityRepository"/>
     </bean>
 
+    <bean id="ticketsAll" class="com.webDevelopment.turistar.Hotel.Ticket.Application.All.TicketsAll">
+        <constructor-arg ref="inMemoryTicketRepository"/>
+    </bean>
+
+    <bean id="ticketModifier" class="com.webDevelopment.turistar.Hotel.Ticket.Application.Update.TicketModifier">
+        <constructor-arg ref="inMemoryTicketRepository"/>
+    </bean>
+
+    <bean id="ticketDeleter" class="com.webDevelopment.turistar.Hotel.Ticket.Application.Delete.TicketDelete">
+        <constructor-arg ref="inMemoryTicketRepository"/>
+    </bean>
 </beans>
