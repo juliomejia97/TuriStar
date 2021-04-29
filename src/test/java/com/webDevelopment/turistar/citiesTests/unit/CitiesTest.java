@@ -11,12 +11,10 @@ import java.util.List;
 import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityCountry;
 import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityName;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
+import com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import java.util.Optional;
 
@@ -52,9 +50,10 @@ public class CitiesTest {
     @Test
     public void updateCityTest(){
         CityRepository cityRepository = mock(CityRepository.class);
+        GeoCodeInfoService geoCodeInfoService = mock(GeoCodeInfoService.class);
         Mockito.when(cityRepository.find("a0619482-a621-11eb-bcbc-0242ac130002")).thenReturn(Optional.of(cities.get(0)));
-        CityModifier cityModifier = new CityModifier(cityRepository);
+        CityModifier cityModifier = new CityModifier(cityRepository,geoCodeInfoService);
         cityModifier.execute("a0619482-a621-11eb-bcbc-0242ac130002","Tunja","Colombia");
-        verify(cityRepository,atLeastOnce()).update("a0619482-a621-11eb-bcbc-0242ac130002",cityToUpdate);
+        verify(cityRepository,atLeastOnce()).update(cityToUpdate);
     }
 }

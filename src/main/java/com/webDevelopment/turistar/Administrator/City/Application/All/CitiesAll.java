@@ -20,7 +20,6 @@ public class CitiesAll {
         if(cities.isEmpty()){
             throw new CitiesNotExist("There are no cities in the database, contact your admin");
         }
-        //TODO: Get only active cities
         return cities.get();
     }
 }
