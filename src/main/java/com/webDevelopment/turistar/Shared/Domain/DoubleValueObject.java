@@ -3,11 +3,7 @@ package com.webDevelopment.turistar.Shared.Domain;
 import java.util.Objects;
 
 public class DoubleValueObject {
-    protected double value;
-
-    public double value() {
-        return value;
-    }
+    protected Double value;
 
     @Override
     public boolean equals(Object o) {
@@ -15,5 +11,9 @@ public class DoubleValueObject {
         if (o == null || getClass() != o.getClass()) return false;
         DoubleValueObject that = (DoubleValueObject) o;
         return Objects.equals(value, that.value);
+    }
+
+    public Double value() {
+        return value;
     }
 }

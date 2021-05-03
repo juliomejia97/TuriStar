@@ -44,12 +44,13 @@ public class Ticket {
 
     public HashMap<String, String> data()
     {
+        System.out.println(ticketPrice+"estoy mandando");
         return new HashMap<>() {{
         put("id", ticketId.value());
         put("airlineName", ticketAirline.value());
         put("ticketDeparture", ticketDeparture.value());
         put("ticketDestiantion", ticketDestination.value());
-        put("ticketPrice", ticketPrice.toString());
+        put("ticketPrice", ticketPrice.value().toString());
         put("ticketActive", ticketActive.value().toString());
     }};
     }
