@@ -18,8 +18,9 @@ import java.util.Properties;
 public class HibernateConfigFactory {
     @Autowired
     private Environment env;
+    //Session for city
     @Bean("city-session-factory")
-    public LocalSessionFactoryBean sessionFactory(){
+    public LocalSessionFactoryBean sessionFactoryCity(){
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setHibernateProperties(hibernateProperties());
@@ -29,9 +30,25 @@ public class HibernateConfigFactory {
         return sessionFactory;
     }
     @Bean("city-transactional-manager")
-    public PlatformTransactionManager hibernateTransactionalManager(){
+    public PlatformTransactionManager hibernateTransactionalManagerCity(){
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(sessionFactory().getObject());
+        transactionManager.setSessionFactory(sessionFactoryCity().getObject());
+        return transactionManager;
+    }
+    @Bean("hotel-session-factory")
+    public LocalSessionFactoryBean sessionFactoryHotel(){
+        LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+        sessionFactoryBean.setDataSource(dataSource());
+        sessionFactoryBean.setHibernateProperties(hibernateProperties());
+        //TODO: Cargar archivo no quemado
+        FileSystemResource resource = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Hotel/Ticket/Infrastructure/Hibernate/Tickets.hbm.xml");
+        sessionFactoryBean.setMappingLocations(resource);
+        return sessionFactoryBean;
+    }
+    @Bean("hotel-transactional-manager")
+    public PlatformTransactionManager hibernateTransactionalManagerHotel(){
+        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+        transactionManager.setSessionFactory(sessionFactoryHotel().getObject());
         return transactionManager;
     }
     private DataSource dataSource(){

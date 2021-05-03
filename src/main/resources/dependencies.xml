@@ -6,7 +6,7 @@
     <bean id="inMemoryCityRepository" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.InMemoryCityRepository"/>
     <bean id="inMemoryTicketRepository" class="com.webDevelopment.turistar.Hotel.Ticket.Infrastructure.InMemoryTicketRepository"/>
     <bean id="inMemoryHotelPlanRepository" class="com.webDevelopment.turistar.HotelPlan.Infrastructure.InMemoryHotelPlanRepository"/>
-
+    <bean id="hibernateTicketRepository" class="com.webDevelopment.turistar.Hotel.Ticket.Infrastructure.Hibernate.HibernateTicketRepository"/>
     <bean id="geoCodeInfoService" class="com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoService"/>
     <bean id="hibernateProductRepository" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.Hibernate.HibernateCityRepository"/>
     <bean id="cityModifier" class="com.webDevelopment.turistar.Administrator.City.Application.Update.CityModifier">

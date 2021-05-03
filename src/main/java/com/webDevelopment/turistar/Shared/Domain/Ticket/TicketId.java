@@ -9,6 +9,6 @@ public class TicketId extends CustomUUID {
     }
 
     private TicketId(){
-        super("");
+        super();
     }
 }

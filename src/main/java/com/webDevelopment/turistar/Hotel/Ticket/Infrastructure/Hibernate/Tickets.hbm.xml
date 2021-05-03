@@ -1,0 +1,18 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.webDevelopment.turistar.Hotel.Ticket.Domain.Ticket" table="tickets">
+        <composite-id name="ticketId" class="com.webDevelopment.turistar.Shared.Domain.Ticket.TicketId" access="field">
+            <key-property name="value" column="cityId" access="field" length="36"/>
+        </composite-id>
+
+        <component name="ticketAirline" class="com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.TicketAirline" access="field">
+            <property name="value" column="ticketAirline" access="field"/>
+        </component>
+
+
+    </class>
+</hibernate-mapping>
