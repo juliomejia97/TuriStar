@@ -12,8 +12,10 @@ public class CityCountry extends StringValueObject {
 
     private void validate(String name){
         if( name.length() < 1 ){
-            throw new LengthNotValid("Number of characters invalid");
+            throw new LengthNotValid("The city country can not be empty");
         }
     }
 
+    private CityCountry() {
+    }
 }

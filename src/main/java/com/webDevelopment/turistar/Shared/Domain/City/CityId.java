@@ -9,6 +9,7 @@ public class CityId extends CustomUUID {
     }
 
     private CityId(){
-        super("");
+        super();
     }
+
 }
