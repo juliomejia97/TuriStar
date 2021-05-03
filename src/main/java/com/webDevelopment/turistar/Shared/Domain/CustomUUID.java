@@ -12,7 +12,9 @@ public class CustomUUID implements Serializable {
         this.validate(value);
         this.value = value;
     }
+    protected CustomUUID(){
 
+    }
     private void validate(String value) {
         this.validateUUIDFormatRule(value);
     }

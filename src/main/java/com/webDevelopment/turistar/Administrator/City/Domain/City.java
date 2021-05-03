@@ -1,5 +1,6 @@
 package com.webDevelopment.turistar.Administrator.City.Domain;
 
+import com.webDevelopment.turistar.Administrator.City.Domain.Exceptions.CityAlreadyDeleted;
 import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityActive;
 import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityCountry;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
@@ -52,9 +53,11 @@ public class City {
     }
 
     public void deleteCity(){
+        if(!this.cityActive.value()){
+            throw new CityAlreadyDeleted("The city has been already deleted");
+        }
         this.cityActive = new CityActive(false);
     }
-
     public boolean equalsbyId(String cityId){
         return this.cityId.equals(new CityId(cityId));
     }

@@ -21,6 +21,7 @@ public class CityDelete {
         }
         City cityToUpdate = cityUpdated.get();
         cityToUpdate.deleteCity();
-        this.cityRepository.update(cityId,cityToUpdate);
+        this.cityRepository.update(cityToUpdate);
     }
+
 }

@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.webDevelopment.turistar.Administrator.City.Domain.City" table="cities">
+    <composite-id name="cityId" class="com.webDevelopment.turistar.Shared.Domain.City.CityId" access="field">
+      <key-property name="value" column="cityId" access="field" length="36"/>
+    </composite-id>
+
+    <component name="cityName" class="com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityName" access="field">
+      <property name="value" column="cityName" access="field" type="string"/>
+    </component>
+
+    <component name="cityCountry" class="com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityCountry" access="field">
+      <property name="value" column="cityCountry" access="field" type="string"/>
+    </component>
+
+    <component name="cityActive" class="com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityActive" access="field">
+      <property name="value" column="cityActive" access="field" type="boolean"/>
+    </component>
+  </class>
+</hibernate-mapping>
