@@ -20,7 +20,7 @@ public class GeoCodeInfoService implements InformationService, InformationDetail
     private static final String API_KEY="AIzaSyCAAyegQUf9LkBGLcbcEg5ElE4we2GlA6w";
     @Override
     public boolean validate(String cityName, String cityCountry) {
-        String body = "json?address="+cityName.replace(" ","%20")+"&sensors=true&components=country:"+
+        String body = "json?address="+cityName.replace(" ","%20")+"&sensors=false&components=country:"+
                 cityCountry.replace(" ","%20")+"&key="+API_KEY;
         HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(GEOCODE_RESOURCE+body))
