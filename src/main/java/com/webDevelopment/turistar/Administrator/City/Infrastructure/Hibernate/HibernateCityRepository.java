@@ -13,13 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@Transactional("city-transactional-manager")
+@Transactional("transactional-manager")
 public class HibernateCityRepository implements CityRepository {
 
     protected final SessionFactory sessionFactory;
     protected final Class<City>  aggregateClass;
 
-    public HibernateCityRepository(@Qualifier("city-session-factory") SessionFactory sessionFactory) {
+    public HibernateCityRepository(@Qualifier("session-factory") SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
         this.aggregateClass = City.class;
     }
