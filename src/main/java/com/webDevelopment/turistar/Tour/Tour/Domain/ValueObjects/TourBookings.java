@@ -4,6 +4,9 @@ import com.webDevelopment.turistar.Shared.Domain.IntegerValueObject;
 import com.webDevelopment.turistar.Tour.Tour.Domain.Exceptions.NegativeNumber;
 
 public class TourBookings extends IntegerValueObject {
+
+    private TourBookings(){}
+
     public TourBookings(int bookings){
         this.validate(bookings);
         this.value = bookings;

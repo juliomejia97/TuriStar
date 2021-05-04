@@ -12,23 +12,26 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.io.File;
 import java.util.Properties;
 
 @Configuration
 public class HibernateConfigFactory {
     @Autowired
     private Environment env;
-    @Bean("city-session-factory")
+    @Bean("session-factory")
     public LocalSessionFactoryBean sessionFactory(){
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setHibernateProperties(hibernateProperties());
-        //TODO: Cargar el archivo sin ser quemado
-        FileSystemResource resource = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Administrator/City/Infrastructure/Hibernate/City.hbm.xml");
-        sessionFactory.setMappingLocations(resource);
+
+        FileSystemResource resource1 = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Administrator/City/Infrastructure/Hibernate/City.hbm.xml");
+        FileSystemResource resource2 = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Tour/Tour/Infrastructure/Hibernate/Tour.hbm.xml");
+
+        sessionFactory.setMappingLocations(resource1, resource2);
         return sessionFactory;
     }
-    @Bean("city-transactional-manager")
+    @Bean("transactional-manager")
     public PlatformTransactionManager hibernateTransactionalManager(){
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory().getObject());

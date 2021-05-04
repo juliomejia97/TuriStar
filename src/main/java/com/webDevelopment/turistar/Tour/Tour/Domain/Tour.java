@@ -15,6 +15,8 @@ public class Tour {
     private TourBookings tourBookings;
     private TourPrice tourPrice;
 
+    private Tour(){}
+
     public Tour(TourName tourName, TourBookings tourBookings, TourPrice tourPrice) {
         this.tourName = tourName;
         this.tourBookings = tourBookings;

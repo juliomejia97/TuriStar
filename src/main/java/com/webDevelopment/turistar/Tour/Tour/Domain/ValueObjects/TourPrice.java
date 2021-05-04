@@ -4,6 +4,9 @@ import com.webDevelopment.turistar.Shared.Domain.DoubleValueObject;
 import com.webDevelopment.turistar.Tour.Tour.Domain.Exceptions.NegativeNumber;
 
 public class TourPrice extends DoubleValueObject {
+
+    private TourPrice(){}
+
     public TourPrice(double price){
         this.validate(price);
         this.value = price;

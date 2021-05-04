@@ -5,6 +5,8 @@ import com.webDevelopment.turistar.Shared.Domain.StringValueObject;
 
 public class TourName extends StringValueObject {
 
+    private TourName(){}
+
     public TourName(String name){
         this.validate(name);
         this.value = name;
