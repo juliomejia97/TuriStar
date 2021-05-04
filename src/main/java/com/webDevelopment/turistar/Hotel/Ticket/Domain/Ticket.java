@@ -44,7 +44,6 @@ public class Ticket {
 
     public HashMap<String, String> data()
     {
-        System.out.println(ticketPrice+"estoy mandando");
         return new HashMap<>() {{
         put("id", ticketId.value());
         put("airlineName", ticketAirline.value());
