@@ -57,4 +57,22 @@
     <bean id="hotelPlanDeleter" class="com.webDevelopment.turistar.Hotel.HotelPlan.Application.Delete.HotelPlanDelete">
         <constructor-arg ref="inMemoryHotelPlanRepository"/>
     </bean>
+
+    <bean id="badWordService" class="com.webDevelopment.turistar.User.User.Infrastructure.BadWordsService"/>
+
+
+    <bean id="inMemoryCityRepository" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.InMemoryCityRepository"/>
+    <bean id="userCreator" class="com.webDevelopment.turistar.User.User.Application.Create.UserCreator">
+        <constructor-arg ref="inMemoryUserRepository"/>
+        <constructor-arg ref="badWordService"/>
+    </bean>
+
+    <bean id="userFinder" class="com.webDevelopment.turistar.User.User.Application.Find.UserFinder">
+        <constructor-arg ref="inMemoryUserRepository"/>
+    </bean>
+    <bean id="userModifier" class="com.webDevelopment.turistar.User.User.Application.Update.UserModifier">
+        <constructor-arg ref="inMemoryUserRepository"/>
+        <constructor-arg ref="badWordService"/>
+    </bean>
+
 </beans>
