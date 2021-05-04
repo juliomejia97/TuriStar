@@ -33,4 +33,9 @@
     <bean id="userFinder" class="com.webDevelopment.turistar.User.User.Application.Find.UserFinder">
         <constructor-arg ref="inMemoryUserRepository"/>
     </bean>
+    <bean id="userModifier" class="com.webDevelopment.turistar.User.User.Application.Update.UserModifier">
+        <constructor-arg ref="inMemoryUserRepository"/>
+        <constructor-arg ref="badWordService"/>
+    </bean>
+
 </beans>

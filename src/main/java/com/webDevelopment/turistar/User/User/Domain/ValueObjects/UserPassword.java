@@ -15,7 +15,7 @@ public class UserPassword extends StringValueObject
 {
     public UserPassword(String value) {
         this.validate(value);
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(6000);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
         String encodedPassword = encoder.encode(value);
         this.value = encodedPassword;
     }

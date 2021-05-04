@@ -1,8 +1,7 @@
 package com.webDevelopment.turistar.User.User.Infrastructure.Controllers;
 
 import com.webDevelopment.turistar.Shared.Domain.UUIDNotValid;
-import com.webDevelopment.turistar.User.User.Application.Find.UserFinder;
-import com.webDevelopment.turistar.User.User.Application.Find.UserFinderResponse;
+import com.webDevelopment.turistar.User.User.Application.Update.UserModifier;
 import com.webDevelopment.turistar.User.User.Domain.Exceptions.UserNotExist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,17 +12,18 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/users")
-public class FindUserByIdGetController
-{
-    @Autowired
-    private UserFinder userFinder;
+public class UpdateUserPutController {
 
-    @GetMapping(value="find/{userId}")
-    public ResponseEntity<HashMap> execute(@PathVariable("userId") String id)
+    @Autowired
+    private UserModifier userModifier;
+
+    @PutMapping(value = "/{userId}")
+    public ResponseEntity<String> execute(@PathVariable String userId, @RequestBody Request request)
     {
-        UserFinderResponse response = new UserFinderResponse(userFinder.execute(id));
-        return ResponseEntity.status(HttpStatus.OK).body(response.response());
+        userModifier.execute(userId, request.getFirstName(), request.getLastName(), request.getEmail());
+        return ResponseEntity.status(HttpStatus.OK).body("User " + request.getId() + "has been modified");
     }
+
 
     @ExceptionHandler(UserNotExist.class)
     public ResponseEntity<HashMap> handleUserNotExist(UserNotExist exception)
@@ -42,4 +42,7 @@ public class FindUserByIdGetController
         }};
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
+
+
+
 }

@@ -22,7 +22,7 @@ public final class CreateUserPostController {
 
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody Request request) {
-        creator.execute(request.getId(), request.getFirstName(), request.getLastName(), request.getNickName(), request.getPassword());
+        creator.execute(request.getId(), request.getFirstName(), request.getLastName(), request.getEmail(), request.getPassword());
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
@@ -58,7 +58,7 @@ class Request {
     private String id;
     private String firstName;
     private String lastName;
-    private String nickName;
+    private String email;
     private String password;
 
     public String getId() {
@@ -85,12 +85,12 @@ class Request {
         this.lastName = lastName;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
