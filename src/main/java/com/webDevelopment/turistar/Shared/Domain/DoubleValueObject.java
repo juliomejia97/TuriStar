@@ -13,7 +13,7 @@ public class DoubleValueObject {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DoubleValueObject that = (DoubleValueObject) o;
+        BooleanValueObject that = (BooleanValueObject) o;
         return Objects.equals(value, that.value);
     }
 }

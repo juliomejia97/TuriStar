@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping(value = "/admin/City")
+@RequestMapping(value = "/hotel/City")
 public class RemoveCityDeleteController {
 
     @Autowired
