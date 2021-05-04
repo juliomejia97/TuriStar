@@ -16,4 +16,5 @@ public class DoubleValueObject {
         BooleanValueObject that = (BooleanValueObject) o;
         return Objects.equals(value, that.value);
     }
+    
 }

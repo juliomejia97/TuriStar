@@ -5,8 +5,6 @@ import com.webDevelopment.turistar.Shared.Domain.DoubleValueObject;
 
 public class HotelPlanPrice extends DoubleValueObject {
 
-    //TODO: Servicio para consultar que la ciudad existe
-
     public HotelPlanPrice(double price){
         this.validate(price);
         this.value = price;

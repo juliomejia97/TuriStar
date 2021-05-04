@@ -45,9 +45,9 @@ public class HotelPlan {
     {
         return new HashMap<>() {{
             put("id", hotelPlanId.value());
-            put("hotelPlanPrice",hotelPlanPrice.toString());
+            put("hotelPlanPrice",String.valueOf(hotelPlanPrice.value()));
             put("hotelPlanDescription", hotelPlanDescription.value());
-            put("hotelPlanPeopleNumber", hotelPlanPeopleNumber.toString());
+            put("hotelPlanPeopleNumber", String.valueOf(hotelPlanPeopleNumber.value()));
             put("hotelPlanActive", hotelPlanActive.value().toString());
         }};
     }
