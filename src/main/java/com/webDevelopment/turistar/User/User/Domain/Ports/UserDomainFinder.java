@@ -2,7 +2,6 @@ package com.webDevelopment.turistar.User.User.Domain.Ports;
 
 import com.webDevelopment.turistar.User.User.Domain.Exceptions.UserNotExist;
 import com.webDevelopment.turistar.User.User.Domain.User;
-import com.webDevelopment.turistar.User.User.Infrastructure.InMemoryUserRepository;
 
 import java.util.Optional;
 
@@ -10,7 +9,7 @@ public class UserDomainFinder {
 
     private UserRepository repository;
 
-    public UserDomainFinder(InMemoryUserRepository repository) {
+    public UserDomainFinder(UserRepository repository) {
         this.repository = repository;
     }
 

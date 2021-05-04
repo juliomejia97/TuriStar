@@ -29,4 +29,8 @@
         <constructor-arg ref="inMemoryUserRepository"/>
         <constructor-arg ref="badWordService"/>
     </bean>
+
+    <bean id="userFinder" class="com.webDevelopment.turistar.User.User.Application.Find.UserFinder">
+        <constructor-arg ref="inMemoryUserRepository"/>
+    </bean>
 </beans>
