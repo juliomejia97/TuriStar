@@ -4,6 +4,7 @@ import com.webDevelopment.turistar.Shared.Domain.StringValueObject;
 import com.webDevelopment.turistar.User.User.Domain.Exceptions.LengthNotValid;
 import com.webDevelopment.turistar.User.User.Domain.Exceptions.NotSymbolsFound;
 import com.webDevelopment.turistar.User.User.Domain.Exceptions.UpperLowerError;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,9 @@ public class UserPassword extends StringValueObject
 {
     public UserPassword(String value) {
         this.validate(value);
-        this.value = value;
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(6000);
+        String encodedPassword = encoder.encode(value);
+        this.value = encodedPassword;
     }
 
     private void validate(String value) {

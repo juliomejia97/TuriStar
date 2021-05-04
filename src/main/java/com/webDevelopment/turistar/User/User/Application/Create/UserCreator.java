@@ -12,6 +12,7 @@ import com.webDevelopment.turistar.User.User.Domain.ValueObjects.UserPassword;
 import com.webDevelopment.turistar.User.User.Infrastructure.BadWordsService;
 import com.webDevelopment.turistar.User.User.Infrastructure.InMemoryUserRepository;
 
+
 public class UserCreator {
     private InMemoryUserRepository inMemoryUserRepository;
     private BadWordsService badWordsService;
@@ -29,6 +30,8 @@ public class UserCreator {
     {
         this.validate(userId);
         validator.execute(new UserEmail(userEmail).value());
+
+
         User user = new User(new UserId(userId), new UserName(userFirstName), new UserLastName(userLastName) , new UserEmail(userEmail),new UserPassword(userPassword));
         inMemoryUserRepository.save(user);
     }
