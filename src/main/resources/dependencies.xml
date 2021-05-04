@@ -5,7 +5,7 @@
 
     <bean id="inMemoryCityRepository" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.InMemoryCityRepository"/>
     <bean id="inMemoryTicketRepository" class="com.webDevelopment.turistar.Hotel.Ticket.Infrastructure.InMemoryTicketRepository"/>
-    <bean id="inMemoryHotelPlanRepository" class="com.webDevelopment.turistar.HotelPlan.Infrastructure.InMemoryHotelPlanRepository"/>
+    <bean id="inMemoryHotelPlanRepository" class="com.webDevelopment.turistar.Hotel.HotelPlan.Infrastructure.InMemoryHotelPlanRepository"/>
     <bean id="hibernateTicketRepository" class="com.webDevelopment.turistar.Hotel.Ticket.Infrastructure.Hibernate.HibernateTicketRepository"/>
     <bean id="inMemoryTourSpotRepository" class="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.InMemoryTourSpotRepository"/>
     <bean id="geoCodeInfoService" class="com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoService"/>
@@ -46,15 +46,15 @@
         <constructor-arg ref="inMemoryTicketRepository"/>
     </bean>
 
-    <bean id="hotelPlanAll" class="com.webDevelopment.turistar.HotelPlan.Application.All.HotelPlanAll">
+    <bean id="hotelPlanAll" class="com.webDevelopment.turistar.Hotel.HotelPlan.Application.All.HotelPlanAll">
         <constructor-arg ref="inMemoryHotelPlanRepository"/>
     </bean>
 
-    <bean id="hotelPlanModifier" class="com.webDevelopment.turistar.HotelPlan.Application.Update.HotelPlanModifier">
+    <bean id="hotelPlanModifier" class="com.webDevelopment.turistar.Hotel.HotelPlan.Application.Update.HotelPlanModifier">
         <constructor-arg ref="inMemoryHotelPlanRepository"/>
     </bean>
 
-    <bean id="hotelPlanDeleter" class="com.webDevelopment.turistar.HotelPlan.Application.Delete.HotelPlanDelete">
+    <bean id="hotelPlanDeleter" class="com.webDevelopment.turistar.Hotel.HotelPlan.Application.Delete.HotelPlanDelete">
         <constructor-arg ref="inMemoryHotelPlanRepository"/>
     </bean>
 </beans>

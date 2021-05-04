@@ -1,6 +1,6 @@
-package com.webDevelopment.turistar.HotelPlan.Domain.Ports;
+package com.webDevelopment.turistar.Hotel.HotelPlan.Domain.Ports;
 
-import com.webDevelopment.turistar.HotelPlan.Domain.HotelPlan;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.HotelPlan;
 
 import java.util.List;
 import java.util.Optional;

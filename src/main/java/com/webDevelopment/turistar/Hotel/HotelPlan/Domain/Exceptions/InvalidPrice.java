@@ -1,4 +1,4 @@
-package com.webDevelopment.turistar.HotelPlan.Domain.Exceptions;
+package com.webDevelopment.turistar.Hotel.HotelPlan.Domain.Exceptions;
 
 public class InvalidPrice extends RuntimeException {
     public InvalidPrice(String message) {

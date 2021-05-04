@@ -1,10 +1,9 @@
-package com.webDevelopment.turistar.HotelPlan.Domain;
+package com.webDevelopment.turistar.Hotel.HotelPlan.Domain;
 
-import com.webDevelopment.turistar.HotelPlan.Domain.ValueObjects.HotelPlanActive;
-import com.webDevelopment.turistar.HotelPlan.Domain.ValueObjects.HotelPlanDescription;
-import com.webDevelopment.turistar.HotelPlan.Domain.ValueObjects.HotelPlanPeopleNumber;
-import com.webDevelopment.turistar.HotelPlan.Domain.ValueObjects.HotelPlanPrice;
-import com.webDevelopment.turistar.Shared.Domain.City.CityId;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects.HotelPlanActive;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects.HotelPlanDescription;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects.HotelPlanPeopleNumber;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects.HotelPlanPrice;
 import com.webDevelopment.turistar.Shared.Domain.HotelPlan.HotelPlanId;
 
 import java.util.HashMap;

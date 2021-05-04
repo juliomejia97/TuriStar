@@ -1,7 +1,7 @@
-package com.webDevelopment.turistar.HotelPlan.Infrastructure.Controllers;
+package com.webDevelopment.turistar.Hotel.HotelPlan.Infrastructure.Controllers;
 
-import com.webDevelopment.turistar.HotelPlan.Application.All.HotelPlanAll;
-import com.webDevelopment.turistar.HotelPlan.Application.All.HotelPlanAllResponse;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Application.All.HotelPlanAll;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Application.All.HotelPlanAllResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

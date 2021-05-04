@@ -1,6 +1,6 @@
-package com.webDevelopment.turistar.HotelPlan.Application.All;
+package com.webDevelopment.turistar.Hotel.HotelPlan.Application.All;
 
-import com.webDevelopment.turistar.HotelPlan.Domain.HotelPlan;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.HotelPlan;
 
 import java.util.HashMap;
 import java.util.List;

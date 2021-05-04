@@ -9,12 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@Transactional("hotel-transactional-manager")
+@Transactional("transactional-manager")
 public class HibernateTicketRepository implements TicketRepository {
     protected final SessionFactory sessionFactory;
     protected final Class<Ticket>  aggregateClass;
 
-    public HibernateTicketRepository(@Qualifier("hotel-session-factory") SessionFactory sessionFactory ) {
+    public HibernateTicketRepository(@Qualifier("session-factory") SessionFactory sessionFactory ) {
         this.sessionFactory = sessionFactory;
         this.aggregateClass = Ticket.class;
     }

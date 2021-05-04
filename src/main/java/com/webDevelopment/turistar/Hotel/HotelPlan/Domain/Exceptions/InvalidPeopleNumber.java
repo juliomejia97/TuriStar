@@ -1,4 +1,4 @@
-package com.webDevelopment.turistar.HotelPlan.Domain.Exceptions;
+package com.webDevelopment.turistar.Hotel.HotelPlan.Domain.Exceptions;
 
 public class InvalidPeopleNumber extends RuntimeException {
     public InvalidPeopleNumber(String message) {

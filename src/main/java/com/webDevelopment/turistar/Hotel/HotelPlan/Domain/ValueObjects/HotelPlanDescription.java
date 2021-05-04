@@ -1,6 +1,6 @@
-package com.webDevelopment.turistar.HotelPlan.Domain.ValueObjects;
+package com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects;
 
-import com.webDevelopment.turistar.HotelPlan.Domain.Exceptions.InvalidPeopleNumber;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.Exceptions.InvalidPeopleNumber;
 import com.webDevelopment.turistar.Shared.Domain.StringValueObject;
 
 public class HotelPlanDescription extends StringValueObject {

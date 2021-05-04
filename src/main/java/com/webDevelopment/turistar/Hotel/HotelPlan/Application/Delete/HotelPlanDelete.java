@@ -1,8 +1,8 @@
-package com.webDevelopment.turistar.HotelPlan.Application.Delete;
+package com.webDevelopment.turistar.Hotel.HotelPlan.Application.Delete;
 
-import com.webDevelopment.turistar.HotelPlan.Domain.HotelPlan;
-import com.webDevelopment.turistar.HotelPlan.Domain.Exceptions.HotelPlanNotExist;
-import com.webDevelopment.turistar.HotelPlan.Domain.Ports.HotelPlanRepository;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.HotelPlan;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.Exceptions.HotelPlanNotExist;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.Ports.HotelPlanRepository;
 
 import java.util.Optional;
 

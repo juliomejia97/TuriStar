@@ -1,10 +1,10 @@
-package com.webDevelopment.turistar.HotelPlan.Infrastructure;
+package com.webDevelopment.turistar.Hotel.HotelPlan.Infrastructure;
 
-import com.webDevelopment.turistar.HotelPlan.Domain.HotelPlan;
-import com.webDevelopment.turistar.HotelPlan.Domain.Ports.HotelPlanRepository;
-import com.webDevelopment.turistar.HotelPlan.Domain.ValueObjects.HotelPlanDescription;
-import com.webDevelopment.turistar.HotelPlan.Domain.ValueObjects.HotelPlanPeopleNumber;
-import com.webDevelopment.turistar.HotelPlan.Domain.ValueObjects.HotelPlanPrice;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.HotelPlan;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.Ports.HotelPlanRepository;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects.HotelPlanDescription;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects.HotelPlanPeopleNumber;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects.HotelPlanPrice;
 import com.webDevelopment.turistar.Shared.Domain.HotelPlan.HotelPlanId;
 
 import java.util.ArrayList;

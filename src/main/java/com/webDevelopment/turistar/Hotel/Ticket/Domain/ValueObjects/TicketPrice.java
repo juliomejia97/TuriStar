@@ -9,7 +9,6 @@ public class TicketPrice {
     public TicketPrice(Double ticketPrice){
         this.validate(ticketPrice);
         value = ticketPrice;
-        System.out.println(value);
     }
 
     private void validate(double ticketPrice){

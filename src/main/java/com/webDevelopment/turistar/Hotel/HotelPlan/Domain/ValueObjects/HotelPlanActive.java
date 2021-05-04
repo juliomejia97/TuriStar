@@ -1,4 +1,4 @@
-package com.webDevelopment.turistar.HotelPlan.Domain.ValueObjects;
+package com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects;
 
 import com.webDevelopment.turistar.Shared.Domain.BooleanValueObject;
 
