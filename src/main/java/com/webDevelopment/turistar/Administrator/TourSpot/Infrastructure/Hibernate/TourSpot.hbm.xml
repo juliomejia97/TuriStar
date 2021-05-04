@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.webDevelopment.turistar.Administrator.TourSpot.Domain.TourSpot" table="">
+        <composite-id name="tourSpotId" class="com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotId" access="field">
+            <key-property name="value" column="tourSpotId" access="field"/>
+        </composite-id>
+        <component name="tourSpotName" class="com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.TourSpotName" access="field">
+            <property name="value" column="tourSpotName" length="255" access="field"/>
+        </component>
+        <component name="latitude" class="com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.TourSpotLatitude" access="field">
+            <property name="value" column="tourSpotLatitude" type="double" access="field"/>
+        </component>
+        <component name="longitude" class="com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.TourSpotLongitude" access="field">
+            <property name="value" column="tourSpotLongitude" type="double" access="field"/>
+        </component>
+        <component name="description" class="com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.TourSpotDescription" access="field">
+            <property name="value" column="tourSpotLongitude" length="255" access="field"/>
+        </component>
+        <component name="tourSpotActive" class="com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.TourSpotActive" access="field">
+            <property name="value" column="tourSpotLongitude" type="boolean" access="field"/>
+        </component>
+
+        <property name="cityDetail" column="city" access="field">
+            <type name="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate.CityDetailCustomType">
+            </type>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -15,5 +15,12 @@
       <jdbc-url>jdbc:mariadb://turistar-database-01.cohcvyy7lspu.us-east-1.rds.amazonaws.com:3306/TuristarSchema</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="ExampleDB" uuid="59c324fd-e08c-4b9e-94c2-f442c64041ad">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://itbdbserver.cf7dgbkzamlz.us-east-1.rds.amazonaws.com:3306/InventoryDevelopment</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

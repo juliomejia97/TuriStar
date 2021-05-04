@@ -5,14 +5,18 @@ import com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotId;
 
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.Optional;
 
 public class TourSpot {
+
     private TourSpotId tourSpotId;
     private TourSpotName tourSpotName;
     private TourSpotLatitude latitude;
     private TourSpotLongitude longitude;
     private TourSpotDescription description;
     private TourSpotActive tourSpotActive;
+    private Optional<CityDetail> cityDetail;
+
     public TourSpot(TourSpotId tourSpotId, TourSpotName tourSpotName, TourSpotLatitude latitude, TourSpotLongitude longitude, TourSpotDescription description) {
         this.tourSpotId = tourSpotId;
         this.tourSpotName = tourSpotName;
