@@ -1,4 +1,4 @@
-package com.webDevelopment.turistar.Administrator.City.Domain.Exceptions;
+package com.webDevelopment.turistar.Shared.Domain;
 
 public class BadInfoError extends RuntimeException {
     public BadInfoError(String message) {

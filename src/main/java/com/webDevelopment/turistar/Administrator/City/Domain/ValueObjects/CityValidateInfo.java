@@ -1,6 +1,6 @@
 package com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects;
 
-import com.webDevelopment.turistar.Administrator.City.Domain.Exceptions.BadInfoError;
+import com.webDevelopment.turistar.Shared.Domain.BadInfoError;
 import com.webDevelopment.turistar.Administrator.City.Domain.Ports.InformationService;
 
 public class CityValidateInfo {

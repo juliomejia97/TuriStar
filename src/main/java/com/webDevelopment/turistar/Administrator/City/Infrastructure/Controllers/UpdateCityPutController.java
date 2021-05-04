@@ -1,7 +1,7 @@
 package com.webDevelopment.turistar.Administrator.City.Infrastructure.Controllers;
 
 import com.webDevelopment.turistar.Administrator.City.Application.Update.CityModifier;
-import com.webDevelopment.turistar.Administrator.City.Domain.Exceptions.BadInfoError;
+import com.webDevelopment.turistar.Shared.Domain.BadInfoError;
 import com.webDevelopment.turistar.Administrator.City.Domain.Exceptions.LengthNotValid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

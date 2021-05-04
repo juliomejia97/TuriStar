@@ -4,13 +4,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="inMemoryCityRepository" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.InMemoryCityRepository"/>
+    <bean id="inMemoryTourSpotRepository" class="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.InMemoryTourSpotRepository"/>
     <bean id="geoCodeInfoService" class="com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoService"/>
     <bean id="hibernateProductRepository" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.Hibernate.HibernateCityRepository"/>
     <bean id="cityModifier" class="com.webDevelopment.turistar.Administrator.City.Application.Update.CityModifier">
         <constructor-arg ref="hibernateProductRepository"/>
         <constructor-arg ref="geoCodeInfoService"/>
     </bean>
-
     <bean id="cityDeleter" class="com.webDevelopment.turistar.Administrator.City.Application.Delete.CityDelete">
         <constructor-arg ref="hibernateProductRepository"/>
     </bean>
@@ -18,5 +18,14 @@
     <bean id="citiesAll" class="com.webDevelopment.turistar.Administrator.City.Application.All.CitiesAll">
         <constructor-arg ref="hibernateProductRepository"/>
     </bean>
+
+    <bean id="tourSpotModifier" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.Update.TourSpotModifier">
+        <constructor-arg ref="inMemoryTourSpotRepository"/>
+        <constructor-arg ref="geoCodeInfoService"/>
+    </bean>
+    <bean id="tourSpotAll" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.All.TourSpotAll">
+        <constructor-arg ref="inMemoryTourSpotRepository"/>
+    </bean>
+
 
 </beans>
