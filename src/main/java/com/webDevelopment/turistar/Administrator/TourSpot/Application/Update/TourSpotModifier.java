@@ -21,14 +21,14 @@ public class TourSpotModifier {
         this.latLangInfo = new LatLangInfo(service);
     }
 
-    public void execute(String tourId, String tourName, String cityName) throws TourSpotNotExists {
+    public void execute(String tourId, String tourName, String cityName, String cityDescription) throws TourSpotNotExists {
         Optional<TourSpot> tourUpdated = tourSpotRepository.find(tourId);
         if(tourUpdated.isEmpty()){
             throw new TourSpotNotExists("The Tour Spot not exists");
         }
         TourSpot tourSpotToUpdate = tourUpdated.get();
         List<Double> latlong = latLangInfo.execute(tourName,cityName);
-        tourSpotToUpdate.updateTour(tourName,latlong.get(0),latlong.get(1));
+        tourSpotToUpdate.updateTour(tourName,latlong.get(0),latlong.get(1), cityDescription);
         this.tourSpotRepository.update(tourSpotToUpdate);
     }
 }

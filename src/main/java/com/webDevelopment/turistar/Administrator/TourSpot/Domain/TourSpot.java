@@ -1,6 +1,7 @@
 package com.webDevelopment.turistar.Administrator.TourSpot.Domain;
 
 import com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.*;
+import com.webDevelopment.turistar.Shared.Domain.City.CityId;
 import com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotId;
 
 import java.util.HashMap;
@@ -10,14 +11,16 @@ import java.util.Optional;
 public class TourSpot {
 
     private TourSpotId tourSpotId;
+    private CityId cityId;
     private TourSpotName tourSpotName;
     private TourSpotLatitude latitude;
     private TourSpotLongitude longitude;
     private TourSpotDescription description;
     private TourSpotActive tourSpotActive;
 
-    public TourSpot(TourSpotId tourSpotId, TourSpotName tourSpotName, TourSpotLatitude latitude, TourSpotLongitude longitude, TourSpotDescription description) {
+    public TourSpot(TourSpotId tourSpotId, CityId cityId,TourSpotName tourSpotName, TourSpotLatitude latitude, TourSpotLongitude longitude, TourSpotDescription description) {
         this.tourSpotId = tourSpotId;
+        this.cityId = cityId;
         this.tourSpotName = tourSpotName;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -45,6 +48,7 @@ public class TourSpot {
     {
         HashMap<String, String> data = new HashMap<>() {{
             put("id", tourSpotId.value());
+            put("cityId",cityId.value());
             put("name", tourSpotName.value());
             put("latitude",String.valueOf(latitude.value()));
             put("longitude",String.valueOf(longitude.value()));
@@ -54,10 +58,11 @@ public class TourSpot {
         return data;
     }
 
-    public void updateTour(String tourName, Double latitude, Double longitude) {
+    public void updateTour(String tourName, Double latitude, Double longitude, String description) {
         this.tourSpotName = new TourSpotName(tourName);
         this.latitude = new TourSpotLatitude(latitude);
         this.longitude = new TourSpotLongitude(longitude);
+        this.description = new TourSpotDescription(description);
     }
 
     public Boolean equalsById(String idTourSpot){
