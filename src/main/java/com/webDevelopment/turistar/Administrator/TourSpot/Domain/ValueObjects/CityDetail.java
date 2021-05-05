@@ -8,7 +8,7 @@ public class CityDetail {
     private String cityDetailId;
     private String cityName;
     private String cityCountry;
-    private Boolean cityActive ;
+    private Boolean cityActive;
 
     public CityDetail(String cityDetailId, String cityName, String cityCountry, Boolean cityActive) {
         this.cityDetailId = cityDetailId;
