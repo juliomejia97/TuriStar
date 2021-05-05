@@ -1,6 +1,5 @@
 package com.webDevelopment.turistar.Tour.TourBooking.Domain.ValueObjects;
 
-import com.webDevelopment.turistar.Administrator.City.Domain.Exceptions.LengthNotValid;
 import com.webDevelopment.turistar.Shared.Domain.DateValueObject;
 import com.webDevelopment.turistar.Tour.TourBooking.Domain.Exceptions.InvalidInitDate;
 

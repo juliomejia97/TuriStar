@@ -14,7 +14,7 @@ public class CitiesAllResponse {
         this.cities = products;
     }
 
-    public List<HashMap<String,String> > response()
+    public List<HashMap<String, Object>> response()
     {
        return cities.stream().map(City::data).collect(Collectors.toList());
     }

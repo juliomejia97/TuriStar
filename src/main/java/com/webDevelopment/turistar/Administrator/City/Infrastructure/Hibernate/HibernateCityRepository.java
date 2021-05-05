@@ -24,22 +24,11 @@ public class HibernateCityRepository implements CityRepository {
         this.aggregateClass = City.class;
     }
 
-    @Override
-    public void update(City city) {
-        sessionFactory.getCurrentSession().update(city);
-    }
 
     @Override
     public Optional<City> find(String cityId) {
         CityId id = new CityId(cityId);
         return Optional.ofNullable(sessionFactory.getCurrentSession().byId(aggregateClass).load(id));
-    }
-
-    @Override
-    public void save(City city) {
-        sessionFactory.getCurrentSession().save(city);
-        sessionFactory.getCurrentSession().flush();
-        sessionFactory.getCurrentSession().clear();
     }
 
     @Override

@@ -3,11 +3,9 @@ package com.webDevelopment.turistar.Shared.Intrastructure.Services;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.webDevelopment.turistar.Administrator.City.Domain.Ports.InformationService;
 import com.webDevelopment.turistar.Administrator.TourSpot.Domain.Ports.InformationDetailService;
 
 import java.net.URI;
-import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -15,25 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class GeoCodeInfoService implements InformationService, InformationDetailService {
+public class GeoCodeInfoService  implements InformationDetailService {
     private static final String GEOCODE_RESOURCE = "https://maps.googleapis.com/maps/api/geocode/";
     private static final String API_KEY="AIzaSyCAAyegQUf9LkBGLcbcEg5ElE4we2GlA6w";
-    @Override
-    public boolean validate(String cityName, String cityCountry) {
-        String body = "json?address="+cityName.replace(" ","%20")+"&sensors=false&components=country:"+
-                cityCountry.replace(" ","%20")+"&key="+API_KEY;
-        HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(GEOCODE_RESOURCE+body))
-                .build();
-        try {
-            HttpResponse<String> response = HttpClient.newHttpClient().send(request,HttpResponse.BodyHandlers.ofString());
-            GeocodeResult responseObject = new ObjectMapper().readValue(response.body(),GeocodeResult.class);
-            return responseObject.isValid();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 
     @Override
     public Optional<List<Double>> lantitudeLongitudeInfo(String tourName, String cityName) {

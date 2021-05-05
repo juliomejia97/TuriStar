@@ -1,6 +1,5 @@
 package com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Controllers;
 
-import com.webDevelopment.turistar.Administrator.City.Infrastructure.Controllers.UpdateCityPutController;
 import com.webDevelopment.turistar.Administrator.TourSpot.Application.Update.TourSpotModifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

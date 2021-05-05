@@ -15,7 +15,6 @@ public class TourSpot {
     private TourSpotLongitude longitude;
     private TourSpotDescription description;
     private TourSpotActive tourSpotActive;
-    private Optional<CityDetail> cityDetail;
 
     public TourSpot(TourSpotId tourSpotId, TourSpotName tourSpotName, TourSpotLatitude latitude, TourSpotLongitude longitude, TourSpotDescription description) {
         this.tourSpotId = tourSpotId;

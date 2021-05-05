@@ -1,6 +1,5 @@
 package com.webDevelopment.turistar.Administrator.City.Domain;
 
-import com.webDevelopment.turistar.Administrator.City.Domain.Exceptions.CityAlreadyDeleted;
 import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityActive;
 import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityCountry;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
@@ -37,7 +36,7 @@ public class City {
                 Objects.equals(cityActive, city.cityActive);
     }
 
-    public HashMap<String, String> data()
+    public HashMap<String, Object> data()
     {
         return new HashMap<>() {{
             put("id", cityId.value());
@@ -47,19 +46,8 @@ public class City {
         }};
     }
 
-    public void updateCity(String cityName,  String cityCountry){
-        this.cityName = new CityName(cityName);
-        this.cityCountry = new CityCountry(cityCountry);
-    }
 
-    public void deleteCity(){
-        if(!this.cityActive.value()){
-            throw new CityAlreadyDeleted("The city has been already deleted");
-        }
-        this.cityActive = new CityActive(false);
-    }
-    public boolean equalsbyId(String cityId){
+    public boolean equalsById(String cityId) {
         return this.cityId.equals(new CityId(cityId));
     }
-
 }

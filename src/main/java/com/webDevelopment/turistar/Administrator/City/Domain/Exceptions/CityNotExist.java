@@ -1,7 +1,7 @@
 package com.webDevelopment.turistar.Administrator.City.Domain.Exceptions;
 
-public class CityAlreadyDeleted extends RuntimeException{
-    public CityAlreadyDeleted(String message) {
+public class CityNotExist extends RuntimeException{
+    public CityNotExist(String message) {
         super(message);
     }
 }

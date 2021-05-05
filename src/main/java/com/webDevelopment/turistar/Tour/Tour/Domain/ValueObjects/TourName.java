@@ -1,7 +1,7 @@
 package com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects;
 
-import com.webDevelopment.turistar.Administrator.City.Domain.Exceptions.LengthNotValid;
 import com.webDevelopment.turistar.Shared.Domain.StringValueObject;
+import com.webDevelopment.turistar.Tour.Tour.Domain.Exceptions.LengthNotValid;
 
 public class TourName extends StringValueObject {
 

@@ -22,10 +22,6 @@
         <component name="tourSpotActive" class="com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.TourSpotActive" access="field">
             <property name="value" column="tourSpotLongitude" type="boolean" access="field"/>
         </component>
-
-        <property name="cityDetail" column="city" access="field">
-            <type name="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate.CityDetailCustomType">
-            </type>
-        </property>
+        
     </class>
 </hibernate-mapping>
