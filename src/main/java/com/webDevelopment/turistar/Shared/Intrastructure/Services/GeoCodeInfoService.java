@@ -3,12 +3,13 @@ package com.webDevelopment.turistar.Shared.Intrastructure.Services;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.webDevelopment.turistar.Administrator.TourSpot.Domain.Ports.InformationDetailService;
+import com.webDevelopment.turistar.Shared.Domain.Ports.InformationDetailService;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +19,7 @@ public class GeoCodeInfoService  implements InformationDetailService {
     private static final String API_KEY="AIzaSyCAAyegQUf9LkBGLcbcEg5ElE4we2GlA6w";
 
     @Override
-    public Optional<List<Double>> lantitudeLongitudeInfo(String tourName, String cityName) {
+    public Optional<List<Double>> latitudeLongitudeInfo(String tourName, String cityName) {
         String body = "json?address="+tourName.replace(" ","%20")+","+
                 cityName.replace(" ","%20")+"&sensors=true&key="+API_KEY;
         String url  = GEOCODE_RESOURCE+ body;
@@ -28,7 +29,25 @@ public class GeoCodeInfoService  implements InformationDetailService {
         try {
             HttpResponse<String> response = HttpClient.newHttpClient().send(request,HttpResponse.BodyHandlers.ofString());
             GeocodeResult responseObject = new ObjectMapper().readValue(response.body(),GeocodeResult.class);
-            return responseObject.getLatLong();
+            return responseObject.getLatLong(cityName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<String> addressInfo(String hotelName, String cityName) {
+        String body = "json?address="+hotelName.replace(" ","%20")+","+
+                cityName.replace(" ","%20")+"&sensors=true&key="+API_KEY;
+        String url  = GEOCODE_RESOURCE+ body;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .build();
+        try {
+            HttpResponse<String> response = HttpClient.newHttpClient().send(request,HttpResponse.BodyHandlers.ofString());
+            GeocodeResult responseObject = new ObjectMapper().readValue(response.body(),GeocodeResult.class);
+            return responseObject.getLocationAddress(cityName);
         } catch (Exception e) {
             e.printStackTrace();
             return Optional.empty();
@@ -56,11 +75,18 @@ public class GeoCodeInfoService  implements InformationDetailService {
         public void setResults(List<GeocodeObject> results) {
             this.results = results;
         }
-        public boolean isValid(){
-            return this.status.equals("OK");
+        public boolean isValid(String cityName){
+            Optional<AddressComponent> address = this.results.get(0).addressComponents.stream().
+                    filter(name -> Normalizer.normalize(name.getLongName(),Normalizer.Form.NFKD)
+                            .replaceAll("[^a-z,^A-Z,^0-9]", "")
+                            .equalsIgnoreCase(cityName.replace(" ",""))
+                            || Normalizer.normalize(name.getShortName(),Normalizer.Form.NFKD).
+                            replaceAll("[^a-z,^A-Z,^0-9]", "").
+                            equalsIgnoreCase(cityName.replace(" ",""))).findAny();
+            return this.status.equals("OK") && address.isPresent();
         }
-        public Optional<List<Double>> getLatLong(){
-            if(isValid()){
+        public Optional<List<Double>> getLatLong(String cityName){
+            if(isValid(cityName)){
                 List<Double> data = new ArrayList<>();
                 Double latitude = Double.parseDouble(results.get(0).geometry.getGeocodeLocation().getLatitude());
                 Double longitude = Double.parseDouble(results.get(0).geometry.getGeocodeLocation().getLongitude());
@@ -70,6 +96,14 @@ public class GeoCodeInfoService  implements InformationDetailService {
             }else{
                 return Optional.empty();
             }
+        }
+
+        public Optional<String> getLocationAddress(String cityName) {
+            if(isValid(cityName)){
+                return Optional.of(results.get(0).getFormattedAddress());
+
+            }else{
+                return Optional.empty();            }
         }
     }
     @JsonIgnoreProperties(ignoreUnknown = true)
