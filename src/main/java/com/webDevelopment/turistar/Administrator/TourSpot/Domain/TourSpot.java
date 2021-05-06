@@ -44,9 +44,9 @@ public class TourSpot {
                 Objects.equals(tourSpotActive,spot.tourSpotActive);
     }
 
-    public HashMap<String, String> data()
+    public HashMap<String, Object> data()
     {
-        HashMap<String, String> data = new HashMap<>() {{
+        HashMap<String, Object> data = new HashMap<>() {{
             put("id", tourSpotId.value());
             put("cityId",cityId.value());
             put("name", tourSpotName.value());

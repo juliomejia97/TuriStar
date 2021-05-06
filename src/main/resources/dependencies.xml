@@ -36,6 +36,10 @@
     <bean id="tourSpotAll" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.All.TourSpotAll">
         <constructor-arg ref="hibernateTourSpotRepository"/>
     </bean>
+
+    <bean id="tourSpotFind" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.Find.TourSpotFinder">
+        <constructor-arg ref="hibernateTourSpotRepository"/>
+    </bean>
     <!---Tickets inyections-->
     <bean id="ticketsAll" class="com.webDevelopment.turistar.Hotel.Ticket.Application.All.TicketsAll">
         <constructor-arg ref="inMemoryTicketRepository"/>

@@ -23,7 +23,7 @@ public class AllTourSpotGetController {
     private TourSpotAll tourSpotAll;
 
     @GetMapping(value = "/TourSpot/")
-    public ResponseEntity<List<HashMap<String,String>>> execute(){
+    public ResponseEntity<List<HashMap<String,Object>>> execute(){
         TourSpotAllResponse response = new TourSpotAllResponse(tourSpotAll.execute());
         return ResponseEntity.status(HttpStatus.OK).body(response.response());
     }

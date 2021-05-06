@@ -13,7 +13,7 @@ public class TourSpotAllResponse {
         this.tourSpots = pTourSpots;
     }
 
-    public List<HashMap<String,String>> response()
+    public List<HashMap<String,Object>> response()
     {
         return tourSpots.stream().map(TourSpot::data).collect(Collectors.toList());
     }
