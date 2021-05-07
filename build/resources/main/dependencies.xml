@@ -30,6 +30,9 @@
         <constructor-arg ref="inMemoryHotelRepository"/>
         <constructor-arg ref="geoCodeInfoService"/>
     </bean>
+    <bean id="hotelAll" class="com.webDevelopment.turistar.Administrator.Hotel.Application.All.HotelAll">
+        <constructor-arg ref="inMemoryHotelRepository"/>
+    </bean>
     <!---Tour Spot inyections-->
     <bean id="tourSpotModifier" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.Update.TourSpotModifier">
         <constructor-arg ref="inMemoryTourSpotRepository"/>

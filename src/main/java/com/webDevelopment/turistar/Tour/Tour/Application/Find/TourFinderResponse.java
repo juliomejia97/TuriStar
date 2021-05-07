@@ -4,6 +4,7 @@ import com.webDevelopment.turistar.Shared.Application.Response;
 import com.webDevelopment.turistar.Tour.Tour.Domain.Tour;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class TourFinderResponse implements Response {
 
@@ -15,7 +16,7 @@ public class TourFinderResponse implements Response {
     }
 
     @Override
-    public HashMap response() {
+    public HashMap<String, Object> response() {
         this.response = tour.data();
         return response;
     }

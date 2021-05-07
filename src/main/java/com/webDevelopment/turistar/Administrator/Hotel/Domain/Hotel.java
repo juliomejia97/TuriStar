@@ -1,14 +1,18 @@
 package com.webDevelopment.turistar.Administrator.Hotel.Domain;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelAddress;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelName;
-import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhotos;
+import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhoto;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelStars;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
 import com.webDevelopment.turistar.Shared.Domain.Hotel.HotelId;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Hotel {
     private HotelId hotelId;
@@ -16,9 +20,9 @@ public class Hotel {
     private HotelName hotelName;
     private HotelStars hotelStars;
     private HotelAddress hotelAddress;
-    private HotelPhotos hotelPhotos;
+    private List<HotelPhoto> hotelPhotos;
 
-    public Hotel(HotelId hotelId, CityId cityId, HotelName hotelName, HotelStars hotelStars, HotelAddress hotelAddress, HotelPhotos hotelPhotos) {
+    public Hotel(HotelId hotelId, CityId cityId, HotelName hotelName, HotelStars hotelStars, HotelAddress hotelAddress, List<HotelPhoto> hotelPhotos) {
         this.hotelId = hotelId;
         this.cityId = cityId;
         this.hotelName = hotelName;
@@ -44,12 +48,12 @@ public class Hotel {
 
     public HashMap<String, Object> data(){
         HashMap<String, Object> data = new HashMap<>() {{
-            put("id",hotelId);
-            put("cityId",cityId);
-            put("hotelName",hotelPhotos);
-            put("hotelStars",hotelStars);
-            put("hotelAddress",hotelAddress);
-            put("photos:",hotelPhotos);
+            put("id",hotelId.value());
+            put("cityId",cityId.value());
+            put("hotelName",hotelName.value());
+            put("hotelStars",hotelStars.value());
+            put("hotelAddress",hotelAddress.value());
+            put("photos:", hotelPhotos.stream().map(hotelPhoto -> hotelPhoto.data()));
 
         }};
         return data;

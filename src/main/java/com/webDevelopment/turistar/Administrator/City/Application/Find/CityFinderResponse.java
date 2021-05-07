@@ -4,6 +4,7 @@ import com.webDevelopment.turistar.Administrator.City.Domain.City;
 import com.webDevelopment.turistar.Shared.Application.Response;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class CityFinderResponse implements Response {
     private final City city;

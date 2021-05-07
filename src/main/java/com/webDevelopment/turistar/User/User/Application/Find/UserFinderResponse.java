@@ -5,6 +5,7 @@ import com.webDevelopment.turistar.Shared.Application.Response;
 import com.webDevelopment.turistar.User.User.Domain.User;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class UserFinderResponse implements Response {
 
@@ -14,7 +15,7 @@ public class UserFinderResponse implements Response {
         this.user = user;
     }
 
-    public HashMap response()
+    public HashMap<String, Object> response()
     {
         HashMap response = this.user.data();
         response.remove("id");

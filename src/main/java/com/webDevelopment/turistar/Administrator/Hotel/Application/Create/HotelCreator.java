@@ -6,14 +6,14 @@ import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.Hotel
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.Ports.HotelRepository;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.AddressInfo;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelName;
-import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhotos;
+import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhoto;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelStars;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
 import com.webDevelopment.turistar.Shared.Domain.Hotel.HotelId;
 import com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoService;
 
-import java.util.HashMap;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class HotelCreator {
     private HotelRepository repository;
@@ -31,8 +31,9 @@ public class HotelCreator {
             throw new HotelAlreadyExists("The hotel is duplicated");
         }
         String hotelAddress = inforService.execute(hotelName,cityName);
+        List<HotelPhoto> photosAsList = photos.entrySet().stream().map(p -> new HotelPhoto(p.getKey(),p.getValue())).collect(Collectors.toList());
         Hotel hotel = new Hotel(new HotelId(hotelId), new CityId(cityId), new HotelName(hotelName),
-                new HotelStars(hotelStars),new HotelAddress(hotelAddress), new HotelPhotos(photos));
+                new HotelStars(hotelStars),new HotelAddress(hotelAddress), photosAsList);
         repository.save(hotel);
     }
 }

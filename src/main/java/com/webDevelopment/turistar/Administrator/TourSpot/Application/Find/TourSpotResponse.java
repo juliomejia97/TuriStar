@@ -4,6 +4,7 @@ import com.webDevelopment.turistar.Administrator.TourSpot.Domain.TourSpot;
 import com.webDevelopment.turistar.Shared.Application.Response;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class TourSpotResponse implements Response {
     private final TourSpot tourSpot;

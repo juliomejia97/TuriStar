@@ -2,13 +2,13 @@ package com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.Controlle
 
 
 import com.webDevelopment.turistar.Administrator.Hotel.Application.Create.HotelCreator;
+import com.webDevelopment.turistar.Administrator.Hotel.Domain.Exceptions.*;
+import com.webDevelopment.turistar.Shared.Domain.BadInfoError;
+import com.webDevelopment.turistar.Shared.Domain.UUIDNotValid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
@@ -26,7 +26,14 @@ public class CreateHotelPostController {
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
-    //TODO: Manage Exceptions
+    @ExceptionHandler({HotelAlreadyExists.class, BadInfoError.class, UUIDNotValid.class, InvalidHotelName.class
+    , InvalidHotelRanking.class, InvalidHotelAddress.class, InvalidPhotoFormat.class})
+    public ResponseEntity<HashMap> handleExceptions(Exception exception){
+        HashMap<String,String> response = new HashMap<>(){{
+            put("error",exception.getMessage());
+        }};
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(response);
+    }
 
     private static class Request{
         private String hotelId;
