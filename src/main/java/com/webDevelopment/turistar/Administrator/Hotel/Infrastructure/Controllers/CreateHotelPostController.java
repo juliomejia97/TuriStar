@@ -26,6 +26,8 @@ public class CreateHotelPostController {
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
+    //TODO: Manage Exceptions
+
     private static class Request{
         private String hotelId;
         private String cityId;
