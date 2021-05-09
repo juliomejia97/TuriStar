@@ -12,9 +12,9 @@ import java.util.Optional;
 
 public class InMemoryCityRepository implements CityRepository {
 
-    private City city1 = new City(new CityId("a0619482-a621-11eb-bcbc-0242ac130002"), new CityName("Bogotá"),new CityCountry("Colombia"));
-    private City city2 = new City(new CityId("a06197e8-a621-11eb-bcbc-0242ac130002"), new CityName("Medellín"),new CityCountry("Colombia"));
-    private City city3 = new City(new CityId("a06198e2-a621-11eb-bcbc-0242ac130002"), new CityName("Bucaramanga"),new CityCountry("Colombia"));
+    private final City city1 = City.create(new CityId("a0619482-a621-11eb-bcbc-0242ac130002"), new CityName("Bogotá"),new CityCountry("Colombia"));
+    private final City city2 = City.create(new CityId("a06197e8-a621-11eb-bcbc-0242ac130002"), new CityName("Medellín"),new CityCountry("Colombia"));
+    private final City city3 = City.create(new CityId("a06198e2-a621-11eb-bcbc-0242ac130002"), new CityName("Bucaramanga"),new CityCountry("Colombia"));
     private List<City> cites = new ArrayList<>(){{
         add(city1);
         add(city2);

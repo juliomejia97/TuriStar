@@ -33,6 +33,9 @@
     <bean id="hotelAll" class="com.webDevelopment.turistar.Administrator.Hotel.Application.All.HotelAll">
         <constructor-arg ref="inMemoryHotelRepository"/>
     </bean>
+    <bean id="hotelFind" class="com.webDevelopment.turistar.Administrator.Hotel.Application.Find.HotelFinder">
+        <constructor-arg ref="inMemoryHotelRepository"/>
+    </bean>
     <!---Tour Spot inyections-->
     <bean id="tourSpotModifier" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.Update.TourSpotModifier">
         <constructor-arg ref="inMemoryTourSpotRepository"/>

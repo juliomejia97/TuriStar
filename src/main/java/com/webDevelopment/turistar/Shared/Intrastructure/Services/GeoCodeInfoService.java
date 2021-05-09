@@ -79,10 +79,13 @@ public class GeoCodeInfoService  implements InformationDetailService {
             Optional<AddressComponent> address = this.results.get(0).addressComponents.stream().
                     filter(name -> Normalizer.normalize(name.getLongName(),Normalizer.Form.NFKD)
                             .replaceAll("[^a-z,^A-Z,^0-9]", "")
-                            .equalsIgnoreCase(cityName.replace(" ",""))
+                            .equalsIgnoreCase(Normalizer.normalize(cityName,Normalizer.Form.NFKD).
+                                    replaceAll("[^a-z,^A-Z,^0-9]", ""))
                             || Normalizer.normalize(name.getShortName(),Normalizer.Form.NFKD).
                             replaceAll("[^a-z,^A-Z,^0-9]", "").
-                            equalsIgnoreCase(cityName.replace(" ",""))).findAny();
+                            equalsIgnoreCase(Normalizer.normalize(cityName,Normalizer.Form.NFKD).
+                                    replaceAll("[^a-z,^A-Z,^0-9]", "")))
+                    .findAny();
             return this.status.equals("OK") && address.isPresent();
         }
         public Optional<List<Double>> getLatLong(String cityName){

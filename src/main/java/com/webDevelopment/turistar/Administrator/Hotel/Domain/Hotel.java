@@ -53,7 +53,7 @@ public class Hotel {
             put("hotelName",hotelName.value());
             put("hotelStars",hotelStars.value());
             put("hotelAddress",hotelAddress.value());
-            put("photos:", hotelPhotos.stream().map(hotelPhoto -> hotelPhoto.data()));
+            put("photos:", hotelPhotos.stream().map(hotelPhoto -> hotelPhoto.value()));
 
         }};
         return data;

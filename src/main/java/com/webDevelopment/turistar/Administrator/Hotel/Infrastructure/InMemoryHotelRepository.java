@@ -25,7 +25,8 @@ public class InMemoryHotelRepository implements HotelRepository {
     }};
     @Override
     public void update(Hotel hotel) {
-
+        this.hotels.remove(hotel);
+        this.hotels.add(hotel);
     }
 
     @Override

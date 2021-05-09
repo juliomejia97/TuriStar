@@ -21,7 +21,7 @@ public class HotelPhoto {
     }
 
     private HotelPhoto(){}
-    public HashMap<String, Object> data() {
+    public HashMap<String, Object> value() {
         HashMap<String, Object> data = new HashMap<String, Object>() {{
             put("id", idPhoto);
             put("name", urlPhoto);
