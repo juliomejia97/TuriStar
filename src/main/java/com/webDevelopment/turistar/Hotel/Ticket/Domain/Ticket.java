@@ -1,5 +1,7 @@
 package com.webDevelopment.turistar.Hotel.Ticket.Domain;
 
+import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.HotelPlanBooking;
+import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.HotelPlanBookingActive;
 import com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.*;
 import com.webDevelopment.turistar.Shared.Domain.Ticket.TicketId;
 import com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.*;
@@ -10,17 +12,19 @@ import java.util.Objects;
 public class Ticket {
 
     private TicketId ticketId;
+    private HotelPlanBooking hotelPlanBooking;
     private TicketAirline ticketAirline;
     private TicketDeparture ticketDeparture;
     private TicketDestination ticketDestination;
     private TicketPrice ticketPrice;
-
+    private TicketDateDeparture ticketDateDeparture;
+    private TicketDateReturn ticketDateReturn;
     private TicketActive ticketActive;
 
 
     private Ticket(){}
 
-    public Ticket(TicketId ticketId, TicketAirline ticketAirline, TicketDeparture ticketDeparture, TicketDestination ticketDestination,TicketPrice ticketPrice) {
+    public Ticket(TicketId ticketId, HotelPlanBooking hotelPlanBooking, TicketAirline ticketAirline, TicketDeparture ticketDeparture, TicketDestination ticketDestination,TicketPrice ticketPrice,TicketDateDeparture ticketDateDeparture,TicketDateReturn ticketDateReturn) {
         this.ticketId = ticketId;
         this.ticketAirline = ticketAirline;
         this.ticketDeparture = ticketDeparture;

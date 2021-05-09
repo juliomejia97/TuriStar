@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "path.city.hibernate",
+      "type": "java.lang.String",
+      "description": "Description for path.city.hibernate."
+    },
+    {
+      "name": "datasource.password",
+      "type": "java.lang.String",
+      "description": "Description for datasource.password."
+    },
+    {
+      "name": "datasource.username",
+      "type": "java.lang.String",
+      "description": "Description for datasource.username."
+    },
+    {
+      "name": "datasource.url",
+      "type": "java.lang.String",
+      "description": "Description for datasource.url."
+    }
+  ] }
