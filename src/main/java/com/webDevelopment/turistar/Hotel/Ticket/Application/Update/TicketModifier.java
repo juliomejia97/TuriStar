@@ -4,6 +4,7 @@ import com.webDevelopment.turistar.Hotel.Ticket.Domain.Ports.TicketRepository;
 import com.webDevelopment.turistar.Hotel.Ticket.Domain.Ticket;
 import com.webDevelopment.turistar.Hotel.Ticket.Domain.Exceptions.TicketsNotExist;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 public class TicketModifier {
@@ -14,13 +15,13 @@ public class TicketModifier {
         this.ticketRepository = ticketRepository;
     }
 
-    public void execute(String ticketId,String airlineName,  String ticketDeparture,  String ticketDestination,  double ticketPrice) throws TicketsNotExist {
+    public void execute(String ticketId, String airlineName, String ticketDeparture, String ticketDestination, double ticketPrice, LocalDate ticketDateDeparture,LocalDate ticketDateReturn ) throws TicketsNotExist {
         Optional<Ticket> ticketUpdated = ticketRepository.find(ticketId);
         if(ticketUpdated.isEmpty()){
             throw new TicketsNotExist("The ticket not exist");
         }
         Ticket ticketToUpdate = ticketUpdated.get();
-        ticketToUpdate.updateTicket( airlineName,   ticketDeparture,   ticketDestination,   ticketPrice);
+        ticketToUpdate.updateTicket( airlineName,   ticketDeparture,   ticketDestination,   ticketPrice,ticketDateReturn,ticketDateDeparture);
         this.ticketRepository.update(ticketId, ticketToUpdate);
     }
 }
