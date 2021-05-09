@@ -11,6 +11,9 @@
     <bean id="geoCodeInfoService" class="com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoService"/>
     <bean id="hibernateCityRepository" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.Hibernate.HibernateCityRepository"/>
     <bean id="inMemoryUserRepository" class="com.webDevelopment.turistar.User.User.Infrastructure.InMemoryUserRepository"/>
+    <bean id="hibernateTourRepository" class="com.webDevelopment.turistar.Tour.Tour.Infrastructure.Hibernate.HibernateTourRepository"/>
+
+
     <bean id="cityModifier" class="com.webDevelopment.turistar.Administrator.City.Application.Update.CityModifier">
         <constructor-arg ref="hibernateCityRepository"/>
         <constructor-arg ref="geoCodeInfoService"/>
@@ -22,8 +25,11 @@
         <constructor-arg ref="hibernateCityRepository"/>
     </bean>
 
-    <bean id="hibernateTourRepository" class="com.webDevelopment.turistar.Tour.Tour.Infrastructure.Hibernate.HibernateTourRepository"/>
     <bean id="toursAll" class="com.webDevelopment.turistar.Tour.Tour.Application.All.ToursAll">
+        <constructor-arg ref="hibernateTourRepository"/>
+    </bean>
+
+    <bean id="tourFinder" class="com.webDevelopment.turistar.Tour.Tour.Application.Find.TourFinder">
         <constructor-arg ref="hibernateTourRepository"/>
     </bean>
 

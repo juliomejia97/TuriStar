@@ -1,7 +1,13 @@
 package com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Hibernate;
 
+import com.webDevelopment.turistar.Shared.Domain.Tour.TourId;
+import com.webDevelopment.turistar.Shared.Domain.TourBooking.TourBookingId;
+import com.webDevelopment.turistar.Tour.Tour.Domain.Tour;
 import com.webDevelopment.turistar.Tour.TourBooking.Domain.Ports.TourBookingRepository;
 import com.webDevelopment.turistar.Tour.TourBooking.Domain.TourBooking;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,28 +15,37 @@ import java.util.Optional;
 public class HibernateTourBookingRepository implements TourBookingRepository {
 
 
+    protected final SessionFactory sessionFactory;
+    protected final Class<TourBooking>  aggregateClass;
+
+    public HibernateTourBookingRepository(@Qualifier("session-factory") SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+        this.aggregateClass = TourBooking.class;
+    }
+
     @Override
     public void update(TourBooking tourBooking) {
-
+        sessionFactory.getCurrentSession().update(tourBooking);
     }
 
     @Override
-    public Optional<TourBooking> find(String TourBookingId) {
-        return Optional.empty();
+    public Optional<TourBooking> find(String tourBookingId) {
+        TourBookingId id = new TourBookingId(tourBookingId);
+        return Optional.ofNullable(sessionFactory.getCurrentSession().byId(aggregateClass).load(id));
     }
 
     @Override
-    public Optional<TourBooking> findByUser(String UserId) {
-        return Optional.empty();
+    public void save(TourBooking tourBooking) {
+        sessionFactory.getCurrentSession().save(tourBooking);
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().clear();
     }
 
-    @Override
-    public void save(TourBooking tourBookings) {
-
-    }
-
+    //TODO: Make query to get tour bookings by user Id
     @Override
     public Optional<List<TourBooking>> all(String userId) {
-        return Optional.empty();
+        Query query = sessionFactory.getCurrentSession().createQuery("FROM TourBooking");
+        List<TourBooking> tourBookings = query.list();
+        return Optional.ofNullable(tourBookings);
     }
 }
