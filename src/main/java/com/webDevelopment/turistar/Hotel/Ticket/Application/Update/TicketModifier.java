@@ -15,7 +15,7 @@ public class TicketModifier {
         this.ticketRepository = ticketRepository;
     }
 
-    public void execute(String ticketId, String airlineName, String ticketDeparture, String ticketDestination, double ticketPrice, LocalDate ticketDateDeparture,LocalDate ticketDateReturn ) throws TicketsNotExist {
+    public void execute(String ticketId,String hotelPlanBookingId, String airlineName, String ticketDeparture, String ticketDestination, double ticketPrice, LocalDate ticketDateDeparture,LocalDate ticketDateReturn ) throws TicketsNotExist {
         Optional<Ticket> ticketUpdated = ticketRepository.find(ticketId);
         if(ticketUpdated.isEmpty()){
             throw new TicketsNotExist("The ticket not exist");
