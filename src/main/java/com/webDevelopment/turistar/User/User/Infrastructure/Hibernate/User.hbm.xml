@@ -22,6 +22,9 @@
         <property name="tourBookingDetails" column="tourBookings" access="field">
             <type name="com.webDevelopment.turistar.User.User.Domain.ValueObjects.TourBookingDetail"/>
         </property>
+        <property name="hotelPlanBookings" column="hotelPlanBookings" access="field">
+            <type name="com.webDevelopment.turistar.User.User.Domain.ValueObjects.HotelPlanBookingDetail"></type>
+        </property>
     </class>
 
 </hibernate-mapping>

@@ -18,12 +18,11 @@ public class User {
     private UserPassword userPassword;
     private Optional<List<HotelPlanBookingDetail>> hotelPlanBookings;
     private Optional<List<TourBookingDetail>> tourBookingDetails;
-    private Optional<List<ScreenDetail>> screenDetails;
 
 
     public User(UserId userId, UserName userFirstName, UserLastName userLastName, UserEmail userEmail,
                 UserPassword userPassword, List<HotelPlanBookingDetail> hotelPlanBookingDetails,
-                List<TourBookingDetail> tourBookingDetails, List<ScreenDetail> screenDetails) {
+                List<TourBookingDetail> tourBookingDetails) {
         this.userId = userId;
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
@@ -31,12 +30,11 @@ public class User {
         this.userPassword = userPassword;
         this.hotelPlanBookings = Optional.ofNullable(hotelPlanBookingDetails);
         this.tourBookingDetails = Optional.ofNullable(tourBookingDetails);
-        this.screenDetails = Optional.ofNullable(screenDetails);
     }
     public static User create(UserId userId, UserName userFirstName, UserLastName userLastName, UserEmail userEmail,
                         UserPassword userPassword)
     {
-        return new User(userId,userFirstName,userLastName,userEmail,userPassword,null,null,null);
+        return new User(userId,userFirstName,userLastName,userEmail,userPassword,null,null);
     }
 
     public void updateUser(UserName userFirstName, UserLastName userLastName, UserEmail userEmail)
@@ -86,18 +84,6 @@ public class User {
         this.tourBookingDetails = Optional.ofNullable(tourBookingDetails);
     }
 
-    public Optional<List<HashMap<String, Object>>> getScreens() {
-        Optional<List<HashMap<String, Object>>> response = Optional.empty();
-        if(this.screenDetails.isPresent()) {
-            response = Optional.of(this.screenDetails.get().stream().map(color -> color.data()).collect(Collectors.toList()));
-        }
-        return response;
-    }
-
-
-    public void setScreens(List<ScreenDetail> screenDetails) {
-        this.screenDetails = Optional.ofNullable(screenDetails);
-    }
 
     @Override
     public boolean equals(Object o) {
