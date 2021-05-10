@@ -8,10 +8,10 @@
             <key-property name="value" column="userID" access="field" length="36"/>
         </composite-id>
         <component name="userFirstName" class="com.webDevelopment.turistar.User.User.Domain.ValueObjects.UserName" access="field">
-            <property name="value" column="cityName" access="field" type="string"/>
+            <property name="value" column="userName" access="field" type="string"/>
         </component>
         <component name="userLastName" class="com.webDevelopment.turistar.User.User.Domain.ValueObjects.UserLastName" access="field">
-            <property name="value" column="userName" access="field" type="string"/>
+            <property name="value" column="userLastName" access="field" type="string"/>
         </component>
         <component name="userEmail" class="com.webDevelopment.turistar.User.User.Domain.ValueObjects.UserEmail" access="field">
             <property name="value" column="userEmail" access="field" type="string"/>

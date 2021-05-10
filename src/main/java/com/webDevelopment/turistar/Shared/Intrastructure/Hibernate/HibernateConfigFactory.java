@@ -28,7 +28,7 @@ public class HibernateConfigFactory {
         FileSystemResource resource2 = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Tour/Tour/Infrastructure/Hibernate/Tour.hbm.xml");
         FileSystemResource resource3 = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Hotel/Ticket/Infrastructure/Hibernate/Tickets.hbm.xml");
         FileSystemResource userResource = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/User/User/Infrastructure/Hibernate/User.hbm.xml");
-        sessionFactory.setMappingLocations(resource1, resource2, resource3);
+        sessionFactory.setMappingLocations(resource1, resource2, resource3,userResource);
         return sessionFactory;
     }
     @Bean("transactional-manager")

@@ -1,14 +1,16 @@
 package com.webDevelopment.turistar.User.User.Infrastructure.Hibernate;
 
-import com.webDevelopment.turistar.Administrator.City.Domain.City;
-import com.webDevelopment.turistar.Shared.Domain.City.CityId;
+
+import com.webDevelopment.turistar.Shared.Domain.User.UserId;
 import com.webDevelopment.turistar.User.User.Domain.Ports.UserRepository;
 import com.webDevelopment.turistar.User.User.Domain.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+@Transactional("transactional-manager")
 public class HibernateUserRepository implements UserRepository {
 
     protected final SessionFactory sessionFactory;
@@ -28,7 +30,7 @@ public class HibernateUserRepository implements UserRepository {
 
     @Override
     public Optional<User> find(String userId) {
-        CityId id = new CityId(userId);
+        UserId id = new UserId(userId);
         return Optional.ofNullable(sessionFactory.getCurrentSession().byId(aggregateClass).load(id));
     }
 

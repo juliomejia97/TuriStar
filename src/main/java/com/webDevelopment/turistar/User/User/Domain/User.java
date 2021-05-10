@@ -21,6 +21,7 @@ public class User {
     private Optional<List<TourBooking>> tourBookings;
     private Optional<List<Screen>> screens;
 
+
     public User(UserId userId, UserName userFirstName, UserLastName userLastName, UserEmail userEmail,
                 UserPassword userPassword, List<HotelPlanBooking> hotelPlanBookings,
                 List<TourBooking> tourBookings, List<Screen> screens) {
@@ -110,5 +111,5 @@ public class User {
                 Objects.equals(userEmail, user.userEmail) &&
                 Objects.equals(userPassword, user.userPassword);
     }
-
+    public User(){}
 }
