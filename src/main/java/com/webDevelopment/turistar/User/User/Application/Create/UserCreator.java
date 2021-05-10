@@ -33,7 +33,7 @@ public class UserCreator {
     {
         this.validate(userId);
         validator.execute(new UserEmail(userEmail).value());
-        User user = new User(new UserId(userId), new UserName(userFirstName), new UserLastName(userLastName) , new UserEmail(userEmail),new UserPassword(userPassword));
+        User user = User.create(new UserId(userId), new UserName(userFirstName), new UserLastName(userLastName) , new UserEmail(userEmail),new UserPassword(userPassword));
         repository.save(user);
     }
 

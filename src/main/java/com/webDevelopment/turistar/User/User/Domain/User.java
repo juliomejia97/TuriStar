@@ -33,6 +33,11 @@ public class User {
         this.tourBookings = Optional.ofNullable(tourBookings);
         this.screens = Optional.ofNullable(screens);
     }
+    public static User create(UserId userId, UserName userFirstName, UserLastName userLastName, UserEmail userEmail,
+                        UserPassword userPassword)
+    {
+        return new User(userId,userFirstName,userLastName,userEmail,userPassword,null,null,null);
+    }
 
     public void updateUser(UserName userFirstName, UserLastName userLastName, UserEmail userEmail)
     {
