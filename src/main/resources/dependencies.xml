@@ -115,6 +115,10 @@
         <constructor-arg ref="hibernateHotelPlanBookingRepository"/>
     </bean>
 
+    <bean id="hotelPlanBookingCreator" class="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Application.Create.HotelPlanBookingCreator">
+        <constructor-arg ref="hibernateHotelPlanBookingRepository"/>
+    </bean>
+
     <!---User inyections-->
     <bean id="badWordService" class="com.webDevelopment.turistar.User.User.Infrastructure.BadWordsService"/>
 
