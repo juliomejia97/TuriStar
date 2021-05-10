@@ -5,6 +5,10 @@ import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.Exceptions.InvalidQuan
 import com.webDevelopment.turistar.Shared.Domain.DoubleValueObject;
 
 public class HotelPlanQuantity extends DoubleValueObject {
+
+    public HotelPlanQuantity() {
+    }
+
     public HotelPlanQuantity(double quantity){
         this.validate(quantity);
         this.value = quantity;

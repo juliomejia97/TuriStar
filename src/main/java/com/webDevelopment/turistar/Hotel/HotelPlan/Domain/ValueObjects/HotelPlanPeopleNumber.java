@@ -7,6 +7,9 @@ public class HotelPlanPeopleNumber extends DoubleValueObject {
 
     //TODO: Servicio para consultar que la ciudad existe
 
+    public HotelPlanPeopleNumber() {
+    }
+
     public HotelPlanPeopleNumber(double number){
         this.validate(number);
         this.value = number;

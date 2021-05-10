@@ -25,9 +25,9 @@ public class InMemoryHotelPlanRepository implements HotelPlanRepository {
     }};
 
     @Override
-    public void update(String hotelPlanId, HotelPlan hotelPlan) {
-        Optional<HotelPlan> hotelPlanToupdate = find(hotelPlanId);
-        hotelPlanToupdate.ifPresent(value -> this.hotelPlans.remove(value));
+    public void update(HotelPlan hotelPlan) {
+        //Optional<HotelPlan> hotelPlanToupdate = find(hotelPlanId);
+        //hotelPlanToupdate.ifPresent(value -> this.hotelPlans.remove(value));
         this.hotelPlans.add(hotelPlan);
     }
 

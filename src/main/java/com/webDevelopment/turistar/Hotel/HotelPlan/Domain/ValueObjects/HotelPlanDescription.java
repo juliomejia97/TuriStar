@@ -5,6 +5,9 @@ import com.webDevelopment.turistar.Shared.Domain.StringValueObject;
 
 public class HotelPlanDescription extends StringValueObject {
 
+    public HotelPlanDescription() {
+    }
+
     public HotelPlanDescription(String name){
         this.validate(name);
         this.value = name;
