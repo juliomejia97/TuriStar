@@ -1,15 +1,15 @@
 package com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain;
 
+import com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.CityDetail;
 import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.Exceptions.HotelPlanBookingAlreadyDeleted;
-import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.HotelPlanBookingActive;
-import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.HotelPlanBookingEndDate;
-import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.HotelPlanBookingInitDate;
+import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.*;
 import com.webDevelopment.turistar.Shared.Domain.HotelPlanBooking.HotelPlanBookingId;
 import com.webDevelopment.turistar.Shared.Domain.User.UserId;
 
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.Optional;
 
 public class HotelPlanBooking {
 
@@ -21,6 +21,8 @@ public class HotelPlanBooking {
 
     private HotelPlanBookingActive hotelPlanBookingActive ;
 
+    private Optional<TicketDetail> ticketDetail;
+    private Optional<HotelPlanDetail> hotelPlanDetail;
 
     private HotelPlanBooking(){}
 

@@ -24,5 +24,13 @@
             <property name="value" column="userId" access="field" length="36"/>
         </component>
 
+        <property name="ticketDetail" column="ticket" access="field">
+            <type name="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Infrastructure.Hibernate.TicketDetailCustomType">
+            </type>
+        </property>
+        <property name="hotelPlanDetail" column="hotelPlan" access="field">
+            <type name="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Infrastructure.Hibernate.HotelPlanDetailCustomType">
+            </type>
+        </property>
     </class>
 </hibernate-mapping>

@@ -54,7 +54,7 @@ public class HotelPlan {
             put("hotelPlanDescription", hotelPlanDescription.value());
             put("hotelPlanPeopleNumber", String.valueOf(hotelPlanPeopleNumber.value()));
             put("hotelPlanActive", hotelPlanActive.value().toString());
-            put("hotelPlanBookingId", hotelPlanBookingId.value().toString());
+            put("hotelPlanBookingId", hotelPlanBookingId.value());
             put("hotelPlanQuantity", hotelPlanQuantity.value().toString());
         }};
     }
