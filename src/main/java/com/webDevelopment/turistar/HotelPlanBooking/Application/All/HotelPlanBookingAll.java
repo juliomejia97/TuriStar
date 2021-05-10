@@ -1,0 +1,25 @@
+package com.webDevelopment.turistar.HotelPlanBooking.Application.All;
+
+import com.webDevelopment.turistar.HotelPlanBooking.Domain.HotelPlanBooking;
+import com.webDevelopment.turistar.HotelPlanBooking.Domain.Exceptions.HotelPlanBookingNotExist;
+import com.webDevelopment.turistar.HotelPlanBooking.Domain.Ports.HotelPlanBookingRepository;
+
+import java.util.List;
+import java.util.Optional;
+
+public class HotelPlanBookingAll {
+
+    private HotelPlanBookingRepository hotelPlanBookingRepository;
+
+    public HotelPlanBookingAll(HotelPlanBookingRepository hotelPlanBookingRepository){
+        this.hotelPlanBookingRepository = hotelPlanBookingRepository;
+    }
+
+    public List<HotelPlanBooking> execute() {
+        Optional<List<HotelPlanBooking>> hotelPlanBookings = hotelPlanBookingRepository.all();
+        if(hotelPlanBookings.isEmpty()){
+            throw new HotelPlanBookingNotExist("There are no hotel plan bookings in the database, contact your admin");
+        }
+        return hotelPlanBookings.get();
+    }
+}
