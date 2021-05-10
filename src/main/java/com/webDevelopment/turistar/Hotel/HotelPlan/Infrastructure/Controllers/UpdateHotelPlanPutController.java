@@ -16,13 +16,25 @@ public class UpdateHotelPlanPutController {
     @PutMapping(value="/{idHotelPlan}")
     public ResponseEntity<String> execute(@PathVariable String idHotelPlan, @RequestBody Request request){
         hotelPlanModifier.execute(idHotelPlan, request.getHotelPlanDescription(), request.getHotelPlanPrice(),request.hotelPlanPeopleNumber());
-        return ResponseEntity.status(HttpStatus.OK).body("City "+ request.getHotelPlanDescription()+" has been modified");
+        return ResponseEntity.status(HttpStatus.OK).body("Hotel plan "+ request.getHotelPlanDescription()+" has been modified");
     }
 
     private static class Request{
         private String hotelPlanDescription;
         private double hotelPlanPeopleNumber;
         private double hotelPlanPrice;
+
+        public void setHotelPlanDescription(String hotelPlanDescription) {
+            this.hotelPlanDescription = hotelPlanDescription;
+        }
+
+        public void setHotelPlanPeopleNumber(double hotelPlanPeopleNumber) {
+            this.hotelPlanPeopleNumber = hotelPlanPeopleNumber;
+        }
+
+        public void setHotelPlanPrice(double hotelPlanPrice) {
+            this.hotelPlanPrice = hotelPlanPrice;
+        }
 
         public String getHotelPlanDescription() {
             return hotelPlanDescription;
