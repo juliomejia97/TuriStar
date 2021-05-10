@@ -52,14 +52,14 @@ public class TourSpot extends AggregateRoot {
     public HashMap<String, Object> data()
     {
         HashMap<String, Object> data = new HashMap<>() {{
-            put("id", tourSpotId.value());
+            put("tourSpotId", tourSpotId.value());
             put("cityId",cityId.value());
             put("name", tourSpotName.value());
             put("latitude",String.valueOf(latitude.value()));
             put("longitude",String.valueOf(longitude.value()));
             put("description",description.value());
             put("active",tourSpotActive.value().toString());
-            put("tourId",tourId.value());
+            put("tourId",tourId.value().toString());
         }};
         return data;
     }
