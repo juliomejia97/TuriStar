@@ -14,12 +14,11 @@ public class TourBookingsAll {
         this.repository = repository;
     }
 
-    public List<TourBooking> execute() {
+    public List<TourBooking> execute() throws RuntimeException{
         Optional<List<TourBooking>> tourBookings = repository.all();
-        if(tourBookings.isEmpty()){
+        if(tourBookings.get().isEmpty()){
             throw new TourBookingNotFound("There are no tour bookings in the database, contact your admin");
         }
-        //TODO: Get only active cities
         return tourBookings.get();
     }
 }

@@ -1,5 +1,6 @@
 package com.webDevelopment.turistar.Tour.Tour.Domain;
 
+import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.TourSpotDetail;
 import com.webDevelopment.turistar.Shared.Domain.Tour.TourId;
 import com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotId;
 import com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects.TourBookings;
@@ -14,17 +15,17 @@ public class Tour {
     private TourName tourName;
     private TourBookings tourBookings;
     private TourPrice tourPrice;
-    //private List<TourSpotId> tourSpots;
+    private Optional<List<TourSpotDetail>> tourSpots;
 
     private Tour(){}
 
-    public Tour(TourName tourName, TourBookings tourBookings, TourPrice tourPrice) {
+    public Tour(TourId tourId, TourName tourName, TourBookings tourBookings, TourPrice tourPrice, List<TourSpotDetail> tourSpots) {
+        this.tourId = tourId;
         this.tourName = tourName;
         this.tourBookings = tourBookings;
         this.tourPrice = tourPrice;
-        //this.tourSpots = new ArrayList<>();
+        this.tourSpots = Optional.ofNullable(tourSpots);
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -35,14 +36,12 @@ public class Tour {
                 Objects.equals(tourName, tour.tourName) &&
                 Objects.equals(tourBookings, tour.tourBookings) &&
                 Objects.equals(tourPrice, tour.tourPrice);
-                //Objects.equals(tourSpots, tour.tourSpots);
     }
 
     public HashMap<String, Object> data()
     {
         HashMap<String, Object> data = new HashMap<>() {{
             put("id", tourId.value());
-            put("name", tourName.value());
             put("name", tourName.value());
             put("bookings", tourBookings.value());
             put("price", tourPrice.value());
