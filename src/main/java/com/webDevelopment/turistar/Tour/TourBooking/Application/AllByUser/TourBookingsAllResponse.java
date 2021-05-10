@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TourBookingsAllByUserResponse {
+public class TourBookingsAllResponse {
     private List<TourBooking> tourBookings;
 
-    public TourBookingsAllByUserResponse(List<TourBooking> tourBookings) {
+    public TourBookingsAllResponse(List<TourBooking> tourBookings) {
         this.tourBookings = tourBookings;
     }
 

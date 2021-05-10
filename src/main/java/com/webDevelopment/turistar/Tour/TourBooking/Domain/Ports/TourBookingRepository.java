@@ -10,7 +10,6 @@ import java.util.Optional;
 public interface TourBookingRepository {
     void update(TourBooking tourBooking);
     Optional<TourBooking> find(String TourBookingId);
-    Optional<TourBooking> findByUser(String UserId);
     void save(TourBooking tourBookings);
-    Optional<List<TourBooking>> all(String userId);
+    Optional<List<TourBooking>> all();
 }

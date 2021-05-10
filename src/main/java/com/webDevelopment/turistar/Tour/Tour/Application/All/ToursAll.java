@@ -19,7 +19,7 @@ public class ToursAll {
         if(tours.isEmpty()){
             throw new TourNotFound("There are no tours in the database, contact your admin");
         }
-        //TODO: Get only active cities
+        //TODO: Get only active tours
         return tours.get();
     }
 }

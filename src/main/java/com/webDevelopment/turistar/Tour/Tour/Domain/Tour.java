@@ -1,12 +1,12 @@
 package com.webDevelopment.turistar.Tour.Tour.Domain;
 
 import com.webDevelopment.turistar.Shared.Domain.Tour.TourId;
+import com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotId;
 import com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects.TourBookings;
 import com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects.TourName;
 import com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects.TourPrice;
 
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 public class Tour {
 
@@ -14,6 +14,7 @@ public class Tour {
     private TourName tourName;
     private TourBookings tourBookings;
     private TourPrice tourPrice;
+    //private List<TourSpotId> tourSpots;
 
     private Tour(){}
 
@@ -21,6 +22,7 @@ public class Tour {
         this.tourName = tourName;
         this.tourBookings = tourBookings;
         this.tourPrice = tourPrice;
+        //this.tourSpots = new ArrayList<>();
     }
 
 
@@ -33,6 +35,7 @@ public class Tour {
                 Objects.equals(tourName, tour.tourName) &&
                 Objects.equals(tourBookings, tour.tourBookings) &&
                 Objects.equals(tourPrice, tour.tourPrice);
+                //Objects.equals(tourSpots, tour.tourSpots);
     }
 
     public HashMap<String, Object> data()

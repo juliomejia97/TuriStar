@@ -16,4 +16,6 @@ public class TourBookingInitDate extends DateValueObject {
             throw new InvalidInitDate("The departure date is previous than the current date");
         }
     }
+
+    private TourBookingInitDate(){}
 }

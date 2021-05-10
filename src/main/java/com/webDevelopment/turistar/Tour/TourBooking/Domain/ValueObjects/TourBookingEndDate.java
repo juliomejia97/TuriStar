@@ -17,4 +17,7 @@ public class TourBookingEndDate extends DateValueObject {
             throw new InvalidEndDate("The end date is previous than the current date");
         }
     }
+
+    private TourBookingEndDate() {
+    }
 }

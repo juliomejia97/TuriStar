@@ -11,29 +11,51 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 
-//@RestController
+@RestController
 public class CreateTourBookingPostController {
 
     @Autowired
     private TourBookingCreator creator;
 
-    @PostMapping(value = "/create",produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/TourBooking/",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody Request request) {
-        creator.execute(request.getId(), request.getTourBookingInitDate(), request.getTourBookingEndDate());
+        creator.execute(request.getTourBookingId(), request.getTourBookingInitDate(), request.getTourBookingEndDate(), request.getTourId(), request.getUserId());
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
     static class Request {
-        private String id;
+        private String tourBookingId;
         private LocalDate tourBookingInitDate;
         private LocalDate tourBookingEndDate;
+        private String tourId;
+        private String userId;
 
-        public String getId() {
-            return id;
+        public String getUserId() {
+            return userId;
         }
 
-        public void setId(String id) {
-            this.id = id;
+        public void setUserId(String userId) {
+            this.userId = userId;
+        }
+
+        public void setTourBookingEndDate(LocalDate tourBookingEndDate) {
+            this.tourBookingEndDate = tourBookingEndDate;
+        }
+
+        public String getTourId() {
+            return tourId;
+        }
+
+        public void setTourId(String tourId) {
+            this.tourId = tourId;
+        }
+
+        public String getTourBookingId() {
+            return tourBookingId;
+        }
+
+        public void setTourBookingId(String tourBookingId) {
+            this.tourBookingId = tourBookingId;
         }
 
         public LocalDate getTourBookingInitDate() {
@@ -48,8 +70,5 @@ public class CreateTourBookingPostController {
             return tourBookingEndDate;
         }
 
-        public void setGetTourBookingEndDate(LocalDate tourBookingEndDate) {
-            this.tourBookingEndDate = tourBookingEndDate;
-        }
     }
 }

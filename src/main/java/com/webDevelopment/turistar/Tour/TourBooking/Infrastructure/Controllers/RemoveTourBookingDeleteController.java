@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-//@RestController
+@RestController
 public class RemoveTourBookingDeleteController {
 
     @Autowired
     private TourBookingDelete tourBookingDeleter;
 
-    @DeleteMapping(value="/{idTourBooking}")
+    @DeleteMapping(value="/TourBooking/{idTourBooking}")
     public ResponseEntity<String> execute(@PathVariable String idTourBooking){
         tourBookingDeleter.execute(idTourBooking);
         return ResponseEntity.status(HttpStatus.OK).body("City "+ idTourBooking +" has been deleted");

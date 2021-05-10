@@ -8,6 +8,6 @@ public class TourBookingId extends CustomUUID {
     }
 
     private TourBookingId(){
-        super("");
+        super();
     }
 }
