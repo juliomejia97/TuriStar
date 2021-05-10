@@ -11,5 +11,5 @@ public interface TourBookingRepository {
     void update(TourBooking tourBooking);
     Optional<TourBooking> find(String TourBookingId);
     void save(TourBooking tourBookings);
-    Optional<List<TourBooking>> all(String userId);
+    Optional<List<TourBooking>> all();
 }

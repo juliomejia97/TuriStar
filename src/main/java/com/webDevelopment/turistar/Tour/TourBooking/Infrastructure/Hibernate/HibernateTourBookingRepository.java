@@ -8,10 +8,12 @@ import com.webDevelopment.turistar.Tour.TourBooking.Domain.TourBooking;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional("transactional-manager")
 public class HibernateTourBookingRepository implements TourBookingRepository {
 
 
@@ -41,9 +43,9 @@ public class HibernateTourBookingRepository implements TourBookingRepository {
         sessionFactory.getCurrentSession().clear();
     }
 
-    //TODO: Make query to get tour bookings by user Id
+
     @Override
-    public Optional<List<TourBooking>> all(String userId) {
+    public Optional<List<TourBooking>> all() {
         Query query = sessionFactory.getCurrentSession().createQuery("FROM TourBooking");
         List<TourBooking> tourBookings = query.list();
         return Optional.ofNullable(tourBookings);

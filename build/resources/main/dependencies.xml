@@ -11,6 +11,10 @@
     <bean id="geoCodeInfoService" class="com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoService"/>
     <bean id="hibernateCityRepository" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.Hibernate.HibernateCityRepository"/>
     <bean id="inMemoryUserRepository" class="com.webDevelopment.turistar.User.User.Infrastructure.InMemoryUserRepository"/>
+    <bean id="hibernateTourRepository" class="com.webDevelopment.turistar.Tour.Tour.Infrastructure.Hibernate.HibernateTourRepository"/>
+    <bean id="hibernateTourBookingRepository" class="com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Hibernate.HibernateTourBookingRepository"/>
+
+
     <bean id="cityModifier" class="com.webDevelopment.turistar.Administrator.City.Application.Update.CityModifier">
         <constructor-arg ref="hibernateCityRepository"/>
         <constructor-arg ref="geoCodeInfoService"/>
@@ -22,9 +26,22 @@
         <constructor-arg ref="hibernateCityRepository"/>
     </bean>
 
-    <bean id="hibernateTourRepository" class="com.webDevelopment.turistar.Tour.Tour.Infrastructure.Hibernate.HibernateTourRepository"/>
     <bean id="toursAll" class="com.webDevelopment.turistar.Tour.Tour.Application.All.ToursAll">
         <constructor-arg ref="hibernateTourRepository"/>
+    </bean>
+
+    <bean id="tourFinder" class="com.webDevelopment.turistar.Tour.Tour.Application.Find.TourFinder">
+        <constructor-arg ref="hibernateTourRepository"/>
+    </bean>
+
+    <bean id="tourBookingAllByUser" class="com.webDevelopment.turistar.Tour.TourBooking.Application.AllByUser.TourBookingsAll">
+        <constructor-arg ref="hibernateTourBookingRepository"/>
+    </bean>
+    <bean id="tourBookingCreator" class="com.webDevelopment.turistar.Tour.TourBooking.Application.Create.TourBookingCreator">
+        <constructor-arg ref="hibernateTourBookingRepository"/>
+    </bean>
+    <bean id="tourBookingDelete" class="com.webDevelopment.turistar.Tour.TourBooking.Application.Delete.TourBookingDelete">
+        <constructor-arg ref="hibernateTourBookingRepository"/>
     </bean>
 
     <bean id="tourSpotModifier" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.Update.TourSpotModifier">
@@ -34,6 +51,7 @@
     <bean id="tourSpotAll" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.All.TourSpotAll">
         <constructor-arg ref="inMemoryTourSpotRepository"/>
     </bean>
+
 
     <bean id="ticketsAll" class="com.webDevelopment.turistar.Hotel.Ticket.Application.All.TicketsAll">
         <constructor-arg ref="inMemoryTicketRepository"/>

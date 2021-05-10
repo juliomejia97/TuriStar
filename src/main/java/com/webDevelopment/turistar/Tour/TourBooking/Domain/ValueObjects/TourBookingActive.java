@@ -7,4 +7,8 @@ public class TourBookingActive extends BooleanValueObject {
     public TourBookingActive(boolean active){
         this.value = active;
     }
+
+    private TourBookingActive() {
+    }
+
 }

@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="TuristarDB" uuid="a4a54081-1cc1-4d89-9dc5-a3c91591d280">
+    <data-source source="LOCAL" name="TuristarSchema@turistar-database-01.cohcvyy7lspu.us-east-1.rds.amazonaws.com" uuid="c0155358-8f51-49ac-b1df-e34e3fecc781">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mariadb://turistar-database-01.cohcvyy7lspu.us-east-1.rds.amazonaws.com:3306/TuristarSchema</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="TuristarSchema" uuid="54dc02fa-9b6c-4a1c-a56e-0c85d0616ed6">
-      <driver-ref>mariadb</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mariadb://turistar-database-01.cohcvyy7lspu.us-east-1.rds.amazonaws.com:3306/TuristarSchema</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="ExampleDB" uuid="59c324fd-e08c-4b9e-94c2-f442c64041ad">
-      <driver-ref>mariadb</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mariadb://itbdbserver.cf7dgbkzamlz.us-east-1.rds.amazonaws.com:3306/InventoryDevelopment</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

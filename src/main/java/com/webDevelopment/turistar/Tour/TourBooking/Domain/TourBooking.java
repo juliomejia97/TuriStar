@@ -1,6 +1,8 @@
 package com.webDevelopment.turistar.Tour.TourBooking.Domain;
 
+import com.webDevelopment.turistar.Shared.Domain.Tour.TourId;
 import com.webDevelopment.turistar.Shared.Domain.TourBooking.TourBookingId;
+import com.webDevelopment.turistar.Shared.Domain.User.UserId;
 import com.webDevelopment.turistar.Tour.TourBooking.Domain.ValueObjects.TourBookingActive;
 import com.webDevelopment.turistar.Tour.TourBooking.Domain.ValueObjects.TourBookingEndDate;
 import com.webDevelopment.turistar.Tour.TourBooking.Domain.ValueObjects.TourBookingInitDate;
@@ -13,12 +15,17 @@ public class TourBooking {
     TourBookingInitDate tourBookingInitDate;
     TourBookingEndDate tourBookingEndDate;
     TourBookingActive tourBookingActive;
+    TourId tourId;
+    UserId userId;
 
-    public TourBooking(TourBookingId tourBookingId, TourBookingInitDate tourBookingInitDate, TourBookingEndDate tourBookingEndDate) {
+    public TourBooking(TourBookingId tourBookingId, TourBookingInitDate tourBookingInitDate, TourBookingEndDate tourBookingEndDate, TourId tourId, UserId userId) {
         this.tourBookingId = tourBookingId;
+        this.tourId = tourId;
+        this.userId = userId;
         this.tourBookingInitDate = tourBookingInitDate;
         this.tourBookingEndDate = tourBookingEndDate;
         this.tourBookingActive = new TourBookingActive(true);
+        System.out.println("DATE" + this.tourBookingInitDate);
     }
 
     public void deleteTourBooking() {
@@ -35,4 +42,6 @@ public class TourBooking {
         }};
         return data;
     }
+
+    private TourBooking(){}
 }

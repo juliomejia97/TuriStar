@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.webDevelopment.turistar.Tour.TourBooking.Domain.TourBooking" table="tourBookings">
+        <composite-id name="tourBookingId" class="com.webDevelopment.turistar.Shared.Domain.TourBooking.TourBookingId" access="field">
+            <key-property name="value" column="tourBookingId" access="field" length="36"/>
+        </composite-id>
+
+        <component name="tourBookingInitDate" class="com.webDevelopment.turistar.Tour.TourBooking.Domain.ValueObjects.TourBookingInitDate" access="field">
+            <property name="value" column="tourBookingInitDate" access="field" type="java.time.LocalDate"/>
+        </component>
+
+        <component name="tourBookingEndDate" class="com.webDevelopment.turistar.Tour.TourBooking.Domain.ValueObjects.TourBookingEndDate" access="field">
+            <property name="value" column="tourBookingEndDate" access="field" type="java.time.LocalDate"/>
+        </component>
+
+        <component name="tourBookingActive" class="com.webDevelopment.turistar.Tour.TourBooking.Domain.ValueObjects.TourBookingActive" access="field">
+            <property name="value" column="tourBookingActive" access="field" type="boolean"/>
+        </component>
+
+        <component name="tourId" class="com.webDevelopment.turistar.Shared.Domain.Tour.TourId" access="field">
+            <property name="value" column="tour_fk" access="field" length="36"/>
+        </component>
+
+        <component name="userId" class="com.webDevelopment.turistar.Shared.Domain.User.UserId" access="field">
+            <property name="value" column="user_fk" access="field" length="36"/>
+        </component>
+
+    </class>
+</hibernate-mapping>
