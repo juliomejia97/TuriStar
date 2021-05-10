@@ -19,6 +19,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class HotelCustomDetail implements UserType {
+
     @Override
     public int[] sqlTypes() {
         return new int[] {Types.LONGNVARCHAR};
@@ -46,12 +47,12 @@ public class HotelCustomDetail implements UserType {
             Optional<String> value = Optional.ofNullable(rs.getString(names[0]));
             if(value.isPresent()) {
                 List<HashMap<String, Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
-                response = objects.stream().map(tourSpot ->
+                response = objects.stream().map(hotel ->
                         new HotelDetail(
-                                (String) tourSpot.get("hotelName"),
-                                (Double) tourSpot.get("hotelStars"),
-                                (String) tourSpot.get("hotelAddress"),
-                                (HashMap<String, Object>) tourSpot.get("hotelPhotos"))).collect(Collectors.toList());
+                                (String) hotel.get("hotelName"),
+                                (Double) hotel.get("hotelStars"),
+                                (String) hotel.get("hotelAddress"),
+                                (HashMap<String, Object>) hotel.get("hotelPhotos"))).collect(Collectors.toList());
             }
         }
         catch (Exception e){
