@@ -32,7 +32,7 @@ public class HotelCreator {
         }
         String hotelAddress = inforService.execute(hotelName,cityName);
         List<HotelPhoto> photosAsList = photos.entrySet().stream().map(p -> new HotelPhoto(p.getKey(),p.getValue())).collect(Collectors.toList());
-        Hotel hotel = new Hotel(new HotelId(hotelId), new CityId(cityId), new HotelName(hotelName),
+        Hotel hotel = Hotel.create(new HotelId(hotelId), new CityId(cityId), new HotelName(hotelName),
                 new HotelStars(hotelStars),new HotelAddress(hotelAddress), photosAsList);
         repository.save(hotel);
     }

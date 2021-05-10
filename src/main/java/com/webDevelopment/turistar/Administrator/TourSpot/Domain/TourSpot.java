@@ -4,6 +4,7 @@ import com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.*;
 import com.webDevelopment.turistar.Shared.Domain.Aggregate.AggregateRoot;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
 import com.webDevelopment.turistar.Shared.Domain.Tour.TourId;
+import com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotCreatedEventDomain;
 import com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotId;
 import com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotUpdatedDomainEvent;
 
@@ -22,7 +23,7 @@ public class TourSpot extends AggregateRoot {
     private TourSpotActive tourSpotActive;
     private TourId tourId;
 
-    public TourSpot(TourSpotId tourSpotId, CityId cityId,TourSpotName tourSpotName, TourSpotLatitude latitude, TourSpotLongitude longitude, TourSpotDescription description, TourId tourId) {
+    private TourSpot(TourSpotId tourSpotId, CityId cityId,TourSpotName tourSpotName, TourSpotLatitude latitude, TourSpotLongitude longitude, TourSpotDescription description, TourId tourId) {
         this.tourSpotId = tourSpotId;
         this.cityId = cityId;
         this.tourSpotName = tourSpotName;
@@ -33,6 +34,12 @@ public class TourSpot extends AggregateRoot {
         this.tourId = tourId;
     }
 
+    public static TourSpot create(TourSpotId tourSpotId, CityId cityId,TourSpotName tourSpotName, TourSpotLatitude latitude, TourSpotLongitude longitude, TourSpotDescription description, TourId tourId){
+        TourSpotActive active = new TourSpotActive(true);
+        TourSpot newTourSpot = new TourSpot(tourSpotId,cityId,tourSpotName,latitude,longitude,description,tourId);
+        newTourSpot.record(new TourSpotCreatedEventDomain(cityId.value(), tourSpotId.value(),tourSpotName.value(), latitude.value(), longitude.value(), description.value(),active.value()) );
+        return newTourSpot;
+    }
     private TourSpot() {
     }
 
@@ -69,8 +76,8 @@ public class TourSpot extends AggregateRoot {
         this.latitude = new TourSpotLatitude(latitude);
         this.longitude = new TourSpotLongitude(longitude);
         this.description = new TourSpotDescription(description);
-
         this.record(new TourSpotUpdatedDomainEvent(this.tourId.value(),  this.tourSpotId.value(), this.tourSpotName.value(), this.latitude.value(), this.longitude.value(), this.description.value(), this.tourSpotActive.value()) );
+        this.record(new TourSpotUpdatedDomainEvent(this.cityId.value(),  this.tourSpotId.value(), this.tourSpotName.value(), this.latitude.value(), this.longitude.value(), this.description.value(), this.tourSpotActive.value()) );
     }
 
     public Boolean equalsById(String idTourSpot){

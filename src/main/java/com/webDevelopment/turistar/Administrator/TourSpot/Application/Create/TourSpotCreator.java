@@ -31,7 +31,7 @@ public class TourSpotCreator {
             throw new TourSpotDuplicated("The Tour Spot already exists");
         }
         List<Double> latlong = latLangInfo.execute(tourSpotName,cityName);
-        TourSpot tourSpot = new TourSpot(new TourSpotId(tourSpotId), new CityId(cityId),new TourSpotName(tourSpotName),
+        TourSpot tourSpot = TourSpot.create(new TourSpotId(tourSpotId), new CityId(cityId),new TourSpotName(tourSpotName),
                 new TourSpotLatitude(latlong.get(0)), new TourSpotLongitude(latlong.get(1)),
                 new TourSpotDescription(cityDescription), new TourId(tourId) );
         tourSpotRepository.save(tourSpot);

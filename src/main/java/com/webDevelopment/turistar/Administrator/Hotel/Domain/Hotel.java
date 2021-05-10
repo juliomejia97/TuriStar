@@ -6,7 +6,9 @@ import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.Hotel
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelName;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhoto;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelStars;
+import com.webDevelopment.turistar.Shared.Domain.Aggregate.AggregateRoot;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
+import com.webDevelopment.turistar.Shared.Domain.Hotel.HotelCreatedDomainEvent;
 import com.webDevelopment.turistar.Shared.Domain.Hotel.HotelId;
 
 import java.util.HashMap;
@@ -14,7 +16,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Hotel {
+public class Hotel extends AggregateRoot {
     private HotelId hotelId;
     private CityId cityId;
     private HotelName hotelName;
@@ -22,7 +24,7 @@ public class Hotel {
     private HotelAddress hotelAddress;
     private List<HotelPhoto> hotelPhotos;
 
-    public Hotel(HotelId hotelId, CityId cityId, HotelName hotelName, HotelStars hotelStars, HotelAddress hotelAddress, List<HotelPhoto> hotelPhotos) {
+    private Hotel(HotelId hotelId, CityId cityId, HotelName hotelName, HotelStars hotelStars, HotelAddress hotelAddress, List<HotelPhoto> hotelPhotos) {
         this.hotelId = hotelId;
         this.cityId = cityId;
         this.hotelName = hotelName;
@@ -30,7 +32,14 @@ public class Hotel {
         this.hotelAddress = hotelAddress;
         this.hotelPhotos = hotelPhotos;
     }
-
+    public static Hotel create(HotelId hotelId, CityId cityId, HotelName hotelName, HotelStars hotelStars, HotelAddress hotelAddress, List<HotelPhoto> hotelPhotos){
+        Hotel newHotel  = new Hotel(hotelId,cityId,hotelName,hotelStars,hotelAddress,hotelPhotos);
+        newHotel.record(new HotelCreatedDomainEvent(cityId.value(),hotelName.value(),
+                hotelStars.value(),
+                hotelAddress.value(),
+                hotelPhotos.stream().map(HotelPhoto::value).findAny().get()));
+        return newHotel;
+    }
     private Hotel(){}
 
     @Override
@@ -59,6 +68,7 @@ public class Hotel {
         return data;
     }
 
+    //TODO: Cuando se haga update crear el record
     public Boolean equalsById(String hotelId){
         return this.hotelId.equals(new HotelId(hotelId));
     }

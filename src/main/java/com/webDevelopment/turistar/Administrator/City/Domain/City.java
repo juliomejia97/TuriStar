@@ -1,10 +1,8 @@
 package com.webDevelopment.turistar.Administrator.City.Domain;
 
-import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityActive;
-import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityCountry;
-import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.TourSpotDetail;
+import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.*;
+import com.webDevelopment.turistar.Shared.Domain.Aggregate.AggregateRoot;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
-import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityName;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,27 +10,28 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class City {
+public class City extends AggregateRoot {
 
     private CityId cityId;
     private CityName cityName;
     private CityCountry cityCountry;
     private CityActive cityActive;
     private Optional<List<TourSpotDetail>> tourSpots;
-
-
+    private Optional<List<HotelDetail>> hotelDetails;
     private City(){}
 
-    public City(CityId cityId, CityName cityName, CityCountry cityCountry, List<TourSpotDetail> tourSpots) {
+    private City(CityId cityId, CityName cityName, CityCountry cityCountry, List<TourSpotDetail> tourSpots, List<HotelDetail> hotelDetails) {
         this.cityId = cityId;
         this.cityName = cityName;
         this.cityCountry = cityCountry;
         this.cityActive= new CityActive(true);
         this.tourSpots = Optional.ofNullable(tourSpots);
+        this.hotelDetails = Optional.ofNullable(hotelDetails);
     }
 
     public static City create(CityId cityId, CityName cityName, CityCountry cityCountry){
-        return new City(cityId,cityName,cityCountry,null);
+        City newCity = new City(cityId,cityName,cityCountry,null,null);
+        return newCity;
     }
 
     @Override
