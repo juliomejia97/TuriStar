@@ -11,7 +11,6 @@ public class AddressInfo {
     public AddressInfo(InformationDetailService informationDetailService) {
         this.detailService = informationDetailService;
     }
-
     public String execute(String hotelName, String cityName){
         Optional<String> possibleAddress = detailService.addressInfo(hotelName,cityName);
         if(possibleAddress.isEmpty()){

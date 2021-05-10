@@ -1,6 +1,5 @@
 package com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain;
 
-import com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.CityDetail;
 import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.Exceptions.HotelPlanBookingAlreadyDeleted;
 import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.*;
 import com.webDevelopment.turistar.Shared.Domain.HotelPlanBooking.HotelPlanBookingId;

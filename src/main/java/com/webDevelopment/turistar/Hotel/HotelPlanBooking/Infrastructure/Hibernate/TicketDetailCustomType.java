@@ -1,7 +1,6 @@
 package com.webDevelopment.turistar.Hotel.HotelPlanBooking.Infrastructure.Hibernate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.CityDetail;
 import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.TicketDetail;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
