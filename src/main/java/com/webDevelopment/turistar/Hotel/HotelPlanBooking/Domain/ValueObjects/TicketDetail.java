@@ -1,8 +1,5 @@
 package com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects;
 
-import com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.CityDetail;
-import com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.*;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.util.HashMap;
