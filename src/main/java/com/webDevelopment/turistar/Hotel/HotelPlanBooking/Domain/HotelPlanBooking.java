@@ -2,6 +2,8 @@ package com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain;
 
 import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.Exceptions.HotelPlanBookingAlreadyDeleted;
 import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.*;
+import com.webDevelopment.turistar.Shared.Domain.Aggregate.AggregateRoot;
+import com.webDevelopment.turistar.Shared.Domain.HotelPlanBooking.HotelPlanBookingCreatedDomainEvent;
 import com.webDevelopment.turistar.Shared.Domain.HotelPlanBooking.HotelPlanBookingId;
 import com.webDevelopment.turistar.Shared.Domain.User.UserId;
 
@@ -10,7 +12,7 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.Optional;
 
-public class HotelPlanBooking {
+public class HotelPlanBooking extends AggregateRoot {
 
     private HotelPlanBookingId hotelPlanBookingId;
     private UserId userId;
@@ -31,6 +33,13 @@ public class HotelPlanBooking {
         this.hotelPlanBookingInitDate = hotelPlanBookingInitDate;
         this.hotelPlanBookingEndDate = hotelPlanBookingEndDate;
         this.hotelPlanBookingActive= new HotelPlanBookingActive(true);
+    }
+
+    public static HotelPlanBooking create(HotelPlanBookingId hotelPlanBookingId,UserId userId,HotelPlanBookingInitDate hotelPlanBookingInitDate,HotelPlanBookingEndDate hotelPlanBookingEndDate){
+        HotelPlanBookingActive active = new HotelPlanBookingActive(true);
+        HotelPlanBooking hotelPlanBooking = new HotelPlanBooking(hotelPlanBookingId,userId,hotelPlanBookingInitDate,hotelPlanBookingEndDate);
+        hotelPlanBooking.record(new HotelPlanBookingCreatedDomainEvent(userId.value(),hotelPlanBookingId.value(), hotelPlanBookingInitDate.value(), hotelPlanBookingEndDate.value() ) );
+        return hotelPlanBooking;
     }
 
     @Override
