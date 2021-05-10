@@ -20,10 +20,10 @@
             <property name="value" column="userPassword" access="field" type="string"/>
         </component>
         <property name="tourBookingDetails" column="tourBookings" access="field">
-            <type name="com.webDevelopment.turistar.User.User.Domain.ValueObjects.TourBookingDetail"/>
+            <type name="com.webDevelopment.turistar.User.User.Infrastructure.Hibernate.TourBookingCustomDetail"/>
         </property>
         <property name="hotelPlanBookings" column="hotelPlanBookings" access="field">
-            <type name="com.webDevelopment.turistar.User.User.Domain.ValueObjects.HotelPlanBookingDetail"></type>
+            <type name="com.webDevelopment.turistar.User.User.Infrastructure.Hibernate.HotelPlanBookingCustomDetail"/>
         </property>
     </class>
 
