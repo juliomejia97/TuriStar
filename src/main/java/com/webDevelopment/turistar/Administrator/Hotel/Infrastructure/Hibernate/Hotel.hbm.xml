@@ -5,7 +5,7 @@
 
 <hibernate-mapping>
     <class name="com.webDevelopment.turistar.Administrator.Hotel.Domain.Hotel" table="hotels">
-        <composite-id name="cityId" class="com.webDevelopment.turistar.Shared.Domain.Hotel.HotelId" access="field">
+        <composite-id name="hotelId" class="com.webDevelopment.turistar.Shared.Domain.Hotel.HotelId" access="field">
             <key-property name="value" column="hotelId" access="field"/>
         </composite-id>
         <component name="cityId" class="com.webDevelopment.turistar.Shared.Domain.City.CityId" access="field">

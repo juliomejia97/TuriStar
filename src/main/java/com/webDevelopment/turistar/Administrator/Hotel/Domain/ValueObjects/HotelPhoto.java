@@ -1,11 +1,14 @@
 package com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.Exceptions.InvalidPhotoFormat;
 
 import java.util.HashMap;
 
 public class HotelPhoto {
+    @JsonProperty("idPhoto")
     private Integer idPhoto;
+    @JsonProperty("urlPhoto")
     private String urlPhoto;
 
     public HotelPhoto(Integer idPhoto, String urlPhoto) {

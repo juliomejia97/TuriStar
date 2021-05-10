@@ -2,6 +2,7 @@ package com.webDevelopment.turistar.Shared.Intrastructure.Hibernate;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hibernate.HibernateException;
@@ -65,14 +66,15 @@ public class JsonListType implements UserType, DynamicParameterizedType {
     }
 
     public Object nullSafeGet(ResultSet rs, String[] names, Object owner) throws HibernateException, SQLException {
-        String value  = rs.getString(names[0]).replace("\"value\"", "").replace("{:", "").replace("}", "");
+        String value  = rs.getString(names[0]).replace("\"value\"", "").replace("{:", "");
         Object result = null;
         if (valueType == null) {
             throw new HibernateException("Value type not set.");
         }
         if (value != null && !value.equals("")) {
             try {
-                result = OBJECT_MAPPER.readValue(value, valueType);
+                result = OBJECT_MAPPER.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY,true)
+                        .readValue(value, valueType);
             } catch (IOException e) {
                 throw new HibernateException("Exception deserializing value " + value, e);
             }
