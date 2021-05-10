@@ -19,6 +19,7 @@
     <component name="cityActive" class="com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.CityActive" access="field">
       <property name="value" column="cityActive" access="field" type="boolean"/>
     </component>
+
     <property name="tourSpots" column="tourSpots" access="field">
       <type name="com.webDevelopment.turistar.Administrator.City.Infrastructure.Hibernate.TourSpotCustomDetail"/>
     </property>
