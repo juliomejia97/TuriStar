@@ -5,6 +5,7 @@ import com.webDevelopment.turistar.User.User.Domain.Exceptions.LengthNotValid;
 
 public class UserName extends StringValueObject
 {
+    public UserName(){}
     public UserName(String value) {
         this.validate(value);
         this.value = value;

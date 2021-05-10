@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 public class UserEmail extends StringValueObject
 {
+    public UserEmail(){}
     public static final String regex = "^(.+)@(.+)$";
     public UserEmail(String value) {
         this.validate(value);

@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 
 public class UserPassword extends StringValueObject
 {
+    public UserPassword(){}
     public UserPassword(String value) {
         this.validate(value);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);

@@ -14,9 +14,9 @@ import java.util.Optional;
 
 public class InMemoryUserRepository implements UserRepository {
 
-    private User user = new User(new UserId("bb5f8ac3-b90d-40ec-b3e2-e0ca3f432721"),  new UserName("Pinocho"), new UserLastName("Ni idea"),
+    private User user = User.create(new UserId("bb5f8ac3-b90d-40ec-b3e2-e0ca3f432721"),  new UserName("Pinocho"), new UserLastName("Ni idea"),
             new UserEmail("pinocho@gmail.com"), new UserPassword("MaderiTa1*23"));
-    private User user2 = new User(new UserId("bb5f8ac3-b90d-40ec-b3e2-e0ca3f432735"),  new UserName("Lobo"), new UserLastName("Feroz"),
+    private User user2 = User.create(new UserId("bb5f8ac3-b90d-40ec-b3e2-e0ca3f432735"),  new UserName("Lobo"), new UserLastName("Feroz"),
             new UserEmail("lobo@gmail.com"), new UserPassword("TengoHambre1*23"));
 
     private List<User> users = new ArrayList<>() {{
