@@ -1,3 +1,4 @@
+/*
 package com.webDevelopment.turistar.citiesTests.unit;
 
 import com.webDevelopment.turistar.Administrator.City.Application.All.CitiesAll;
@@ -57,3 +58,4 @@ public class CitiesTest {
         verify(cityRepository,atLeastOnce()).update(cityToUpdate);
     }
 }
+*/

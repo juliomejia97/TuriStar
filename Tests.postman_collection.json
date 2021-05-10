@@ -1,0 +1,1292 @@
+{
+	"info": {
+		"_postman_id": "7a8e0abe-c5cd-4d75-b08e-a44ea97f5164",
+		"name": "TuistarEndpontsTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Hotel",
+			"item": [
+				{
+					"name": "Ticket",
+					"item": [
+						{
+							"name": "AllTickets",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.globals.get(\"variable_key\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"hotelPlanPrice\": \"500000.0\",\r\n    \"hotelPlanPeopleNumber\": \"5.0\",\r\n    \"hotelPlanActive\": \"false\",\r\n    \"hotelPlanQuantity\": \"11.0\",\r\n    \"id\": \"2336a30e-abbb-11eb-8529-0242ac130003\",\r\n    \"hotelPlanDescription\": \"El mejor toursito forever\",\r\n    \"hotelPlanBookingId\": \"a0619482-a621-11eb-bcbc-0242ac130002\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/hotel/Ticket/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hotel",
+										"Ticket",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateTickets",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.globals.get(\"variable_key\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"ticketDateReturn\": \"2022-02-20\",\r\n        \"ticketPrice\": \"20.0\",\r\n        \"ticketDateDeparture\": \"2022-01-20\",\r\n        \"ticketActive\": \"false\",\r\n        \"ticketDeparture\": \"Bogota\",\r\n        \"id\": \"2336a30e-abbb-11eb-8529-0242ac130003\",\r\n        \"hotelPlanBookingId\": \"a0619482-a621-11eb-bcbc-0242ac130002\",\r\n        \"airlineName\": \"Despegar\",\r\n        \"ticketDestiantion\": \"Cartagena\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/hotel/Ticket/2336a30e-abbb-11eb-8529-0242ac130003",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hotel",
+										"Ticket",
+										"2336a30e-abbb-11eb-8529-0242ac130003"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteTickets",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.globals.get(\"variable_key\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"ticketDateReturn\": \"2022-02-20\",\r\n        \"ticketPrice\": \"20.0\",\r\n        \"ticketDateDeparture\": \"2022-01-20\",\r\n        \"ticketActive\": \"false\",\r\n        \"ticketDeparture\": \"Bogota\",\r\n        \"id\": \"2336a30e-abbb-11eb-8529-0242ac130003\",\r\n        \"hotelPlanBookingId\": \"a0619482-a621-11eb-bcbc-0242ac130002\",\r\n        \"airlineName\": \"Despegar\",\r\n        \"ticketDestiantion\": \"Cartagena\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/hotel/Ticket/2336a30e-abbb-11eb-8529-0242ac130003",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hotel",
+										"Ticket",
+										"2336a30e-abbb-11eb-8529-0242ac130003"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "HotelPlanBooking",
+					"item": [
+						{
+							"name": "AllHotelPlanBookings",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.globals.get(\"variable_key\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"hotelPlanPrice\": \"500000.0\",\r\n    \"hotelPlanPeopleNumber\": \"5.0\",\r\n    \"hotelPlanActive\": \"false\",\r\n    \"hotelPlanQuantity\": \"11.0\",\r\n    \"id\": \"2336a30e-abbb-11eb-8529-0242ac130003\",\r\n    \"hotelPlanDescription\": \"El mejor toursito forever\",\r\n    \"hotelPlanBookingId\": \"a0619482-a621-11eb-bcbc-0242ac130002\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/hotel/HotelPlanBooking/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hotel",
+										"HotelPlanBooking",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateHotelPlanBooking",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.globals.get(\"variable_key\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"hotelPlanBookingActive\": \"false\",\r\n    \"hotelPlanBookingEndDate\": \"2021-05-25\",\r\n    \"hotelPlanBookingInitDate\": \"2021-05-10\",\r\n    \"id\": \"d13c6e36-b131-11eb-8529-0242ac130003\",\r\n    \"userId\": \"ab28931c-b11f-11eb-8529-0242ac130003\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/hotel/HotelPlanBooking/d13c6e36-b131-11eb-8529-0242ac130003",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hotel",
+										"HotelPlanBooking",
+										"d13c6e36-b131-11eb-8529-0242ac130003"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteHotelPlanBooking",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.globals.get(\"variable_key\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"hotelPlanBookingActive\": \"false\",\r\n    \"hotelPlanBookingEndDate\": \"2021-05-25\",\r\n    \"hotelPlanBookingInitDate\": \"2021-05-10\",\r\n    \"id\": \"d13c6e36-b131-11eb-8529-0242ac130003\",\r\n    \"userId\": \"ab28931c-b11f-11eb-8529-0242ac130003\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/hotel/HotelPlanBooking/d13c6e36-b131-11eb-8529-0242ac130003",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hotel",
+										"HotelPlanBooking",
+										"d13c6e36-b131-11eb-8529-0242ac130003"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateHotelPlanBooking",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n        \"hotelPlanBookingActive\": \"true\",\r\n        \"hotelPlanBookingEndDate\": \"2021-05-28\",\r\n        \"hotelPlanBookingInitDate\": \"2021-05-10\",\r\n        \"id\": \"d13c6e36-b131-11eb-8529-0242ac130003\",\r\n        \"userId\": \"ab28931c-b11f-11eb-8529-0242ac130003\"\r\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:8080/hotel/HotelPlanBooking/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hotel",
+										"HotelPlanBooking",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "HotelPlan",
+					"item": [
+						{
+							"name": "AllHotelPlan",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.globals.get(\"variable_key\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"sepo@turita.com\",\r\n    \"password\": \"Test1234*\",\r\n    \"firstName\": \"Sebas\",\r\n    \"lastName\": \"Osorio\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/hotel/HotelPlan/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hotel",
+										"HotelPlan",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateHotelPlan",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.globals.get(\"variable_key\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"hotelPlanPrice\": \"500000.0\",\r\n    \"hotelPlanPeopleNumber\": \"5.0\",\r\n    \"hotelPlanActive\": \"true\",\r\n    \"hotelPlanQuantity\": \"11.0\",\r\n    \"id\": \"2336a30e-abbb-11eb-8529-0242ac130003\",\r\n    \"hotelPlanDescription\": \"El mejor toursito forever\",\r\n    \"hotelPlanBookingId\": \"a0619482-a621-11eb-bcbc-0242ac130002\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/hotel/hotelPlan/2336a30e-abbb-11eb-8529-0242ac130003",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hotel",
+										"hotelPlan",
+										"2336a30e-abbb-11eb-8529-0242ac130003"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteHotelPlan",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.globals.get(\"variable_key\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"hotelPlanPrice\": \"500000.0\",\r\n    \"hotelPlanPeopleNumber\": \"5.0\",\r\n    \"hotelPlanActive\": \"false\",\r\n    \"hotelPlanQuantity\": \"11.0\",\r\n    \"id\": \"2336a30e-abbb-11eb-8529-0242ac130003\",\r\n    \"hotelPlanDescription\": \"El mejor toursito forever\",\r\n    \"hotelPlanBookingId\": \"a0619482-a621-11eb-bcbc-0242ac130002\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/hotel/HotelPlan/2336a30e-abbb-11eb-8529-0242ac130003",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hotel",
+										"HotelPlan",
+										"2336a30e-abbb-11eb-8529-0242ac130003"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tour",
+			"item": [
+				{
+					"name": "TourBooking",
+					"item": [
+						{
+							"name": "DeleteTourBooking",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/TourBooking/b1b972da-b121-11eb-8529-0242ac130003",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"TourBooking",
+										"b1b972da-b121-11eb-8529-0242ac130003"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateTourBooking",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tourBookingId\": \"b1b972da-b121-11eb-8529-0242ac130003\",\r\n    \"tourBookingInitDate\": \"2021-05-11\",\r\n    \"tourBookingEndDate\": \"2021-05-20\",\r\n    \"tourId\": \"5ade9d58-ac73-11eb-8529-0242ac130003\",\r\n    \"userId\": \"ab28931c-b11f-11eb-8529-0242ac130003\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/TourBooking/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"TourBooking",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AllTourBookings",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/TourBooking/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"TourBooking",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tours",
+					"item": [
+						{
+							"name": "AllTours",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Tour/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Tour",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FindTour",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Tour/5ade9d58-ac73-11eb-8529-0242ac130003",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Tour",
+										"5ade9d58-ac73-11eb-8529-0242ac130003"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Administrator",
+			"item": [
+				{
+					"name": "City",
+					"item": [
+						{
+							"name": "Get Cities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/City/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"City",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FindCityById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/City/find/a0619482-a621-11eb-bcbc-0242ac130002",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"City",
+										"find",
+										"a0619482-a621-11eb-bcbc-0242ac130002"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GeoCode",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://maps.googleapis.com/maps/api/geocode/json?address=Palacio de Versalles, Bogota&sensors=true&key=AIzaSyCAAyegQUf9LkBGLcbcEg5ElE4we2GlA6w&partial_match=true",
+									"protocol": "https",
+									"host": [
+										"maps",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"maps",
+										"api",
+										"geocode",
+										"json"
+									],
+									"query": [
+										{
+											"key": "address",
+											"value": "Palacio de Versalles, Bogota"
+										},
+										{
+											"key": "sensors",
+											"value": "true"
+										},
+										{
+											"key": "key",
+											"value": "AIzaSyCAAyegQUf9LkBGLcbcEg5ElE4we2GlA6w"
+										},
+										{
+											"key": "partial_match",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TourSpots",
+					"item": [
+						{
+							"name": "AllTourSpots",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/TourSpot/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"TourSpot",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateTourSpot",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"tourName\": \"Mundo Aventura\",\n\t\"cityName\": \"Bogota\",\n\t\"description\":\"Parchar bueno con los socios en un parque de aventura\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/admin/TourSpot/8551a43c-adf3-11eb-8529-0242ac130003",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"TourSpot",
+										"8551a43c-adf3-11eb-8529-0242ac130003"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateTourSpot",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"tourSpotId\":\"f995c7cc-b1dd-11eb-8529-0242ac130003\",\n    \"tourId\": \"5ade9d58-ac73-11eb-8529-0242ac130003\",\n\t\"cityId\":\"a06197e8-a621-11eb-bcbc-0242ac130002\",\n\t\"tourName\":\"Simón bolivar\",\n\t\"cityName\":\"Bogota\",\n\t\"description\":\"Parque para disfrutar en familia\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/admin/TourSpot/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"TourSpot",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FindTourSpotById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/TourSpot/f995c7cc-b1dd-11eb-8529-0242ac130003",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"TourSpot",
+										"f995c7cc-b1dd-11eb-8529-0242ac130003"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Hotel",
+					"item": [
+						{
+							"name": "GetHotel",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/Hotel/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"Hotel",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Hotel Create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"hotelId\": \"d021869a-ae97-11eb-8529-0242ac130003\",\n\t\"cityId\": \"f4aa63ee-a931-11eb-bcbc-0242ac130002\",\n\t\"hotelStars\":\"4\",\n\t\"hotelName\":\"Hotel Tequendama\",\n\t\"cityName\":\"Bogota\",\n\t\"photos\":{\n\t\t\"1\":\"https://pix10.agoda.net/hotelImages/7708/-1/9a76bba7b25abb1987e0345166567470.jpg?s=1024x768\",\n\t\t\"2\":\"https://imgcy.trivago.com/c_lfill,d_dummy.jpeg,e_sharpen:60,f_auto,h_450,q_auto,w_450/itemimages/10/33/103346_v5.jpeg\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/admin/Hotel/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"Hotel",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FindHotelById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/Hotel/d021869a-ae97-11eb-8529-0242ac130003",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"Hotel",
+										"d021869a-ae97-11eb-8529-0242ac130003"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.globals.get(\"variable_key\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\":\"ab28931c-b11f-11eb-8529-0242ac130005\",\r\n        \"email\": \"sepo@turi.com\",\r\n        \"password\": \"Test1234*\",\r\n        \"firstName\": \"Sebas\",\r\n        \"lastName\": \"Osorio\"\r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/create/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RegisterTuristar",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.globals.get(\"variable_key\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\":\"ab28931c-b11f-11eb-8529-0242ac130005\",\r\n        \"email\": \"sepo@turi.com\",\r\n        \"password\": \"Test1234*\",\r\n        \"firstName\": \"Sebas\",\r\n        \"lastName\": \"Osorio\"\r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/create/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUserTuristar",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.globals.get(\"variable_key\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sepo@turita.com\",\r\n    \"password\": \"Test1234*\",\r\n    \"firstName\": \"Sebas\",\r\n    \"lastName\": \"Osorio\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DetailUserTuristar",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.globals.get(\"variable_key\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sepo@turita.com\",\r\n    \"password\": \"Test1234*\",\r\n    \"firstName\": \"Sebas\",\r\n    \"lastName\": \"Osorio\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/find/ab28931c-b11f-11eb-8529-0242ac130005",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"find",
+								"ab28931c-b11f-11eb-8529-0242ac130005"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AllHotelPlan",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.globals.get(\"variable_key\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "2dc06730-11eb-4c48-8dfe-f249813df260",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sepo@turita.com\",\r\n    \"password\": \"Test1234*\",\r\n    \"firstName\": \"Sebas\",\r\n    \"lastName\": \"Osorio\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/hotel/HotelPlan/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hotel",
+								"HotelPlan",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
