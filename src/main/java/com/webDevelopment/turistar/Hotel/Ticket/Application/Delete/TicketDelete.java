@@ -20,6 +20,6 @@ public class TicketDelete {
         }
         Ticket ticketToUpdate = ticketUpdated.get();
         ticketToUpdate.deleteTicket();
-        this.ticketRepository.update(ticketId, ticketToUpdate);
+        this.ticketRepository.update(ticketToUpdate);
     }
 }

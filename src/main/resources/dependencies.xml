@@ -8,10 +8,14 @@
     <bean id="inMemoryHotelPlanRepository" class="com.webDevelopment.turistar.Hotel.HotelPlan.Infrastructure.InMemoryHotelPlanRepository"/>
     <bean id="inMemoryHotelPlanBookingRepository" class="com.webDevelopment.turistar.HotelPlanBooking.Infrastructure.InMemoryHotelPlanBookingRepository"/>
     <bean id="hibernateTicketRepository" class="com.webDevelopment.turistar.Hotel.Ticket.Infrastructure.Hibernate.HibernateTicketRepository"/>
+    <bean id="hibernateHotelPlanRepository" class="com.webDevelopment.turistar.Hotel.HotelPlan.Infrastructure.Hibernate.HibernateHotelPlanRepository"/>
+
     <bean id="inMemoryTourSpotRepository" class="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.InMemoryTourSpotRepository"/>
     <bean id="geoCodeInfoService" class="com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoService"/>
     <bean id="hibernateCityRepository" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.Hibernate.HibernateCityRepository"/>
     <bean id="hibernateUserRepository" class="com.webDevelopment.turistar.User.User.Infrastructure.Hibernate.HibernateUserRepository"/>
+    <bean id="hibernateHotelPlanBookingRepository" class="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Infrastructure.Hibernate.HibernateHotelPlanBookingRepository"/>
+
     <bean id="inMemoryUserRepository" class="com.webDevelopment.turistar.User.User.Infrastructure.InMemoryUserRepository"/>
     <bean id="hibernateTourBookingRepository" class="com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Hibernate.HibernateTourBookingRepository"/>
     <bean id="hibernateTourSpotRepository" class="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate.HibernateTourSpotRepository"/>
@@ -74,28 +78,41 @@
     <!---Tickets inyections-->
 
     <bean id="ticketsAll" class="com.webDevelopment.turistar.Hotel.Ticket.Application.All.TicketsAll">
-        <constructor-arg ref="inMemoryTicketRepository"/>
+        <constructor-arg ref="hibernateTicketRepository"/>
     </bean>
 
     <bean id="ticketModifier" class="com.webDevelopment.turistar.Hotel.Ticket.Application.Update.TicketModifier">
-        <constructor-arg ref="inMemoryTicketRepository"/>
+        <constructor-arg ref="hibernateTicketRepository"/>
     </bean>
 
     <bean id="ticketDeleter" class="com.webDevelopment.turistar.Hotel.Ticket.Application.Delete.TicketDelete">
-        <constructor-arg ref="inMemoryTicketRepository"/>
+        <constructor-arg ref="hibernateTicketRepository"/>
     </bean>
     <!---Hotel Plan inyections-->
     <bean id="hotelPlanAll" class="com.webDevelopment.turistar.Hotel.HotelPlan.Application.All.HotelPlanAll">
-        <constructor-arg ref="inMemoryHotelPlanRepository"/>
+        <constructor-arg ref="hibernateHotelPlanRepository"/>
     </bean>
 
     <bean id="hotelPlanModifier" class="com.webDevelopment.turistar.Hotel.HotelPlan.Application.Update.HotelPlanModifier">
-        <constructor-arg ref="inMemoryHotelPlanRepository"/>
+        <constructor-arg ref="hibernateHotelPlanRepository"/>
     </bean>
 
     <bean id="hotelPlanDeleter" class="com.webDevelopment.turistar.Hotel.HotelPlan.Application.Delete.HotelPlanDelete">
-        <constructor-arg ref="inMemoryHotelPlanRepository"/>
+        <constructor-arg ref="hibernateHotelPlanRepository"/>
     </bean>
+
+    <bean id="hotelPlanBookingAll" class="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Application.All.HotelPlanBookingAll">
+        <constructor-arg ref="hibernateHotelPlanBookingRepository"/>
+    </bean>
+
+    <bean id="hotelPlanBookingDeleter" class="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Application.Delete.HotelPlanBookingDelete">
+        <constructor-arg ref="hibernateHotelPlanBookingRepository"/>
+    </bean>
+
+    <bean id="hotelPlanBookingModifier" class="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Application.Update.HotelPlanBookingModifier">
+        <constructor-arg ref="hibernateHotelPlanBookingRepository"/>
+    </bean>
+
     <!---User inyections-->
     <bean id="badWordService" class="com.webDevelopment.turistar.User.User.Infrastructure.BadWordsService"/>
 

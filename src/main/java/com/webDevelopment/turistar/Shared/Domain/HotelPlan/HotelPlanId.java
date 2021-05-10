@@ -8,7 +8,5 @@ public class HotelPlanId extends CustomUUID {
         super(value);
     }
 
-    private HotelPlanId(){
-        super("");
-    }
+    private HotelPlanId(){ super();}
 }

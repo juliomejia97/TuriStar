@@ -24,13 +24,16 @@ public class HibernateConfigFactory {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setHibernateProperties(hibernateProperties());
         //TODO: Cargar Archivos de Configuración
-        FileSystemResource resource1 = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Administrator/City/Infrastructure/Hibernate/City.hbm.xml");
-        FileSystemResource resource2 = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Tour/Tour/Infrastructure/Hibernate/Tour.hbm.xml");
-        FileSystemResource resource3 = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Hotel/Ticket/Infrastructure/Hibernate/Tickets.hbm.xml");
-        FileSystemResource resource4 = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Administrator/TourSpot/Infrastructure/Hibernate/TourSpot.hbm.xml");
+        FileSystemResource cityResource = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Administrator/City/Infrastructure/Hibernate/City.hbm.xml");
+        FileSystemResource tourResource = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Tour/Tour/Infrastructure/Hibernate/Tour.hbm.xml");
+        FileSystemResource ticketsResource = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Hotel/Ticket/Infrastructure/Hibernate/Tickets.hbm.xml");
+        FileSystemResource tourSpotResource = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Administrator/TourSpot/Infrastructure/Hibernate/TourSpot.hbm.xml");
         FileSystemResource userResource = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/User/User/Infrastructure/Hibernate/User.hbm.xml");
-        FileSystemResource resource5 = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Tour/TourBooking/Infrastructure/Hibernate/TourBooking.hbm.xml");
-        sessionFactory.setMappingLocations(resource1, resource2, resource3,resource4,resource5,userResource);
+        FileSystemResource tourBookingResource = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Tour/TourBooking/Infrastructure/Hibernate/TourBooking.hbm.xml");
+        FileSystemResource hotelPlanResource = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Hotel/HotelPlan/Infrastructure/Hibernate/HotelPlans.hbm.xml");
+        FileSystemResource hotelPlanBookingResource = new FileSystemResource("./src/main/java/com/webDevelopment/turistar/Hotel/HotelPlanBooking/Infrastructure/Hibernate/HotelPlanBooking.hbm.xml");
+
+        sessionFactory.setMappingLocations(cityResource, tourResource, ticketsResource,tourSpotResource,tourBookingResource, hotelPlanResource, hotelPlanBookingResource, userResource);
         return sessionFactory;
     }
     @Bean("transactional-manager")

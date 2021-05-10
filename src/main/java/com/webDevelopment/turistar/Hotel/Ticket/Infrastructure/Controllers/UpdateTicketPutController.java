@@ -1,10 +1,15 @@
 package com.webDevelopment.turistar.Hotel.Ticket.Infrastructure.Controllers;
 
 import com.webDevelopment.turistar.Hotel.Ticket.Application.Update.TicketModifier;
+import com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.TicketDateDeparture;
+import com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.TicketDateReturn;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping(value = "/hotel/Ticket")
@@ -15,7 +20,7 @@ public class UpdateTicketPutController {
 
     @PutMapping(value="/{idTicket}")
     public ResponseEntity<String> execute(@PathVariable String idTicket, @RequestBody Request request){
-        ticketModifier.execute(idTicket,request.getTicketAirline(),request.getTicketDeparture(),request.getTicketDestination(),request.getTicketPrice());
+        ticketModifier.execute(idTicket,request.getHotelPlanBookingId(),request.getTicketAirline(),request.getTicketDeparture(),request.getTicketDestination(),request.getTicketPrice(),request.getTicketDateDeparture(),request.getTicketDateReturn());
         return ResponseEntity.status(HttpStatus.OK).body("Ticket "+ request.getTicketAirline()+" has been modified");
     }
 
@@ -23,7 +28,35 @@ public class UpdateTicketPutController {
         String ticketAirline;
         String ticketDeparture;
         String ticketDestination;
+        String hotelPlanBookingId;
+
         double ticketPrice;
+        LocalDate ticketDateDeparture;
+        LocalDate ticketDateReturn;
+
+        public String getHotelPlanBookingId() {
+            return hotelPlanBookingId;
+        }
+
+        public void setHotelPlanBookingId(String hotelPlanBookingId) {
+            this.hotelPlanBookingId = hotelPlanBookingId;
+        }
+
+        public LocalDate getTicketDateDeparture() {
+            return ticketDateDeparture;
+        }
+
+        public void setTicketDateDeparture(LocalDate ticketDateDeparture) {
+            this.ticketDateDeparture = ticketDateDeparture;
+        }
+
+        public LocalDate getTicketDateReturn() {
+            return ticketDateReturn;
+        }
+
+        public void setTicketDateReturn(LocalDate ticketDateReturn) {
+            this.ticketDateReturn = ticketDateReturn;
+        }
 
         public String getTicketAirline() {
             return ticketAirline;

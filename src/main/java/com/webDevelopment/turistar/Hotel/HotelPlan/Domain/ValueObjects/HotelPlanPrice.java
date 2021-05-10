@@ -4,6 +4,8 @@ import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.Exceptions.InvalidPric
 import com.webDevelopment.turistar.Shared.Domain.DoubleValueObject;
 
 public class HotelPlanPrice extends DoubleValueObject {
+    public HotelPlanPrice() {
+    }
 
     public HotelPlanPrice(double price){
         this.validate(price);

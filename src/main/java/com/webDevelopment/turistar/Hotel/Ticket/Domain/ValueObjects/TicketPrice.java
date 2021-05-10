@@ -6,6 +6,9 @@ import com.webDevelopment.turistar.Shared.Domain.DoubleValueObject;
 import java.util.Objects;
 
 public class TicketPrice extends DoubleValueObject {
+    public TicketPrice() {
+    }
+
     public TicketPrice(Double ticketPrice){
         this.validate(ticketPrice);
         value = ticketPrice;

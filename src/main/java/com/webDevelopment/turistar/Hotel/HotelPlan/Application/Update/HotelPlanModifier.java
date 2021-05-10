@@ -21,6 +21,6 @@ public class HotelPlanModifier {
         }
         HotelPlan hotelPlanToUpdate = hotelPlanUpdated.get();
         hotelPlanToUpdate.updatehotelPlan(hotelPlanDescription,hotelPlanPrice,hotelPlanPeopleNumber);
-        this.hotelPlanRepository.update(hotelPlanId, hotelPlanToUpdate);
+        this.hotelPlanRepository.update( hotelPlanToUpdate);
     }
 }

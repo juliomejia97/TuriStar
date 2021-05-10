@@ -7,6 +7,9 @@ public class TicketAirline extends StringValueObject {
 
     //TODO: Servicio para consultar que la airline existe
 
+    public TicketAirline() {
+    }
+
     public TicketAirline(String name){
         this.validate(name);
         this.value = name;

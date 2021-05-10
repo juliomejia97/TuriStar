@@ -1,10 +1,8 @@
 package com.webDevelopment.turistar.Hotel.HotelPlan.Domain;
 
-import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects.HotelPlanActive;
-import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects.HotelPlanDescription;
-import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects.HotelPlanPeopleNumber;
-import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects.HotelPlanPrice;
+import com.webDevelopment.turistar.Hotel.HotelPlan.Domain.ValueObjects.*;
 import com.webDevelopment.turistar.Shared.Domain.HotelPlan.HotelPlanId;
+import com.webDevelopment.turistar.Shared.Domain.HotelPlanBooking.HotelPlanBookingId;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -15,17 +13,21 @@ public class HotelPlan {
     private HotelPlanPrice hotelPlanPrice;
     private HotelPlanDescription hotelPlanDescription;
     private HotelPlanPeopleNumber hotelPlanPeopleNumber;
-
+    private HotelPlanBookingId hotelPlanBookingId;
+    private HotelPlanQuantity hotelPlanQuantity;
+    //TODO id de hotel
     private HotelPlanActive hotelPlanActive ;
 
 
     private HotelPlan(){}
 
-    public HotelPlan(HotelPlanId hotelPlanId, HotelPlanPrice hotelPlanPrice, HotelPlanDescription hotelPlanDescription,HotelPlanPeopleNumber hotelPlanPeopleNumber) {
+    public HotelPlan(HotelPlanId hotelPlanId, HotelPlanPrice hotelPlanPrice, HotelPlanDescription hotelPlanDescription,HotelPlanPeopleNumber hotelPlanPeopleNumber,HotelPlanBookingId hotelPlanBookingId,HotelPlanQuantity hotelPlanQuantity) {
         this.hotelPlanId = hotelPlanId;
         this.hotelPlanPrice = hotelPlanPrice;
         this.hotelPlanDescription = hotelPlanDescription;
         this.hotelPlanPeopleNumber = hotelPlanPeopleNumber;
+        this.hotelPlanBookingId = hotelPlanBookingId;
+        this.hotelPlanQuantity = hotelPlanQuantity;
         this.hotelPlanActive= new HotelPlanActive(true);
     }
 
@@ -38,6 +40,9 @@ public class HotelPlan {
                 Objects.equals(hotelPlanDescription, hotelPlan.hotelPlanDescription) &&
                 Objects.equals(hotelPlanPrice, hotelPlan.hotelPlanPrice) &&
                 Objects.equals(hotelPlanPeopleNumber, hotelPlan.hotelPlanPeopleNumber) &&
+                Objects.equals(hotelPlanBookingId, hotelPlan.hotelPlanBookingId) &&
+                Objects.equals(hotelPlanQuantity, hotelPlan.hotelPlanQuantity) &&
+
                 Objects.equals(hotelPlanActive, hotelPlan.hotelPlanActive);
     }
 
@@ -49,6 +54,8 @@ public class HotelPlan {
             put("hotelPlanDescription", hotelPlanDescription.value());
             put("hotelPlanPeopleNumber", String.valueOf(hotelPlanPeopleNumber.value()));
             put("hotelPlanActive", hotelPlanActive.value().toString());
+            put("hotelPlanBookingId", hotelPlanBookingId.value());
+            put("hotelPlanQuantity", hotelPlanQuantity.value().toString());
         }};
     }
 

@@ -6,13 +6,39 @@
 
     <class name="com.webDevelopment.turistar.Hotel.Ticket.Domain.Ticket" table="tickets">
         <composite-id name="ticketId" class="com.webDevelopment.turistar.Shared.Domain.Ticket.TicketId" access="field">
-            <key-property name="value" column="cityId" access="field" length="36"/>
+            <key-property name="value" column="ticketId" access="field" length="36"/>
         </composite-id>
 
         <component name="ticketAirline" class="com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.TicketAirline" access="field">
-            <property name="value" column="ticketAirline" access="field"/>
+            <property name="value" column="ticketAirline" access="field" type="java.lang.String"/>
         </component>
 
+        <component name="ticketDeparture" class="com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.TicketDeparture" access="field">
+            <property name="value" column="ticketDeparture" access="field" type="java.lang.String"/>
+        </component>
 
+        <component name="ticketDestination" class="com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.TicketDestination" access="field">
+            <property name="value" column="ticketDestination" access="field" type="java.lang.String"/>
+        </component>
+
+        <component name="ticketPrice" class="com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.TicketPrice" access="field">
+            <property name="value" column="ticketPrice" access="field" type="java.lang.Double"/>
+        </component>
+
+        <component name="ticketActive" class="com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.TicketActive" access="field">
+            <property name="value" column="ticketActive" access="field" type="java.lang.Boolean"/>
+        </component>
+
+        <component name="hotelPlanBookingId" class="com.webDevelopment.turistar.Shared.Domain.HotelPlanBooking.HotelPlanBookingId" access="field">
+            <property name="value" column="hotelPlanBookingId" access="field" length="36"/>
+        </component>
+
+        <component name="ticketDateDeparture" class="com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.TicketDateDeparture" access="field">
+            <property name="value" column="ticketDateDeparture" access="field" type="java.time.LocalDate"/>
+        </component>
+
+        <component name="ticketDateReturn" class="com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.TicketDateReturn" access="field">
+            <property name="value" column="ticketDateReturn" access="field" type="java.time.LocalDate"/>
+        </component>
     </class>
 </hibernate-mapping>

@@ -20,6 +20,6 @@ public class HotelPlanDelete {
         }
         HotelPlan hotelPlanToUpdate = hotelPlanUpdated.get();
         hotelPlanToUpdate.deleteHotelPlan();
-        this.hotelPlanRepository.update(hotelPlanId, hotelPlanToUpdate);
+        this.hotelPlanRepository.update(hotelPlanToUpdate);
     }
 }
