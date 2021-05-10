@@ -1,22 +1,24 @@
 package com.webDevelopment.turistar.User.User.Domain.ValueObjects;
 
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class TourBooking {
+public class TourBookingDetail {
     private String tourBookingId;
-    private Date tourBookingInitDate;
-    private Date tourBookingEndDate;
+    private LocalDate tourBookingInitDate;
+    private LocalDate tourBookingEndDate;
     private Boolean tourBookingActive;
 
-    public TourBooking(String tourBookingId, Date tourBookingInitDate, Date tourBookingEndDate, Boolean tourBookingActive) {
+    public TourBookingDetail(String tourBookingId, LocalDate tourBookingInitDate, LocalDate tourBookingEndDate,
+                             Boolean tourBookingActive) {
         this.tourBookingId = tourBookingId;
         this.tourBookingInitDate = tourBookingInitDate;
         this.tourBookingEndDate = tourBookingEndDate;
         this.tourBookingActive = tourBookingActive;
     }
+
     public HashMap <String,Object> data()
     {
         HashMap <String,Object> data = new HashMap<String,Object>(){{
@@ -24,7 +26,7 @@ public class TourBooking {
             put("id", tourBookingId);
             put("initDate", tourBookingInitDate);
             put("endDate", tourBookingEndDate);
-            put("active", tourBookingActive);
+            put("isActive", tourBookingActive);
 
         }};
         return data;
@@ -35,7 +37,7 @@ public class TourBooking {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TourBooking that = (TourBooking) o;
+        TourBookingDetail that = (TourBookingDetail) o;
         return Objects.equals(tourBookingId, that.tourBookingId) && Objects.equals(tourBookingInitDate, that.tourBookingInitDate) && Objects.equals(tourBookingEndDate, that.tourBookingEndDate) && Objects.equals(tourBookingActive, that.tourBookingActive);
     }
 
@@ -43,4 +45,5 @@ public class TourBooking {
     public int hashCode() {
         return Objects.hash(tourBookingId, tourBookingInitDate, tourBookingEndDate, tourBookingActive);
     }
+    private TourBookingDetail(){}
 }

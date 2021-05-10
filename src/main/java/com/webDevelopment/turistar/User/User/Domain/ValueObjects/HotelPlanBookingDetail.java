@@ -2,7 +2,7 @@ package com.webDevelopment.turistar.User.User.Domain.ValueObjects;
 
 import java.util.HashMap;
 
-public class Screen {
+public class HotelPlanBookingDetail {
 
     public HashMap<String,Object> data()
     {

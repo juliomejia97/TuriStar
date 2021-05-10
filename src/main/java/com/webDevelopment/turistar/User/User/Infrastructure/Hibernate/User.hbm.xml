@@ -19,6 +19,9 @@
         <component name="userPassword" class="com.webDevelopment.turistar.User.User.Domain.ValueObjects.UserPassword" access="field">
             <property name="value" column="userPassword" access="field" type="string"/>
         </component>
+        <property name="tourBookingDetails" column="tourBookings" access="field">
+            <type name="com.webDevelopment.turistar.User.User.Domain.ValueObjects.TourBookingDetail"/>
+        </property>
     </class>
 
 </hibernate-mapping>
