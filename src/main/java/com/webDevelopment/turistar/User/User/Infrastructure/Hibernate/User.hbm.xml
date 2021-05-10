@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.webDevelopment.turistar.User.User.Domain.User" table="users">
+        <composite-id name="userId" class="com.webDevelopment.turistar.Shared.Domain.User.UserId" access="field">
+            <key-property name="value" column="userID" access="field" length="36"/>
+        </composite-id>
+        <component name="userFirstName" class="com.webDevelopment.turistar.User.User.Domain.ValueObjects.UserName" access="field">
+            <property name="value" column="cityName" access="field" type="string"/>
+        </component>
+        <component name="userLastName" class="com.webDevelopment.turistar.User.User.Domain.ValueObjects.UserLastName" access="field">
+            <property name="value" column="userName" access="field" type="string"/>
+        </component>
+        <component name="userEmail" class="com.webDevelopment.turistar.User.User.Domain.ValueObjects.UserEmail" access="field">
+            <property name="value" column="userEmail" access="field" type="string"/>
+        </component>
+        <component name="userPassword" class="com.webDevelopment.turistar.User.User.Domain.ValueObjects.UserPassword" access="field">
+            <property name="value" column="userPassword" access="field" type="string"/>
+        </component>
+    </class>
+
+</hibernate-mapping>
