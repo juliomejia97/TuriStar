@@ -22,7 +22,7 @@ public class CreateTourSpotController {
 
     @PostMapping(value = "/TourSpot/create")
     public ResponseEntity<HashMap> execute(@RequestBody CreateTourSpotController.Request request){
-        spotCreator.execute(request.getTourId(),request.getCityId(),request.getTourName(),request.getCityName(),request.getDescription());
+        spotCreator.execute(request.getTourId(),request.getCityId(),request.getTourName(),request.getCityName(),request.getDescription(), request.getTourId());
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 

@@ -25,7 +25,7 @@ public class TourSpotCreator {
         this.latLangInfo = new LatLangInfo(service);
     }
 
-    public void execute(String tourSpotId, String cityId,String tourSpotName, String cityName, String cityDescription) throws TourSpotNotExists {
+    public void execute(String tourSpotId, String cityId,String tourSpotName, String cityName, String cityDescription, String tourId) throws TourSpotNotExists {
         Optional<TourSpot> tourDuplicated = tourSpotRepository.find(tourSpotId);
         if(tourDuplicated.isPresent()){
             throw new TourSpotDuplicated("The Tour Spot already exists");
@@ -33,7 +33,7 @@ public class TourSpotCreator {
         List<Double> latlong = latLangInfo.execute(tourSpotName,cityName);
         TourSpot tourSpot = new TourSpot(new TourSpotId(tourSpotId), new CityId(cityId),new TourSpotName(tourSpotName),
                 new TourSpotLatitude(latlong.get(0)), new TourSpotLongitude(latlong.get(1)),
-                new TourSpotDescription(cityDescription), new TourId("") );
+                new TourSpotDescription(cityDescription), new TourId(tourId) );
         tourSpotRepository.save(tourSpot);
     }
 }

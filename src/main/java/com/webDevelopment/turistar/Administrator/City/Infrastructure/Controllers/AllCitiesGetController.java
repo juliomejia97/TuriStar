@@ -32,7 +32,7 @@ public class AllCitiesGetController {
         HashMap<String,String> response = new HashMap<>(){{
             put("error",exception.getMessage());
         }};
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 }
 
