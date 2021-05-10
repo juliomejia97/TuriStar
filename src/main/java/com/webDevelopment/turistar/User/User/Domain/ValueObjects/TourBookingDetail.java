@@ -38,7 +38,10 @@ public class TourBookingDetail {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TourBookingDetail that = (TourBookingDetail) o;
-        return Objects.equals(tourBookingId, that.tourBookingId) && Objects.equals(tourBookingInitDate, that.tourBookingInitDate) && Objects.equals(tourBookingEndDate, that.tourBookingEndDate) && Objects.equals(tourBookingActive, that.tourBookingActive);
+        return Objects.equals(tourBookingId, that.tourBookingId) &&
+                Objects.equals(tourBookingInitDate, that.tourBookingInitDate) &&
+                Objects.equals(tourBookingEndDate, that.tourBookingEndDate) &&
+                Objects.equals(tourBookingActive, that.tourBookingActive);
     }
 
     @Override

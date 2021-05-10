@@ -46,11 +46,11 @@ public class TourBookingCustomDetail implements UserType {
             Optional<String> value = Optional.ofNullable(rs.getString(names[0]));
             if(value.isPresent()) {
                 List<HashMap<String, Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
-                response = objects.stream().map(tourSpot ->
-                        new TourBookingDetail((String) tourSpot.get("id"),
-                                (LocalDate) tourSpot.get("initDate"),
-                                (LocalDate) tourSpot.get("endDate"),
-                                (Boolean) tourSpot.get("isActive"))).collect(Collectors.toList());
+                response = objects.stream().map(tourBooking ->
+                        new TourBookingDetail((String) tourBooking.get("id"),
+                                (LocalDate) tourBooking.get("initDate"),
+                                (LocalDate) tourBooking.get("endDate"),
+                                (Boolean) tourBooking.get("isActive"))).collect(Collectors.toList());
             }
         }
         catch (Exception e){
