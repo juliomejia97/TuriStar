@@ -17,6 +17,9 @@ public class User {
     private UserEmail userEmail;
     private UserPassword userPassword;
 
+    //private HotelPlanBooking {}
+    //private TourBooking {}
+
     public User(UserId userId, UserName userFirstName, UserLastName userLastName, UserEmail userEmail, UserPassword userPassword) {
         this.userId = userId;
         this.userFirstName = userFirstName;
@@ -25,7 +28,7 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public void updateUser(UserName userFirstName, UserLastName userLastName, UserEmail userNickName)
+    public void updateUser(UserName userFirstName, UserLastName userLastName, UserEmail userEmail)
     {
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
