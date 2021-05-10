@@ -3,6 +3,7 @@ package com.webDevelopment.turistar.Hotel.HotelPlanBooking.Infrastructure.Hibern
 import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.Ports.HotelPlanBookingRepository;
 import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.HotelPlanBooking;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
+import com.webDevelopment.turistar.Shared.Domain.HotelPlanBooking.HotelPlanBookingId;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,13 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@Transactional("city-transactional-manager")
+@Transactional("transactional-manager")
 public class HibernateHotelPlanBookingRepository implements HotelPlanBookingRepository {
 
     protected final SessionFactory sessionFactory;
     protected final Class<HotelPlanBooking>  aggregateClass;
 
-    public HibernateHotelPlanBookingRepository(@Qualifier("city-session-factory") SessionFactory sessionFactory) {
+    public HibernateHotelPlanBookingRepository(@Qualifier("session-factory") SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
         this.aggregateClass = HotelPlanBooking.class;
     }
@@ -28,8 +29,8 @@ public class HibernateHotelPlanBookingRepository implements HotelPlanBookingRepo
     }
 
     @Override
-    public Optional<HotelPlanBooking> find(String cityId) {
-        CityId id = new CityId(cityId);
+    public Optional<HotelPlanBooking> find(String hotelPlanBookingId) {
+        HotelPlanBookingId id = new HotelPlanBookingId(hotelPlanBookingId);
         return Optional.ofNullable(sessionFactory.getCurrentSession().byId(aggregateClass).load(id));
     }
 
@@ -42,8 +43,8 @@ public class HibernateHotelPlanBookingRepository implements HotelPlanBookingRepo
 
     @Override
     public Optional<List<HotelPlanBooking>> all() {
-        Query query = sessionFactory.getCurrentSession().createQuery("FROM City");
-        List<HotelPlanBooking> cities= query.list();
-        return Optional.ofNullable(cities);
+        Query query = sessionFactory.getCurrentSession().createQuery("FROM HotelPlanBooking");
+        List<HotelPlanBooking> hotelPlanBookings = query.list();
+        return Optional.ofNullable(hotelPlanBookings);
     }
 }
