@@ -22,7 +22,7 @@ public class CreateTourSpotController {
 
     @PostMapping(value = "/TourSpot/create")
     public ResponseEntity<HashMap> execute(@RequestBody CreateTourSpotController.Request request){
-        spotCreator.execute(request.getTourId(),request.getCityId(),request.getTourName(),request.getCityName(),request.getDescription(), request.getTourId());
+        spotCreator.execute(request.getTourSpotId(),request.getCityId(),request.getTourName(),request.getCityName(),request.getDescription(), request.getTourId());
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
@@ -35,11 +35,20 @@ public class CreateTourSpotController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
     private static class Request{
+        private String tourSpotId;
         private String tourId;
         private String cityId;
         private String tourName;
         private String cityName;
         private String description;
+
+        public String getTourSpotId() {
+            return tourSpotId;
+        }
+
+        public void setTourSpotId(String tourSpotId) {
+            this.tourSpotId = tourSpotId;
+        }
 
         public String getTourId() {
             return tourId;
@@ -57,14 +66,6 @@ public class CreateTourSpotController {
             this.cityId = cityId;
         }
 
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
         public String getTourName() {
             return tourName;
         }
@@ -79,6 +80,14 @@ public class CreateTourSpotController {
 
         public void setCityName(String cityName) {
             this.cityName = cityName;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
         }
     }
 }

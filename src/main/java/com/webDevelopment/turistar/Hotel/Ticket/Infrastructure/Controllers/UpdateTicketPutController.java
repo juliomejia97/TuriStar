@@ -20,19 +20,47 @@ public class UpdateTicketPutController {
 
     @PutMapping(value="/{idTicket}")
     public ResponseEntity<String> execute(@PathVariable String idTicket, @RequestBody Request request){
-        ticketModifier.execute(idTicket,request.getHotelPlanBookingId(),request.getTicketAirline(),request.getTicketDeparture(),request.getTicketDestination(),request.getTicketPrice(),request.getTicketDateDeparture(),request.getTicketDateReturn());
-        return ResponseEntity.status(HttpStatus.OK).body("Ticket "+ request.getTicketAirline()+" has been modified");
+
+        ticketModifier.execute(idTicket,request.getHotelPlanBookingId(),request.getAirlineName(),
+                request.getTicketDeparture(),request.getTicketDestiantion(),request.getTicketPrice(),
+                request.getTicketDateDeparture(),request.getTicketDateReturn());
+        return ResponseEntity.status(HttpStatus.OK).body("Ticket "+ request.getAirlineName()+" has been modified");
     }
 
     private static class Request{
-        String ticketAirline;
-        String ticketDeparture;
-        String ticketDestination;
-        String hotelPlanBookingId;
 
+        String airlineName;
+        String ticketDeparture;
+        String ticketDestiantion;
+        String hotelPlanBookingId;
         double ticketPrice;
         LocalDate ticketDateDeparture;
         LocalDate ticketDateReturn;
+
+        public String getAirlineName() {
+            return airlineName;
+        }
+
+        public void setAirlineName(String airlineName) {
+            this.airlineName = airlineName;
+        }
+
+        public String getTicketDestiantion() {
+            return ticketDestiantion;
+        }
+
+        public void setTicketDestiantion(String ticketDestiantion) {
+            this.ticketDestiantion = ticketDestiantion;
+        }
+
+        public String getTicketDeparture() {
+            return ticketDeparture;
+        }
+
+        public void setTicketDeparture(String ticketDeparture) {
+            this.ticketDeparture = ticketDeparture;
+        }
+
 
         public String getHotelPlanBookingId() {
             return hotelPlanBookingId;
@@ -40,6 +68,14 @@ public class UpdateTicketPutController {
 
         public void setHotelPlanBookingId(String hotelPlanBookingId) {
             this.hotelPlanBookingId = hotelPlanBookingId;
+        }
+
+        public double getTicketPrice() {
+            return ticketPrice;
+        }
+
+        public void setTicketPrice(double ticketPrice) {
+            this.ticketPrice = ticketPrice;
         }
 
         public LocalDate getTicketDateDeparture() {
@@ -56,34 +92,6 @@ public class UpdateTicketPutController {
 
         public void setTicketDateReturn(LocalDate ticketDateReturn) {
             this.ticketDateReturn = ticketDateReturn;
-        }
-
-        public String getTicketAirline() {
-            return ticketAirline;
-        }
-        public void setTicketAirline(String ticketAirline) {
-            this.ticketAirline = ticketAirline;
-        }
-
-        public String getTicketDeparture() {
-            return ticketDeparture;
-        }
-        public void setTicketDeparture(String ticketDeparture) {
-            this.ticketDeparture = ticketDeparture;
-        }
-
-        public String getTicketDestination() {
-            return ticketDestination;
-        }
-        public void setTicketDestination(String ticketDestination) {
-            this.ticketDestination = ticketDestination;
-        }
-
-        public double getTicketPrice() {
-            return ticketPrice;
-        }
-        public void setTicketPrice(double ticketPrice) {
-            this.ticketPrice = ticketPrice;
         }
     }
 
