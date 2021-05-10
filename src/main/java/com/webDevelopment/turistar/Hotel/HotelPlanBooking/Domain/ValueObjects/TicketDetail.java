@@ -1,6 +1,5 @@
 package com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects;
 
-
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Objects;
