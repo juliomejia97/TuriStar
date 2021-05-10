@@ -11,6 +11,8 @@
     <bean id="inMemoryTourSpotRepository" class="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.InMemoryTourSpotRepository"/>
     <bean id="geoCodeInfoService" class="com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoService"/>
     <bean id="hibernateCityRepository" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.Hibernate.HibernateCityRepository"/>
+    <bean id="hibernateHotelPlanBookingRepository" class="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Infrastructure.Hibernate.HibernateHotelPlanBookingRepository"/>
+
     <bean id="inMemoryUserRepository" class="com.webDevelopment.turistar.User.User.Infrastructure.InMemoryUserRepository"/>
     <bean id="cityModifier" class="com.webDevelopment.turistar.Administrator.City.Application.Update.CityModifier">
         <constructor-arg ref="hibernateCityRepository"/>
@@ -61,15 +63,15 @@
     </bean>
 
     <bean id="hotelPlanBookingAll" class="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Application.All.HotelPlanBookingAll">
-        <constructor-arg ref="inMemoryHotelPlanBookingRepository"/>
+        <constructor-arg ref="hibernateHotelPlanBookingRepository"/>
     </bean>
 
     <bean id="hotelPlanBookingDeleter" class="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Application.Delete.HotelPlanBookingDelete">
-        <constructor-arg ref="inMemoryHotelPlanBookingRepository"/>
+        <constructor-arg ref="hibernateHotelPlanBookingRepository"/>
     </bean>
 
     <bean id="hotelPlanBookingModifier" class="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Application.Update.HotelPlanBookingModifier">
-        <constructor-arg ref="inMemoryHotelPlanBookingRepository"/>
+        <constructor-arg ref="hibernateHotelPlanBookingRepository"/>
     </bean>
 
     <bean id="badWordService" class="com.webDevelopment.turistar.User.User.Infrastructure.BadWordsService"/>

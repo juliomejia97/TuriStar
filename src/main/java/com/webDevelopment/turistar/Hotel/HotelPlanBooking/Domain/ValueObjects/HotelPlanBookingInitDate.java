@@ -6,6 +6,9 @@ import com.webDevelopment.turistar.Shared.Domain.DateValueObject;
 import java.time.LocalDate;
 
 public class HotelPlanBookingInitDate extends DateValueObject {
+
+    private HotelPlanBookingInitDate(){}
+
     public HotelPlanBookingInitDate(LocalDate hotelPlanBookingInitDate){
         this.validate(hotelPlanBookingInitDate);
         this.value = hotelPlanBookingInitDate;
