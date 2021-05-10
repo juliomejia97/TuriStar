@@ -22,6 +22,6 @@ public class TicketModifier {
         }
         Ticket ticketToUpdate = ticketUpdated.get();
         ticketToUpdate.updateTicket( airlineName,   ticketDeparture,   ticketDestination,   ticketPrice,ticketDateReturn,ticketDateDeparture);
-        this.ticketRepository.update(ticketId, ticketToUpdate);
+        this.ticketRepository.update(ticketToUpdate);
     }
 }

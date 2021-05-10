@@ -24,9 +24,8 @@ public class InMemoryTicketRepository implements TicketRepository {
     }};
 
     @Override
-    public void update(String cityId, Ticket ticket) {
-        Optional<Ticket> cityToupdate = find(cityId);
-        cityToupdate.ifPresent(value -> this.cites.remove(value));
+    public void update(Ticket ticket) {
+        //ticket.ifPresent(value -> this.cites.remove(value));
         this.cites.add(ticket);
     }
 

@@ -7,6 +7,10 @@ import com.webDevelopment.turistar.Shared.Domain.DateValueObject;
 import java.time.LocalDate;
 
 public class TicketDateReturn extends DateValueObject {
+
+    public TicketDateReturn() {
+    }
+
     public TicketDateReturn(LocalDate ticketDateReturn){
         this.validate(ticketDateReturn);
         this.value = ticketDateReturn;

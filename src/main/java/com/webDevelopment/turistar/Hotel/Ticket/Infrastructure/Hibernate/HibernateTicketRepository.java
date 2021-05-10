@@ -1,8 +1,12 @@
 package com.webDevelopment.turistar.Hotel.Ticket.Infrastructure.Hibernate;
 
+import com.webDevelopment.turistar.Administrator.City.Domain.City;
 import com.webDevelopment.turistar.Hotel.Ticket.Domain.Ports.TicketRepository;
 import com.webDevelopment.turistar.Hotel.Ticket.Domain.Ticket;
+import com.webDevelopment.turistar.Shared.Domain.City.CityId;
+import com.webDevelopment.turistar.Shared.Domain.Ticket.TicketId;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,13 +24,14 @@ public class HibernateTicketRepository implements TicketRepository {
     }
 
     @Override
-    public void update(String ticketId, Ticket ticket) {
-
+    public void update(Ticket ticket) {
+        sessionFactory.getCurrentSession().update(ticket);
     }
 
     @Override
     public Optional<Ticket> find(String ticketId) {
-        return Optional.empty();
+        TicketId id = new TicketId(ticketId);
+        return Optional.ofNullable(sessionFactory.getCurrentSession().byId(aggregateClass).load(id));
     }
 
     @Override
@@ -38,6 +43,8 @@ public class HibernateTicketRepository implements TicketRepository {
 
     @Override
     public Optional<List<Ticket>> all() {
-        return Optional.empty();
+        Query query = sessionFactory.getCurrentSession().createQuery("FROM Ticket");
+        List<Ticket> tickets= query.list();
+        return Optional.ofNullable(tickets);
     }
 }

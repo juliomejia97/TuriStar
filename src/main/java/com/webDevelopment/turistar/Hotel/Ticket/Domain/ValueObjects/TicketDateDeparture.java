@@ -7,6 +7,9 @@ import java.time.LocalDate;
 
 public class TicketDateDeparture extends DateValueObject {
 
+    public TicketDateDeparture() {
+    }
+
     public TicketDateDeparture(LocalDate ticketDateDeparture){
         this.validate(ticketDateDeparture);
         this.value = ticketDateDeparture;

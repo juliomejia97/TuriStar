@@ -4,6 +4,8 @@ import com.webDevelopment.turistar.Hotel.Ticket.Domain.Exceptions.LengthNotValid
 import com.webDevelopment.turistar.Shared.Domain.StringValueObject;
 
 public class TicketDestination extends StringValueObject {
+    public TicketDestination() {
+    }
 
     public TicketDestination(String name){
         this.validate(name);

@@ -5,6 +5,7 @@ import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.Ho
 import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.HotelPlanBookingEndDate;
 import com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.HotelPlanBookingInitDate;
 import com.webDevelopment.turistar.Shared.Domain.HotelPlanBooking.HotelPlanBookingId;
+import com.webDevelopment.turistar.Shared.Domain.User.UserId;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -13,6 +14,8 @@ import java.util.Objects;
 public class HotelPlanBooking {
 
     private HotelPlanBookingId hotelPlanBookingId;
+    private UserId userId;
+
     private HotelPlanBookingInitDate hotelPlanBookingInitDate;
     private HotelPlanBookingEndDate hotelPlanBookingEndDate;
 
@@ -21,8 +24,9 @@ public class HotelPlanBooking {
 
     private HotelPlanBooking(){}
 
-    public HotelPlanBooking(HotelPlanBookingId hotelPlanBookingId,HotelPlanBookingInitDate hotelPlanBookingInitDate,HotelPlanBookingEndDate hotelPlanBookingEndDate) {
+    public HotelPlanBooking(HotelPlanBookingId hotelPlanBookingId,UserId userId,HotelPlanBookingInitDate hotelPlanBookingInitDate,HotelPlanBookingEndDate hotelPlanBookingEndDate) {
         this.hotelPlanBookingId = hotelPlanBookingId;
+        this.userId = userId;
         this.hotelPlanBookingInitDate = hotelPlanBookingInitDate;
         this.hotelPlanBookingEndDate = hotelPlanBookingEndDate;
         this.hotelPlanBookingActive= new HotelPlanBookingActive(true);
@@ -34,6 +38,7 @@ public class HotelPlanBooking {
         if (o == null || getClass() != o.getClass()) return false;
         HotelPlanBooking hotelPlanBooking = (HotelPlanBooking) o;
         return Objects.equals(hotelPlanBookingId, hotelPlanBooking.hotelPlanBookingId) &&
+                Objects.equals(userId, hotelPlanBooking.userId) &&
                 Objects.equals(hotelPlanBookingInitDate, hotelPlanBooking.hotelPlanBookingInitDate) &&
                 Objects.equals(hotelPlanBookingEndDate, hotelPlanBooking.hotelPlanBookingEndDate) &&
                 Objects.equals(hotelPlanBookingActive, hotelPlanBooking.hotelPlanBookingActive);
@@ -43,6 +48,7 @@ public class HotelPlanBooking {
     {
         return new HashMap<>() {{
             put("id", hotelPlanBookingId.value());
+            put("userId", userId.value());
             put("hotelPlanBookingInitDate", hotelPlanBookingInitDate.value().toString());
             put("hotelPlanBookingEndDate", hotelPlanBookingEndDate.value().toString());
             put("hotelPlanBookingActive", hotelPlanBookingActive.value().toString());
