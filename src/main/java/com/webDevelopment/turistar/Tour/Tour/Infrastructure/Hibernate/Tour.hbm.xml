@@ -19,5 +19,9 @@
         <component name="tourPrice" class="com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects.TourPrice" access="field">
             <property name="value" column="tourPrice" access="field" type="double"/>
         </component>
+
+        <property name="tourSpots" column="tourSpots" access="field">
+            <type name="com.webDevelopment.turistar.Administrator.City.Infrastructure.Hibernate.TourSpotCustomDetail"/>
+        </property>
     </class>
 </hibernate-mapping>

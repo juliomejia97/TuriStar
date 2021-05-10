@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class InMemoryTourSpotRepository implements TourSpotRepository {
+    /*
     private TourSpot t1 = new TourSpot(new TourSpotId("28967a36-ac74-11eb-8529-0242ac130003"),
             new CityId("a0619482-a621-11eb-bcbc-0242ac130002"),
             new TourSpotName("Monserrate"), new TourSpotLatitude(4.6056728), new TourSpotLongitude(-74.0555255),
@@ -31,6 +32,8 @@ public class InMemoryTourSpotRepository implements TourSpotRepository {
         add(t2);
         add(t3);
     }};
+    */
+    private List<TourSpot> tourSpots;
     @Override
     public void update(TourSpot tourSpot) {
         this.tourSpots.remove(tourSpot);
