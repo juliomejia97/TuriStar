@@ -35,7 +35,8 @@ public class InMemoryUserRepository implements UserRepository {
     }
 
     @Override
-    public void update(String userId, User user) {
-
+    public void update(User user) {
+        this.users.remove(user);
+        this.users.add(user);
     }
 }

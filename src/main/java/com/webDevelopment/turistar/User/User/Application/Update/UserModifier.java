@@ -33,6 +33,6 @@ public class UserModifier {
         Optional<User> actualUser = finder.execute(userId);
         User oldUser = actualUser.get();
         oldUser.updateUser(new UserName(userName), new UserLastName(userLastName), new UserEmail(userEmail));
-        repository.update(userId, oldUser);
+        repository.update(oldUser);
     }
 }

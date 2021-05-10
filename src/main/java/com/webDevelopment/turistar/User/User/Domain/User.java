@@ -3,10 +3,7 @@ package com.webDevelopment.turistar.User.User.Domain;
 import com.webDevelopment.turistar.Shared.Domain.User.UserId;
 import com.webDevelopment.turistar.User.User.Domain.ValueObjects.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class User {
@@ -97,4 +94,11 @@ public class User {
                 Objects.equals(userPassword, user.userPassword);
     }
     public User(){}
+
+    public void addTourBookings(TourBookingDetail bookingDetail){
+        List<TourBookingDetail> tourBookingDetailList = this.tourBookingDetails.isEmpty() ?
+                new ArrayList<>():this.tourBookingDetails.get();
+        tourBookingDetailList.add(bookingDetail);
+        this.tourBookingDetails = Optional.ofNullable(tourBookingDetailList);
+    }
 }

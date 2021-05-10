@@ -35,7 +35,7 @@ public class HibernateUserRepository implements UserRepository {
     }
 
     @Override
-    public void update(String userId, User user) {
+    public void update(User user) {
         sessionFactory.getCurrentSession().update(user);
     }
 }

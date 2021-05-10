@@ -1,5 +1,7 @@
 package com.webDevelopment.turistar.Tour.TourBooking.Domain;
 
+import com.webDevelopment.turistar.Shared.Domain.Aggregate.AggregateRoot;
+import com.webDevelopment.turistar.Shared.Domain.Tour.TourBookedEventDomain;
 import com.webDevelopment.turistar.Shared.Domain.Tour.TourId;
 import com.webDevelopment.turistar.Shared.Domain.TourBooking.TourBookingId;
 import com.webDevelopment.turistar.Shared.Domain.User.UserId;
@@ -9,7 +11,7 @@ import com.webDevelopment.turistar.Tour.TourBooking.Domain.ValueObjects.TourBook
 
 import java.util.HashMap;
 
-public class TourBooking {
+public class TourBooking extends AggregateRoot {
 
     TourBookingId tourBookingId;
     TourBookingInitDate tourBookingInitDate;
@@ -25,7 +27,14 @@ public class TourBooking {
         this.tourBookingInitDate = tourBookingInitDate;
         this.tourBookingEndDate = tourBookingEndDate;
         this.tourBookingActive = new TourBookingActive(true);
-        System.out.println("DATE" + this.tourBookingInitDate);
+    }
+
+    public static TourBooking create(TourBookingId tourBookingId, TourBookingInitDate tourBookingInitDate, TourBookingEndDate tourBookingEndDate, TourId tourId, UserId userId){
+        TourBookingActive active = new TourBookingActive(true);
+        TourBooking tourBooking =  new TourBooking(tourBookingId,tourBookingInitDate,tourBookingEndDate,tourId,userId);
+        tourBooking.record(new TourBookedEventDomain(userId.value(), tourBookingId.value(),
+                tourBookingInitDate.value(),tourBookingEndDate.value(),active.value()));
+        return tourBooking;
     }
 
     public void deleteTourBooking() {
