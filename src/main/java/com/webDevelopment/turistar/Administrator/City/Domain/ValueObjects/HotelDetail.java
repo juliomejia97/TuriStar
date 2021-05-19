@@ -47,4 +47,8 @@ public class HotelDetail {
     public int hashCode() {
         return Objects.hash(hotelId, hotelName, hotelStars, hotelAddress, hotelPhotos);
     }
+
+    public boolean hotelDetailEqualsById(String hotelId){
+        return this.hotelId.equals(hotelId);
+    }
 }

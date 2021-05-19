@@ -95,4 +95,15 @@ public class City extends AggregateRoot {
         hotelDetails.add(new HotelDetail(hotelId,hotelName,hotelStars,hotelAddress,hotelPhotos));
         this.hotels = Optional.of(hotelDetails);
     }
+
+    public void updateHotelDetail(String hotelId, String hotelName, String hotelAddress,
+                                   Double hotelStars, HashMap<String, Object> hotelPhotos){
+        HotelDetail newHotelDetail = new HotelDetail(hotelId,hotelName,hotelStars,hotelAddress,hotelPhotos);
+        List<HotelDetail> hotelDetails = this.hotels.get();
+        HotelDetail hotelDetailActual = hotelDetails.stream()
+                .filter(hotel -> hotel.hotelDetailEqualsById(hotelId)).findFirst().get();
+        hotelDetails.remove(hotelDetailActual);
+        hotelDetails.add(newHotelDetail);
+        this.hotels = Optional.of(hotelDetails);
+    }
 }

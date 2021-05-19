@@ -5,6 +5,7 @@ import com.webDevelopment.turistar.Administrator.Hotel.Domain.Hotel;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.Ports.HotelRepository;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.AddressInfo;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhoto;
+import com.webDevelopment.turistar.Shared.Domain.Bus.Event.EventBus;
 import com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoService;
 
 import java.util.HashMap;
@@ -17,11 +18,12 @@ public class HotelModifer {
     private HotelRepository repository;
     private AddressInfo inforService;
     private GeoCodeInfoService service;
-
-    public HotelModifer(HotelRepository repository, GeoCodeInfoService service) {
+    private EventBus eventBus;
+    public HotelModifer(HotelRepository repository, GeoCodeInfoService service, EventBus eventBus) {
         this.repository = repository;
         this.service = service;
         this.inforService = new AddressInfo(service);
+        this.eventBus = eventBus;
     }
 
     public void execute(String idHotel, String hotelName, String cityName, Double hotelStars, HashMap<Integer, String> photos) {
@@ -38,6 +40,6 @@ public class HotelModifer {
         List<HotelPhoto> photosAsList = photos.entrySet().stream().map(p -> new HotelPhoto(p.getKey(),p.getValue())).collect(Collectors.toList());
         hotelUpdate.updateHotel(hotelName,hotelStars,photosAsList,hotelAddress);
         repository.update(hotelUpdate);
-
+        eventBus.publish(hotelUpdate.pullDomainEvents());
     }
 }

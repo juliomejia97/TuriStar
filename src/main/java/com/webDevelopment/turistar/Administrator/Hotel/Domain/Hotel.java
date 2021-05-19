@@ -10,6 +10,7 @@ import com.webDevelopment.turistar.Shared.Domain.Aggregate.AggregateRoot;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
 import com.webDevelopment.turistar.Shared.Domain.Hotel.HotelCreatedDomainEvent;
 import com.webDevelopment.turistar.Shared.Domain.Hotel.HotelId;
+import com.webDevelopment.turistar.Shared.Domain.Hotel.HotelUpdatedDomainEvent;
 
 import java.util.HashMap;
 import java.util.List;
@@ -77,7 +78,12 @@ public class Hotel extends AggregateRoot {
         this.hotelStars = new HotelStars(hotelStars);
         this.hotelAddress = !hotelAddress.isEmpty() ?  new HotelAddress(hotelAddress):this.hotelAddress;
         this.hotelPhotos.addAll(hotelPhotos);
-        //TODO: Hacer record para el evento
+        HashMap<String,Object> map = new HashMap<>();
+        for(HotelPhoto photo:this.hotelPhotos){
+            map.put(photo.getIdPhoto().toString(),photo.getUrlPhoto());
+        }
+        this.record(new HotelUpdatedDomainEvent(cityId.value(), hotelId.value(),
+                hotelName,hotelStars,hotelAddress,map));
     }
 
     public Boolean AddressWillChange(String hotelName){
