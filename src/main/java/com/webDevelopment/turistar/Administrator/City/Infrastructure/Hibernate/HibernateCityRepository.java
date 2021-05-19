@@ -37,4 +37,9 @@ public class HibernateCityRepository implements CityRepository {
         List<City> cities= query.list();
         return Optional.ofNullable(cities);
     }
+
+    @Override
+    public void update(City city) {
+        this.sessionFactory.getCurrentSession().update(city);
+    }
 }

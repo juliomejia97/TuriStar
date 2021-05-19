@@ -5,6 +5,7 @@ import com.webDevelopment.turistar.Administrator.TourSpot.Domain.Exceptions.Tour
 import com.webDevelopment.turistar.Administrator.TourSpot.Domain.Ports.TourSpotRepository;
 import com.webDevelopment.turistar.Administrator.TourSpot.Domain.TourSpot;
 import com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.*;
+import com.webDevelopment.turistar.Shared.Domain.Bus.Event.EventBus;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
 import com.webDevelopment.turistar.Shared.Domain.Tour.TourId;
 import com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotId;
@@ -18,11 +19,13 @@ public class TourSpotCreator {
     private TourSpotRepository tourSpotRepository;
     private LatLangInfo latLangInfo;
     private GeoCodeInfoService service;
+    private EventBus eventBus;
 
-    public TourSpotCreator(TourSpotRepository tourSpotRepository, GeoCodeInfoService service) {
+    public TourSpotCreator(TourSpotRepository tourSpotRepository, GeoCodeInfoService service, EventBus eventBus) {
         this.tourSpotRepository = tourSpotRepository;
         this.service = service;
         this.latLangInfo = new LatLangInfo(service);
+        this.eventBus = eventBus;
     }
 
     public void execute(String tourSpotId, String cityId,String tourSpotName, String cityName, String cityDescription, String tourId) throws TourSpotNotExists {
@@ -35,5 +38,6 @@ public class TourSpotCreator {
                 new TourSpotLatitude(latlong.get(0)), new TourSpotLongitude(latlong.get(1)),
                 new TourSpotDescription(cityDescription), new TourId(tourId) );
         tourSpotRepository.save(tourSpot);
+        eventBus.publish(tourSpot.pullDomainEvents());
     }
 }

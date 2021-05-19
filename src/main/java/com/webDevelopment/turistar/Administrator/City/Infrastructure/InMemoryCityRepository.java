@@ -31,4 +31,10 @@ public class InMemoryCityRepository implements CityRepository {
 
         return Optional.ofNullable(this.cites);
     }
+
+    @Override
+    public void update(City city) {
+        this.cites.remove(city);
+        this.cites.add(city);
+    }
 }

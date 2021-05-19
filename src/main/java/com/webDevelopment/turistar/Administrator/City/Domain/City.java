@@ -4,10 +4,7 @@ import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.*;
 import com.webDevelopment.turistar.Shared.Domain.Aggregate.AggregateRoot;
 import com.webDevelopment.turistar.Shared.Domain.City.CityId;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class City extends AggregateRoot {
@@ -52,6 +49,7 @@ public class City extends AggregateRoot {
             put("name", cityName.value());
             put("country", cityCountry.value());
             put("cityActive", cityActive.value().toString());
+            put("TourSpots",dataTourSpots());
         }};
     }
 
@@ -64,5 +62,12 @@ public class City extends AggregateRoot {
     }
     public boolean equalsById(String cityId) {
         return this.cityId.equals(new CityId(cityId));
+    }
+
+    public void addTourSpots(String tourSpotName, String description, Double latitude, Double longitude) {
+        List<TourSpotDetail> tourSpotDetails = this.tourSpots.isEmpty() ?
+                new ArrayList<>():this.tourSpots.get();
+        tourSpotDetails.add(new TourSpotDetail(tourSpotName,latitude,longitude,description));
+        this.tourSpots = Optional.of(tourSpotDetails);
     }
 }

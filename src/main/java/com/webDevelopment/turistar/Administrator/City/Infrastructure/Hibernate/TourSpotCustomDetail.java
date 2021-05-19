@@ -46,12 +46,10 @@ public class TourSpotCustomDetail implements UserType {
             if(value.isPresent()) {
                 List<HashMap<String, Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
                 response = objects.stream().map(tourSpot ->
-                        new TourSpotDetail((String) tourSpot.get("id"),
-                                (String) tourSpot.get("name"),
+                        new TourSpotDetail((String) tourSpot.get("name"),
                                 (Double) tourSpot.get("latitude"),
                                 (Double) tourSpot.get("longitude"),
-                                (String) tourSpot.get("description"),
-                                (Boolean) tourSpot.get("active"))).collect(Collectors.toList());
+                                (String) tourSpot.get("description"))).collect(Collectors.toList());
             }
         }
         catch (Exception e){

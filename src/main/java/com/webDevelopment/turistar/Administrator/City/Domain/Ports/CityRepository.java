@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface CityRepository {
     Optional<City> find(String cityId);
     Optional<List<City>> all();
+    void update(City city);
 }

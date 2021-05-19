@@ -19,6 +19,7 @@ public class UpdateTourBooking {
         Optional<User> userOptional = repository.find(userId);
         if(userOptional.isEmpty()){
             throw new UserNotExist("The user does not exists");
+            //TODO: Hacer un roll back (evento?)
         }
         User finalUser = userOptional.get();
         finalUser.addTourBookings(new TourBookingDetail(tourBookingId,tourBookingInitDate,tourBookingEndDate,tourBookingActive));

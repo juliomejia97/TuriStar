@@ -30,6 +30,12 @@
     <bean id="cityFinder" class="com.webDevelopment.turistar.Administrator.City.Application.Find.CityFinder">
         <constructor-arg ref="hibernateCityRepository"/>
     </bean>
+    <bean id="updateTourSpotSerialized" class="com.webDevelopment.turistar.Administrator.City.Application.Update.UpdateTourSpot">
+        <constructor-arg ref="hibernateCityRepository"/>
+    </bean>
+    <bean id="updateOnTourSpotCreated" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.Events.UpdateOnTourSpotCreated">
+        <constructor-arg ref="updateTourSpotSerialized"/>
+    </bean>
     <!---Tour inyections-->
     <bean id="hibernateTourRepository" class="com.webDevelopment.turistar.Tour.Tour.Infrastructure.Hibernate.HibernateTourRepository"/>
 
@@ -73,6 +79,7 @@
     <bean id="tourSpotCreator" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.Create.TourSpotCreator">
         <constructor-arg ref="hibernateTourSpotRepository"/>
         <constructor-arg ref="geoCodeInfoService"/>
+        <constructor-arg ref="SpringApplicationEventBus"/>
     </bean>
     <bean id="tourSpotAll" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.All.TourSpotAll">
         <constructor-arg ref="hibernateTourSpotRepository"/>
