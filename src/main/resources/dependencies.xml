@@ -47,6 +47,10 @@
     <bean id="hotelFind" class="com.webDevelopment.turistar.Administrator.Hotel.Application.Find.HotelFinder">
         <constructor-arg ref="hibernateHotelRepository"/>
     </bean>
+    <bean id="hotelUpdate" class="com.webDevelopment.turistar.Administrator.Hotel.Application.Update.HotelModifer">
+        <constructor-arg ref="hibernateHotelRepository"/>
+        <constructor-arg ref="geoCodeInfoService"/>
+    </bean>
     <!---Tour Spot inyections-->
     <bean id="tourFinder" class="com.webDevelopment.turistar.Tour.Tour.Application.Find.TourFinder">
         <constructor-arg ref="hibernateTourRepository"/>

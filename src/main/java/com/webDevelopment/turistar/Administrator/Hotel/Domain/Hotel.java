@@ -68,8 +68,22 @@ public class Hotel extends AggregateRoot {
         return data;
     }
 
-    //TODO: Cuando se haga update crear el record
+    public void updateHotel(String hotelName, Double hotelStars, List<HotelPhoto> hotelPhotos, String hotelAddress){
+        this.hotelName = new HotelName(hotelName);
+        this.hotelStars = new HotelStars(hotelStars);
+        this.hotelAddress = !hotelAddress.isEmpty() ?  new HotelAddress(hotelAddress):this.hotelAddress;
+        this.hotelPhotos.addAll(hotelPhotos);
+        //TODO: Hacer record para el evento
+    }
+
+    public Boolean AddressWillChange(String hotelName){
+        return !this.hotelName.value().equals(hotelName);
+    }
     public Boolean equalsById(String hotelId){
         return this.hotelId.equals(new HotelId(hotelId));
+    }
+
+    public void clearPhotos() {
+        this.hotelPhotos.clear();
     }
 }
