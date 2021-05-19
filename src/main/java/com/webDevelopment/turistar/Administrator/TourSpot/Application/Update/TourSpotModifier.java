@@ -4,6 +4,7 @@ import com.webDevelopment.turistar.Administrator.TourSpot.Domain.Exceptions.Tour
 import com.webDevelopment.turistar.Administrator.TourSpot.Domain.Ports.TourSpotRepository;
 import com.webDevelopment.turistar.Administrator.TourSpot.Domain.TourSpot;
 import com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.LatLangInfo;
+import com.webDevelopment.turistar.Shared.Domain.Bus.Event.EventBus;
 import com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoService;
 
 import java.util.List;
@@ -14,11 +15,12 @@ public class TourSpotModifier {
     private TourSpotRepository tourSpotRepository;
     private LatLangInfo latLangInfo;
     private GeoCodeInfoService service;
-
-    public TourSpotModifier(TourSpotRepository tourSpotRepository, GeoCodeInfoService service) {
+    private EventBus eventBus;
+    public TourSpotModifier(TourSpotRepository tourSpotRepository, GeoCodeInfoService service, EventBus eventBus) {
         this.tourSpotRepository = tourSpotRepository;
         this.service = service;
         this.latLangInfo = new LatLangInfo(service);
+        this.eventBus = eventBus;
     }
 
     public void execute(String tourId, String tourName, String cityName, String cityDescription) throws TourSpotNotExists {
@@ -30,5 +32,6 @@ public class TourSpotModifier {
         List<Double> latlong = latLangInfo.execute(tourName,cityName);
         tourSpotToUpdate.updateTour(tourName,latlong.get(0),latlong.get(1), cityDescription);
         this.tourSpotRepository.update(tourSpotToUpdate);
+        eventBus.publish(tourSpotToUpdate.pullDomainEvents());
     }
 }

@@ -64,10 +64,20 @@ public class City extends AggregateRoot {
         return this.cityId.equals(new CityId(cityId));
     }
 
-    public void addTourSpots(String tourSpotName, String description, Double latitude, Double longitude) {
+    public void addTourSpots(String tourSpotName, String idTourSpot, String description, Double latitude, Double longitude) {
         List<TourSpotDetail> tourSpotDetails = this.tourSpots.isEmpty() ?
                 new ArrayList<>():this.tourSpots.get();
-        tourSpotDetails.add(new TourSpotDetail(tourSpotName,latitude,longitude,description));
+        tourSpotDetails.add(new TourSpotDetail(idTourSpot,tourSpotName,latitude,longitude,description));
+        this.tourSpots = Optional.of(tourSpotDetails);
+    }
+
+    public void updateTourSpotsDetail(String tourSpotId, String tourSpotName, Double latitude, Double longitude, String description) {
+        TourSpotDetail newTourSpotDetail = new TourSpotDetail(tourSpotId,tourSpotName,latitude,longitude,description);
+        List<TourSpotDetail> tourSpotDetails = this.tourSpots.get();
+        TourSpotDetail tourSpotDetailActual = tourSpotDetails.stream()
+                .filter(tourSpot -> tourSpot.tourSpotDetailEqualsById(tourSpotId)).findFirst().get();
+        tourSpotDetails.remove(tourSpotDetailActual);
+        tourSpotDetails.add(newTourSpotDetail);
         this.tourSpots = Optional.of(tourSpotDetails);
     }
 }

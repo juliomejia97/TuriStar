@@ -15,26 +15,26 @@ public class TourSpotUpdatedDomainEvent extends DomainEvent {
     private Double latitude;
     private Double longitude;
     private String description;
-    private Boolean tourSpotActive;
+    private Boolean tourEventType;
 
-    public TourSpotUpdatedDomainEvent(String aggregateId, String tourSpotId, String tourSpotName, Double latitude, Double longitude, String description, Boolean tourSpotActive) {
+    public TourSpotUpdatedDomainEvent(String aggregateId, String tourSpotId, String tourSpotName, Double latitude, Double longitude, String description, Boolean tourEventType) {
         super(aggregateId);
         this.tourSpotId = tourSpotId;
         this.tourSpotName = tourSpotName;
         this.latitude = latitude;
         this.longitude = longitude;
         this.description = description;
-        this.tourSpotActive = tourSpotActive;
+        this.tourEventType = tourEventType;
     }
 
-    public TourSpotUpdatedDomainEvent(String aggregateId, String eventId, String occurredOn, String tourSpotId, String tourSpotName, Double latitude, Double longitude, String description, Boolean tourSpotActive) {
+    public TourSpotUpdatedDomainEvent(String aggregateId, String eventId, String occurredOn, String tourSpotId, String tourSpotName, Double latitude, Double longitude, String description, Boolean tourEventType) {
         super(aggregateId, eventId, occurredOn);
         this.tourSpotId = tourSpotId;
         this.tourSpotName = tourSpotName;
         this.latitude = latitude;
         this.longitude = longitude;
         this.description = description;
-        this.tourSpotActive = tourSpotActive;
+        this.tourEventType = tourEventType;
     }
 
     private TourSpotUpdatedDomainEvent() {
@@ -43,7 +43,7 @@ public class TourSpotUpdatedDomainEvent extends DomainEvent {
         this.latitude = null;
         this.longitude = null;
         this.description = null;
-        this.tourSpotActive = null;
+        this.tourEventType = null;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class TourSpotUpdatedDomainEvent extends DomainEvent {
             put("latitude",latitude);
             put("longitude",longitude);
             put("description",description);
-            put("tourSpotActive",tourSpotActive);
+            put("tourEventType",tourEventType);
 
         }};
     }
@@ -72,7 +72,7 @@ public class TourSpotUpdatedDomainEvent extends DomainEvent {
                 (Double)body.get("latitude"),
                 (Double) body.get("longitude"),
                 (String)body.get("description"),
-                (Boolean)body.get("tourSpotActive"));
+                (Boolean)body.get("tourEventType"));
     }
 
     public String getTourSpotId() {
@@ -95,8 +95,8 @@ public class TourSpotUpdatedDomainEvent extends DomainEvent {
         return description;
     }
 
-    public Boolean getTourSpotActive() {
-        return tourSpotActive;
+    public Boolean getTourEventType() {
+        return tourEventType;
     }
 
     @Override
@@ -104,11 +104,16 @@ public class TourSpotUpdatedDomainEvent extends DomainEvent {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TourSpotUpdatedDomainEvent that = (TourSpotUpdatedDomainEvent) o;
-        return Objects.equals(tourSpotId, that.tourSpotId) && Objects.equals(tourSpotName, that.tourSpotName) && Objects.equals(latitude, that.latitude) && Objects.equals(longitude, that.longitude) && Objects.equals(description, that.description) && Objects.equals(tourSpotActive, that.tourSpotActive);
+        return Objects.equals(tourSpotId, that.tourSpotId) &&
+                Objects.equals(tourSpotName, that.tourSpotName) &&
+                Objects.equals(latitude, that.latitude) &&
+                Objects.equals(longitude, that.longitude) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(tourEventType, that.tourEventType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tourSpotId, tourSpotName, latitude, longitude, description, tourSpotActive);
+        return Objects.hash(tourSpotId, tourSpotName, latitude, longitude, description, tourEventType);
     }
 }

@@ -76,8 +76,8 @@ public class TourSpot extends AggregateRoot {
         this.latitude = new TourSpotLatitude(latitude);
         this.longitude = new TourSpotLongitude(longitude);
         this.description = new TourSpotDescription(description);
-        this.record(new TourSpotUpdatedDomainEvent(this.tourId.value(),  this.tourSpotId.value(), this.tourSpotName.value(), this.latitude.value(), this.longitude.value(), this.description.value(), this.tourSpotActive.value()) );
-        this.record(new TourSpotUpdatedDomainEvent(this.cityId.value(),  this.tourSpotId.value(), this.tourSpotName.value(), this.latitude.value(), this.longitude.value(), this.description.value(), this.tourSpotActive.value()) );
+        this.record(new TourSpotUpdatedDomainEvent(this.tourId.value(),  this.tourSpotId.value(), this.tourSpotName.value(), this.latitude.value(), this.longitude.value(), this.description.value(), true) );
+        this.record(new TourSpotUpdatedDomainEvent(this.cityId.value(),  this.tourSpotId.value(), this.tourSpotName.value(), this.latitude.value(), this.longitude.value(), this.description.value(), false) );
     }
 
     public Boolean equalsById(String idTourSpot){
