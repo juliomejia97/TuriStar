@@ -6,10 +6,10 @@ import com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotCreatedEventDo
 import org.springframework.context.event.EventListener;
 
 @DomainEventSubscriber(TourSpotCreatedEventDomain.class)
-public class AddTourSpotOnTourSpotCreated {
+public class CityAddTourSpotOnTourSpotCreated {
     private CityAddTourSpot cityAddTourSpot;
 
-    public AddTourSpotOnTourSpotCreated(CityAddTourSpot cityAddTourSpot) {
+    public CityAddTourSpotOnTourSpotCreated(CityAddTourSpot cityAddTourSpot) {
         this.cityAddTourSpot = cityAddTourSpot;
     }
 

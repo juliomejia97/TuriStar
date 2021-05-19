@@ -6,10 +6,10 @@ import com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotUpdatedDomainE
 import org.springframework.context.event.EventListener;
 
 @DomainEventSubscriber(TourSpotUpdatedDomainEvent.class)
-public class UpdateTourSpotOnTourSpotChanged {
+public class CityUpdateTourSpotOnTourSpotChanged {
     private CityUpdateTourSpots updateTourSpots;
 
-    public UpdateTourSpotOnTourSpotChanged(CityUpdateTourSpots updateTourSpots) {
+    public CityUpdateTourSpotOnTourSpotChanged(CityUpdateTourSpots updateTourSpots) {
         this.updateTourSpots = updateTourSpots;
     }
 

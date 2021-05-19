@@ -14,7 +14,7 @@ public class City extends AggregateRoot {
     private CityCountry cityCountry;
     private CityActive cityActive;
     private Optional<List<TourSpotDetail>> tourSpots;
-    private Optional<List<HotelDetail>> hotelDetails;
+    private Optional<List<HotelDetail>> hotels;
     private City(){}
 
     private City(CityId cityId, CityName cityName, CityCountry cityCountry, List<TourSpotDetail> tourSpots, List<HotelDetail> hotelDetails) {
@@ -23,7 +23,7 @@ public class City extends AggregateRoot {
         this.cityCountry = cityCountry;
         this.cityActive= new CityActive(true);
         this.tourSpots = Optional.ofNullable(tourSpots);
-        this.hotelDetails = Optional.ofNullable(hotelDetails);
+        this.hotels = Optional.ofNullable(hotelDetails);
     }
 
     public static City create(CityId cityId, CityName cityName, CityCountry cityCountry){
@@ -49,7 +49,8 @@ public class City extends AggregateRoot {
             put("name", cityName.value());
             put("country", cityCountry.value());
             put("cityActive", cityActive.value().toString());
-            put("TourSpots",dataTourSpots());
+            put("tourSpots",dataTourSpots());
+            put("hotels",dataHotels());
         }};
     }
 
@@ -57,6 +58,13 @@ public class City extends AggregateRoot {
         Optional<List<HashMap<String, Object>>> response = Optional.empty();
         if(this.tourSpots.isPresent()) {
             response = Optional.of(this.tourSpots.get().stream().map(TourSpotDetail::data).collect(Collectors.toList()));
+        }
+        return response;
+    }
+    public Optional<List<HashMap<String, Object>>> dataHotels(){
+        Optional<List<HashMap<String, Object>>> response = Optional.empty();
+        if(this.hotels.isPresent()){
+            response = Optional.of(this.hotels.get().stream().map(HotelDetail::data).collect(Collectors.toList()));
         }
         return response;
     }
@@ -79,5 +87,12 @@ public class City extends AggregateRoot {
         tourSpotDetails.remove(tourSpotDetailActual);
         tourSpotDetails.add(newTourSpotDetail);
         this.tourSpots = Optional.of(tourSpotDetails);
+    }
+
+    public void addHotel(String hotelId, String hotelName, String hotelAddress, Double hotelStars, HashMap<String, Object> hotelPhotos) {
+        List<HotelDetail> hotelDetails = this.hotels.isEmpty() ?
+                new ArrayList<>():this.hotels.get();
+        hotelDetails.add(new HotelDetail(hotelId,hotelName,hotelStars,hotelAddress,hotelPhotos));
+        this.hotels = Optional.of(hotelDetails);
     }
 }

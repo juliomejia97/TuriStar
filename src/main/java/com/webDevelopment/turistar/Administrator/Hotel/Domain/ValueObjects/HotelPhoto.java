@@ -32,4 +32,11 @@ public class HotelPhoto {
         return data;
     }
 
+    public Integer getIdPhoto() {
+        return idPhoto;
+    }
+
+    public String getUrlPhoto() {
+        return urlPhoto;
+    }
 }

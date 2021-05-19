@@ -33,15 +33,21 @@
     <bean id="addTourSpotSerialized" class="com.webDevelopment.turistar.Administrator.City.Application.Create.CityAddTourSpot">
         <constructor-arg ref="hibernateCityRepository"/>
     </bean>
-    <bean id="addTourSpotOnTourSpotCreated" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.DomainEventsSubscribers.AddTourSpotOnTourSpotCreated">
+    <bean id="addTourSpotOnTourSpotCreated" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.DomainEventsSubscribers.CityAddTourSpotOnTourSpotCreated">
         <constructor-arg ref="addTourSpotSerialized"/>
     </bean>
     <bean id="updateTourSpot" class="com.webDevelopment.turistar.Administrator.City.Application.Update.CityUpdateTourSpots">
         <constructor-arg ref="hibernateCityRepository"/>
     </bean>
 
-    <bean id="updateTourSpotOnChanged" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.DomainEventsSubscribers.UpdateTourSpotOnTourSpotChanged">
+    <bean id="updateTourSpotOnChanged" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.DomainEventsSubscribers.CityUpdateTourSpotOnTourSpotChanged">
         <constructor-arg ref="updateTourSpot"/>
+    </bean>
+    <bean id="addHotelSerialized" class="com.webDevelopment.turistar.Administrator.City.Application.Create.CityAddHotel">
+        <constructor-arg ref="hibernateCityRepository"/>
+    </bean>
+    <bean id="addHotelOnHotelCreated" class="com.webDevelopment.turistar.Administrator.City.Infrastructure.DomainEventsSubscribers.CityAddHotelonHotelCreated">
+        <constructor-arg ref="addHotelSerialized"/>
     </bean>
     <!---Tour inyections-->
     <bean id="hibernateTourRepository" class="com.webDevelopment.turistar.Tour.Tour.Infrastructure.Hibernate.HibernateTourRepository"/>

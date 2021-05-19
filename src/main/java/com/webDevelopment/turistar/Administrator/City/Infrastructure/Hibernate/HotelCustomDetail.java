@@ -49,6 +49,7 @@ public class HotelCustomDetail implements UserType {
                 List<HashMap<String, Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
                 response = objects.stream().map(hotel ->
                         new HotelDetail(
+                                (String) hotel.get("hotelId"),
                                 (String) hotel.get("hotelName"),
                                 (Double) hotel.get("hotelStars"),
                                 (String) hotel.get("hotelAddress"),
@@ -63,14 +64,14 @@ public class HotelCustomDetail implements UserType {
 
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
-        Optional<List<HotelDetail>> colors = (value == null) ? Optional.empty() : (Optional<List<HotelDetail>>) value;
+        Optional<List<HotelDetail>> hotels = (value == null) ? Optional.empty() : (Optional<List<HotelDetail>>) value;
         try {
-            if(colors.isEmpty()) {
+            if(hotels.isEmpty()) {
                 st.setNull(index, Types.VARCHAR);
             }
             else {
                 ObjectMapper mapper = new ObjectMapper();
-                List<HashMap<String, Object>> objects = colors.get().stream().map(HotelDetail::data).collect(Collectors.toList());
+                List<HashMap<String, Object>> objects = hotels.get().stream().map(HotelDetail::data).collect(Collectors.toList());
                 String serializedList = mapper.writeValueAsString(objects).replace("\\", "");
                 st.setString(index, serializedList);
             }

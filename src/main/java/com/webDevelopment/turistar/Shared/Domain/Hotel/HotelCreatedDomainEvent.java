@@ -9,28 +9,33 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class HotelCreatedDomainEvent extends DomainEvent {
+    private String hotelId;
     private String hotelName;
     private Double hotelStars;
     private String hotelAddress;
     private HashMap<String,Object> hotelPhotos;
 
     public HotelCreatedDomainEvent() {
+        this.hotelId = "";
         this.hotelName = "";
         this.hotelStars = 0.0;
         this.hotelAddress = "";
         this.hotelPhotos = null;
     }
 
-    public HotelCreatedDomainEvent(String aggregateId, String eventId, String occurredOn, String hotelName, Double hotelStars, String hotelAddress, HashMap<String,Object> hotelPhotos) {
-        super(aggregateId, eventId, occurredOn);
+    public HotelCreatedDomainEvent(String aggregateId, String hotelId, String hotelName, Double hotelStars, String hotelAddress, HashMap<String, Object> hotelPhotos) {
+        super(aggregateId);
+        this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.hotelStars = hotelStars;
         this.hotelAddress = hotelAddress;
         this.hotelPhotos = hotelPhotos;
     }
 
-    public HotelCreatedDomainEvent(String aggregateId, String hotelName, Double hotelStars, String hotelAddress, HashMap<String,Object> hotelPhotos) {
-        super(aggregateId);
+    public HotelCreatedDomainEvent(String aggregateId, String eventId, String occurredOn,
+                                   String hotelId, String hotelName, Double hotelStars, String hotelAddress, HashMap<String, Object> hotelPhotos) {
+        super(aggregateId, eventId, occurredOn);
+        this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.hotelStars = hotelStars;
         this.hotelAddress = hotelAddress;
@@ -45,6 +50,7 @@ public class HotelCreatedDomainEvent extends DomainEvent {
     @Override
     public HashMap<String, Serializable> toPrimitive() {
         return new HashMap<String, Serializable>(){{
+            put("hotelId",hotelId);
             put("hotelName",hotelName);
             put("hotelStars",hotelStars);
             put("hotelAddress",hotelAddress);
@@ -55,10 +61,15 @@ public class HotelCreatedDomainEvent extends DomainEvent {
     @Override
     public DomainEvent fromPrimitive(String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn) {
         return new HotelCreatedDomainEvent(aggregateId, eventId, occurredOn,
+                (String) body.get("hotelId"),
                 (String) body.get("hotelName"),
                 (Double)body.get("hotelStars"),
                 (String)body.get("hotelAddress"),
                 (HashMap<String,Object>) body.get("hotelPhotos"));
+    }
+
+    public String getHotelId() {
+        return hotelId;
     }
 
     public String getHotelName() {
@@ -82,14 +93,15 @@ public class HotelCreatedDomainEvent extends DomainEvent {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HotelCreatedDomainEvent that = (HotelCreatedDomainEvent) o;
-        return Objects.equals(hotelName, that.hotelName) &&
-                Objects.equals(hotelStars, that.hotelStars) &&
-                Objects.equals(hotelAddress, that.hotelAddress) &&
-                Objects.equals(hotelPhotos, that.hotelPhotos);
+        return Objects.equals(hotelId, that.hotelId)
+                && Objects.equals(hotelName, that.hotelName)
+                && Objects.equals(hotelStars, that.hotelStars)
+                && Objects.equals(hotelAddress, that.hotelAddress)
+                && Objects.equals(hotelPhotos, that.hotelPhotos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(hotelName, hotelStars, hotelAddress, hotelPhotos);
+        return Objects.hash(hotelId, hotelName, hotelStars, hotelAddress, hotelPhotos);
     }
 }

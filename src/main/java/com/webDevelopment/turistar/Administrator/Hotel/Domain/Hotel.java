@@ -13,6 +13,7 @@ import com.webDevelopment.turistar.Shared.Domain.Hotel.HotelId;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -34,10 +35,13 @@ public class Hotel extends AggregateRoot {
     }
     public static Hotel create(HotelId hotelId, CityId cityId, HotelName hotelName, HotelStars hotelStars, HotelAddress hotelAddress, List<HotelPhoto> hotelPhotos){
         Hotel newHotel  = new Hotel(hotelId,cityId,hotelName,hotelStars,hotelAddress,hotelPhotos);
-        newHotel.record(new HotelCreatedDomainEvent(cityId.value(),hotelName.value(),
-                hotelStars.value(),
-                hotelAddress.value(),
-                hotelPhotos.stream().map(HotelPhoto::value).findAny().get()));
+        HashMap<String,Object> map = new HashMap<>();
+        for(HotelPhoto photo:hotelPhotos){
+            map.put(photo.getIdPhoto().toString(),photo.getUrlPhoto());
+        }
+        newHotel.record(new HotelCreatedDomainEvent(cityId.value(),hotelId.value(),hotelName.value(),
+                hotelStars.value(), hotelAddress.value(),
+                map));
         return newHotel;
     }
     private Hotel(){}

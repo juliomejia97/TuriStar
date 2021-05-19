@@ -23,6 +23,9 @@
     <property name="tourSpots" column="tourSpots" access="field">
       <type name="com.webDevelopment.turistar.Administrator.City.Infrastructure.Hibernate.TourSpotCustomDetail"/>
     </property>
-    <!---TODO: Crear el mapeo de serializado de hotel-->
+
+    <property name="hotels" column="hotels" access="field">
+      <type name="com.webDevelopment.turistar.Administrator.City.Infrastructure.Hibernate.HotelCustomDetail"/>
+    </property>
   </class>
 </hibernate-mapping>

@@ -63,14 +63,14 @@ public class TourSpotCustomDetail implements UserType {
 
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
-        Optional<List<TourSpotDetail>> colors = (value == null) ? Optional.empty() : (Optional<List<TourSpotDetail>>) value;
+        Optional<List<TourSpotDetail>> tours = (value == null) ? Optional.empty() : (Optional<List<TourSpotDetail>>) value;
         try {
-            if(colors.isEmpty()) {
+            if(tours.isEmpty()) {
                 st.setNull(index, Types.VARCHAR);
             }
             else {
                 ObjectMapper mapper = new ObjectMapper();
-                List<HashMap<String, Object>> objects = colors.get().stream().map(TourSpotDetail::data).collect(Collectors.toList());
+                List<HashMap<String, Object>> objects = tours.get().stream().map(TourSpotDetail::data).collect(Collectors.toList());
                 String serializedList = mapper.writeValueAsString(objects).replace("\\", "");
                 st.setString(index, serializedList);
             }
