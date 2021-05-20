@@ -5,7 +5,9 @@ import com.webDevelopment.turistar.Shared.Domain.Tour.TourBookedEventDomain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class HotelCreatedDomainEvent extends DomainEvent {
@@ -13,7 +15,7 @@ public class HotelCreatedDomainEvent extends DomainEvent {
     private String hotelName;
     private Double hotelStars;
     private String hotelAddress;
-    private HashMap<String,Object> hotelPhotos;
+    private ArrayList<HashMap<String,Object>> hotelPhotos;
 
     public HotelCreatedDomainEvent() {
         this.hotelId = "";
@@ -23,7 +25,7 @@ public class HotelCreatedDomainEvent extends DomainEvent {
         this.hotelPhotos = null;
     }
 
-    public HotelCreatedDomainEvent(String aggregateId, String hotelId, String hotelName, Double hotelStars, String hotelAddress, HashMap<String, Object> hotelPhotos) {
+    public HotelCreatedDomainEvent(String aggregateId, String hotelId, String hotelName, Double hotelStars, String hotelAddress, ArrayList<HashMap<String, Object>> hotelPhotos) {
         super(aggregateId);
         this.hotelId = hotelId;
         this.hotelName = hotelName;
@@ -33,7 +35,7 @@ public class HotelCreatedDomainEvent extends DomainEvent {
     }
 
     public HotelCreatedDomainEvent(String aggregateId, String eventId, String occurredOn,
-                                   String hotelId, String hotelName, Double hotelStars, String hotelAddress, HashMap<String, Object> hotelPhotos) {
+                                   String hotelId, String hotelName, Double hotelStars, String hotelAddress, ArrayList<HashMap<String, Object>> hotelPhotos) {
         super(aggregateId, eventId, occurredOn);
         this.hotelId = hotelId;
         this.hotelName = hotelName;
@@ -65,7 +67,7 @@ public class HotelCreatedDomainEvent extends DomainEvent {
                 (String) body.get("hotelName"),
                 (Double)body.get("hotelStars"),
                 (String)body.get("hotelAddress"),
-                (HashMap<String,Object>) body.get("hotelPhotos"));
+                (ArrayList<HashMap<String, Object>>) body.get("hotelPhotos"));
     }
 
     public String getHotelId() {
@@ -84,7 +86,7 @@ public class HotelCreatedDomainEvent extends DomainEvent {
         return hotelAddress;
     }
 
-    public HashMap<String,Object> getHotelPhotos() {
+    public List<HashMap<String, Object>> getHotelPhotos() {
         return hotelPhotos;
     }
 

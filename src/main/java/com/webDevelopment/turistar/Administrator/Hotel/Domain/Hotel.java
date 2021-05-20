@@ -2,6 +2,7 @@ package com.webDevelopment.turistar.Administrator.Hotel.Domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
+import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.TourSpotDetail;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelAddress;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelName;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhoto;
@@ -12,10 +13,7 @@ import com.webDevelopment.turistar.Shared.Domain.Hotel.HotelCreatedDomainEvent;
 import com.webDevelopment.turistar.Shared.Domain.Hotel.HotelId;
 import com.webDevelopment.turistar.Shared.Domain.Hotel.HotelUpdatedDomainEvent;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Hotel extends AggregateRoot {
@@ -24,7 +22,7 @@ public class Hotel extends AggregateRoot {
     private HotelName hotelName;
     private HotelStars hotelStars;
     private HotelAddress hotelAddress;
-    private List<HotelPhoto> hotelPhotos;
+    private Optional<List<HotelPhoto>> hotelPhotos;
 
     private Hotel(HotelId hotelId, CityId cityId, HotelName hotelName, HotelStars hotelStars, HotelAddress hotelAddress, List<HotelPhoto> hotelPhotos) {
         this.hotelId = hotelId;
@@ -32,17 +30,13 @@ public class Hotel extends AggregateRoot {
         this.hotelName = hotelName;
         this.hotelStars = hotelStars;
         this.hotelAddress = hotelAddress;
-        this.hotelPhotos = hotelPhotos;
+        this.hotelPhotos = Optional.of(hotelPhotos);
     }
     public static Hotel create(HotelId hotelId, CityId cityId, HotelName hotelName, HotelStars hotelStars, HotelAddress hotelAddress, List<HotelPhoto> hotelPhotos){
         Hotel newHotel  = new Hotel(hotelId,cityId,hotelName,hotelStars,hotelAddress,hotelPhotos);
-        HashMap<String,Object> map = new HashMap<>();
-        for(HotelPhoto photo:hotelPhotos){
-            map.put(photo.getIdPhoto().toString(),photo.getUrlPhoto());
-        }
         newHotel.record(new HotelCreatedDomainEvent(cityId.value(),hotelId.value(),hotelName.value(),
                 hotelStars.value(), hotelAddress.value(),
-                map));
+                newHotel.dataHotelPhotos().get()));
         return newHotel;
     }
     private Hotel(){}
@@ -67,23 +61,25 @@ public class Hotel extends AggregateRoot {
             put("hotelName",hotelName.value());
             put("hotelStars",hotelStars.value());
             put("hotelAddress",hotelAddress.value());
-            put("photos:", hotelPhotos.stream().map(HotelPhoto::value));
+            put("photos:", dataHotelPhotos());
 
         }};
         return data;
     }
-
+    public Optional<ArrayList<HashMap<String, Object>>> dataHotelPhotos(){
+        Optional<ArrayList<HashMap<String, Object>>> response = Optional.empty();
+        if(this.hotelPhotos.isPresent()) {
+            response = Optional.of((ArrayList<HashMap<String, Object>>) this.hotelPhotos.get().stream().map(HotelPhoto::data).collect(Collectors.toList()));
+        }
+        return response;
+    }
     public void updateHotel(String hotelName, Double hotelStars, List<HotelPhoto> hotelPhotos, String hotelAddress){
         this.hotelName = new HotelName(hotelName);
         this.hotelStars = new HotelStars(hotelStars);
         this.hotelAddress = !hotelAddress.isEmpty() ?  new HotelAddress(hotelAddress):this.hotelAddress;
-        this.hotelPhotos.addAll(hotelPhotos);
-        HashMap<String,Object> map = new HashMap<>();
-        for(HotelPhoto photo:this.hotelPhotos){
-            map.put(photo.getIdPhoto().toString(),photo.getUrlPhoto());
-        }
+        this.hotelPhotos.get().addAll(hotelPhotos);
         this.record(new HotelUpdatedDomainEvent(cityId.value(), hotelId.value(),
-                hotelName,hotelStars,hotelAddress,map));
+                hotelName,hotelStars,hotelAddress,dataHotelPhotos().get()));
     }
 
     public Boolean AddressWillChange(String hotelName){
@@ -94,6 +90,6 @@ public class Hotel extends AggregateRoot {
     }
 
     public void clearPhotos() {
-        this.hotelPhotos.clear();
+        this.hotelPhotos.get().clear();
     }
 }

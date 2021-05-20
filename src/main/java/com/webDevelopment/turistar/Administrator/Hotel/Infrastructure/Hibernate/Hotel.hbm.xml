@@ -21,9 +21,7 @@
             <property name="value" column="hotelAddress" length="255" access="field"/>
         </component>
         <property name="hotelPhotos" column="hotelPhotos" access="field">
-            <type name="com.webDevelopment.turistar.Shared.Intrastructure.Hibernate.JsonListType">
-                <param name="list_of">com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhoto</param>
-            </type>
+            <type name="com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.Hibernate.PhotoCustomDetail"/>
         </property>
     </class>
 

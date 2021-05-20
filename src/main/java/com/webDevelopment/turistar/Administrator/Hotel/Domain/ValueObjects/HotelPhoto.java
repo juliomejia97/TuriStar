@@ -6,9 +6,7 @@ import com.webDevelopment.turistar.Administrator.Hotel.Domain.Exceptions.Invalid
 import java.util.HashMap;
 
 public class HotelPhoto {
-    @JsonProperty("idPhoto")
     private Integer idPhoto;
-    @JsonProperty("urlPhoto")
     private String urlPhoto;
 
     public HotelPhoto(Integer idPhoto, String urlPhoto) {
@@ -24,10 +22,10 @@ public class HotelPhoto {
     }
 
     private HotelPhoto(){}
-    public HashMap<String, Object> value() {
+    public HashMap<String, Object> data() {
         HashMap<String, Object> data = new HashMap<String, Object>() {{
-            put("id", idPhoto);
-            put("url", urlPhoto);
+            put("idPhoto", idPhoto);
+            put("urlPhoto", urlPhoto);
         }};
         return data;
     }

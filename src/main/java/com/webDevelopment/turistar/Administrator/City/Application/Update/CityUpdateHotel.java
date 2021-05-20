@@ -5,6 +5,7 @@ import com.webDevelopment.turistar.Administrator.City.Domain.Exceptions.CityNotE
 import com.webDevelopment.turistar.Administrator.City.Domain.Ports.CityRepository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 public class CityUpdateHotel {
@@ -15,7 +16,7 @@ public class CityUpdateHotel {
     }
 
     public void execute(String aggregateId, String hotelId, String hotelName, Double hotelStars,
-                        String hotelAddress, HashMap<String, Object> hotelPhotos) {
+                        String hotelAddress, List<HashMap<String, Object>> hotelPhotos) {
         Optional<City> cityOptional = repository.find(aggregateId);
         if(cityOptional.isEmpty()){
             throw new CityNotExist("The City of the updated Hotel does not exists, please talk with the admin");

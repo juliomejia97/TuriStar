@@ -1,6 +1,7 @@
 package com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class HotelDetail {
@@ -8,9 +9,9 @@ public class HotelDetail {
     private String hotelName;
     private Double hotelStars;
     private String hotelAddress;
-    HashMap<String, Object> hotelPhotos;
+    List<HashMap<String, Object>> hotelPhotos;
 
-    public HotelDetail(String hotelId,String hotelName, Double hotelStars, String hotelAddress, HashMap<String, Object> hotelPhotos) {
+    public HotelDetail(String hotelId,String hotelName, Double hotelStars, String hotelAddress, List<HashMap<String, Object>> hotelPhotos) {
         this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.hotelStars = hotelStars;
