@@ -25,6 +25,7 @@ public class HotelCreatedDomainEvent extends DomainEvent {
         this.hotelPhotos = null;
     }
 
+
     public HotelCreatedDomainEvent(String aggregateId, String hotelId, String hotelName, Double hotelStars, String hotelAddress, ArrayList<HashMap<String, Object>> hotelPhotos) {
         super(aggregateId);
         this.hotelId = hotelId;

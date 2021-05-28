@@ -52,5 +52,10 @@ public class TourBooking extends AggregateRoot {
         return data;
     }
 
+    //TODO: Formatear la fecha para devovler crear el JSON
+    private String formatDate(){
+        String date="";
+        return date;
+    }
     private TourBooking(){}
 }
