@@ -1,0 +1,2 @@
+com/webDevelopment/turistar/TuristarApplicationTests.java
+ com.webDevelopment.turistar.TuristarApplicationTests

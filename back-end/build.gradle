@@ -1,0 +1,32 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.webos'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '15'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation 'org.hibernate:hibernate-core:5.4.9.Final'
+	implementation 'org.springframework:spring-orm:5.2.2.RELEASE'
+	implementation 'org.apache.tomcat:tomcat-dbcp:9.0.29'
+	implementation 'com.sun.xml.bind:jaxb-impl:2.3.2'
+	implementation 'javax.xml.bind:jaxb-api:2.3.1'
+	compile 'org.mariadb.jdbc:mariadb-java-client:2.7.2'
+	implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.4.6'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+test {
+	useJUnitPlatform()
+}

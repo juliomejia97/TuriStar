@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.HotelPlanBooking" table="hotelPlanBooking">
+        <composite-id name="hotelPlanBookingId" class="com.webDevelopment.turistar.Shared.Domain.HotelPlanBooking.HotelPlanBookingId" access="field">
+            <key-property name="value" column="hotelPlanBookingId" access="field" length="36"/>
+        </composite-id>
+
+        <component name="hotelPlanBookingInitDate" class="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.HotelPlanBookingInitDate" access="field">
+            <property name="value" column="hotelPlanBookingInitDate" access="field" type="java.time.LocalDate"/>
+        </component>
+
+        <component name="hotelPlanBookingEndDate" class="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.HotelPlanBookingEndDate" access="field">
+            <property name="value" column="hotelPlanBookingEndDate" access="field" type="java.time.LocalDate"/>
+        </component>
+
+        <component name="hotelPlanBookingActive" class="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.HotelPlanBookingActive" access="field">
+            <property name="value" column="hotelPlanBookingActive" access="field" type="boolean"/>
+        </component>
+
+        <component name="userId" class="com.webDevelopment.turistar.Shared.Domain.User.UserId" access="field">
+            <property name="value" column="userId" access="field" length="36"/>
+        </component>
+
+        <property name="ticketDetail" column="ticket" access="field">
+            <type name="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Infrastructure.Hibernate.TicketDetailCustomType">
+            </type>
+        </property>
+        <property name="hotelPlanDetail" column="hotelPlan" access="field">
+            <type name="com.webDevelopment.turistar.Hotel.HotelPlanBooking.Infrastructure.Hibernate.HotelPlanDetailCustomType">
+            </type>
+        </property>
+    </class>
+</hibernate-mapping>
