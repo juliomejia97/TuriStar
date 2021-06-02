@@ -70,5 +70,6 @@ public class UpdateTourSpotPutController {
         public void setPhotos(List<String> photos) {
             this.photos = photos;
         }
+
     }
 }

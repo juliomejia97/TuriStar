@@ -26,11 +26,11 @@
             <property name="value" column="tourSpotActive" type="boolean" access="field"/>
         </component>
 
-        <component name="tourId" class="com.webDevelopment.turistar.Shared.Domain.Tour.TourId" access="field">
-            <property name="value" column="tourId" length="36" access="field"/>
-        </component>
+        <property name="toursId" column="toursId" access="field">
+            <type name="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate.TourSpotToursCustomDetail"/>
+        </property>
         <property name="photos" column="tourSpotPhotos" access="field">
-            <type name="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate.TourSpotCustomDetail"/>
+            <type name="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate.TourSpotPhotoCustomDetail"/>
         </property>
     </class>
 </hibernate-mapping>

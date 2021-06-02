@@ -1,8 +1,8 @@
 package com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhoto;
 import com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.TourSpotPhoto;
+import com.webDevelopment.turistar.Shared.Domain.Tour.TourId;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
@@ -17,7 +17,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class TourSpotCustomDetail implements UserType {
+public class TourSpotToursCustomDetail implements UserType {
+
     @Override
     public int[] sqlTypes() {
         return new int[] {Types.LONGNVARCHAR};
@@ -40,13 +41,13 @@ public class TourSpotCustomDetail implements UserType {
 
     @Override
     public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
-        List<TourSpotPhoto> response = null;
+        List<TourId> response = null;
         try {
             Optional<String> value = Optional.ofNullable(rs.getString(names[0]));
             if(value.isPresent()) {
                 List<String> objects = new ObjectMapper().readValue(value.get(), List.class);
-                response = objects.stream().map(tourSpotPhoto ->
-                        new TourSpotPhoto(tourSpotPhoto)).collect(Collectors.toList());
+                response = objects.stream().map(tourId ->
+                        new TourId(tourId)).collect(Collectors.toList());
             }
         }
         catch (Exception e){
@@ -57,14 +58,14 @@ public class TourSpotCustomDetail implements UserType {
 
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
-        Optional<List<TourSpotPhoto>> hotelPhotos = (value == null) ? Optional.empty() : (Optional<List<TourSpotPhoto>>) value;
+        Optional<List<TourId>> hotelPhotos = (value == null) ? Optional.empty() : (Optional<List<TourId>>) value;
         try {
             if(hotelPhotos.isEmpty()) {
                 st.setNull(index, Types.VARCHAR);
             }
             else {
                 ObjectMapper mapper = new ObjectMapper();
-                List<String> objects = hotelPhotos.get().stream().map(tourSpotPhoto -> tourSpotPhoto.value()).collect(Collectors.toList());
+                List<String> objects = hotelPhotos.get().stream().map(tourId -> tourId.value()).collect(Collectors.toList());
                 String serializedList = mapper.writeValueAsString(objects).replace("\\", "");
                 st.setString(index, serializedList);
             }

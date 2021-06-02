@@ -24,7 +24,7 @@ public class CreateTourSpotController {
     @PostMapping(value = "/TourSpot/create")
     public ResponseEntity<HashMap> execute(@RequestBody CreateTourSpotController.Request request){
         spotCreator.execute(request.getTourSpotId(),request.getCityId(),request.getTourName(),
-                request.getCityName(),request.getDescription(), request.getTourId(), request.getPhotos());
+                request.getCityName(),request.getDescription(), request.getPhotos());
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
@@ -38,7 +38,6 @@ public class CreateTourSpotController {
     }
     private static class Request{
         private String tourSpotId;
-        private String tourId;
         private String cityId;
         private String tourName;
         private String cityName;
@@ -51,14 +50,6 @@ public class CreateTourSpotController {
 
         public void setTourSpotId(String tourSpotId) {
             this.tourSpotId = tourSpotId;
-        }
-
-        public String getTourId() {
-            return tourId;
-        }
-
-        public void setTourId(String tourId) {
-            this.tourId = tourId;
         }
 
         public String getCityId() {

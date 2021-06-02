@@ -6,6 +6,7 @@ import com.webDevelopment.turistar.Administrator.TourSpot.Domain.TourSpot;
 import com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.LatLangInfo;
 import com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.TourSpotPhoto;
 import com.webDevelopment.turistar.Shared.Domain.Bus.Event.EventBus;
+import com.webDevelopment.turistar.Shared.Domain.Tour.TourId;
 import com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoService;
 
 import java.util.List;
