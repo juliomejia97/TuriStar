@@ -21,7 +21,7 @@
             <property name="value" column="hotelAddress" length="255" access="field"/>
         </component>
         <property name="hotelPhotos" column="hotelPhotos" access="field">
-            <type name="com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.Hibernate.PhotoCustomDetail"/>
+            <type name="com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.Hibernate.HotelPhotoCustomDetail"/>
         </property>
     </class>
 

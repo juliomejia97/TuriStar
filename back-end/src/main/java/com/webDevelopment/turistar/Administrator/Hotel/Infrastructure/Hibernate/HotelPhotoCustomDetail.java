@@ -1,7 +1,7 @@
-package com.webDevelopment.turistar.Administrator.City.Infrastructure.Hibernate;
+package com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.Hibernate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.TourSpotDetail;
+import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhoto;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
@@ -11,10 +11,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class TourSpotCustomDetail implements UserType {
+public class HotelPhotoCustomDetail implements UserType {
     @Override
     public int[] sqlTypes() {
         return new int[] {Types.LONGNVARCHAR};
@@ -37,38 +40,31 @@ public class TourSpotCustomDetail implements UserType {
 
     @Override
     public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
-        List<TourSpotDetail> response = null;
+        List<HotelPhoto> response = null;
         try {
             Optional<String> value = Optional.ofNullable(rs.getString(names[0]));
             if(value.isPresent()) {
-                List<HashMap<String, Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
-                response = objects.stream().map(tourSpot ->
-                        new TourSpotDetail(
-                                (String) tourSpot.get("tourSpotId"),
-                                (String) tourSpot.get("name"),
-                                (Double) tourSpot.get("latitude"),
-                                (Double) tourSpot.get("longitude"),
-                                (String) tourSpot.get("description"),
-                                (ArrayList<String>) tourSpot.get("photos"))).collect(Collectors.toList());
+                List<String> objects = new ObjectMapper().readValue(value.get(), List.class);
+                response = objects.stream().map(hotelPhoto ->
+                        new HotelPhoto(hotelPhoto)).collect(Collectors.toList());
             }
         }
         catch (Exception e){
             throw new HibernateException("Error at reading map", e);
         }
         return Optional.ofNullable(response);
-
     }
 
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
-        Optional<List<TourSpotDetail>> tours = (value == null) ? Optional.empty() : (Optional<List<TourSpotDetail>>) value;
+        Optional<List<HotelPhoto>> hotelPhotos = (value == null) ? Optional.empty() : (Optional<List<HotelPhoto>>) value;
         try {
-            if(tours.isEmpty()) {
+            if(hotelPhotos.isEmpty()) {
                 st.setNull(index, Types.VARCHAR);
             }
             else {
                 ObjectMapper mapper = new ObjectMapper();
-                List<HashMap<String, Object>> objects = tours.get().stream().map(TourSpotDetail::data).collect(Collectors.toList());
+                List<String> objects = hotelPhotos.get().stream().map(hotelPhoto -> hotelPhoto.value()).collect(Collectors.toList());
                 String serializedList = mapper.writeValueAsString(objects).replace("\\", "");
                 st.setString(index, serializedList);
             }

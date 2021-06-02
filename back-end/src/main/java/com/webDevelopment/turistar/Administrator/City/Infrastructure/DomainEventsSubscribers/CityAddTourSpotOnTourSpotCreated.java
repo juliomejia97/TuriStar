@@ -15,7 +15,7 @@ public class CityAddTourSpotOnTourSpotCreated {
 
     @EventListener
     public void on(TourSpotCreatedEventDomain event){
-        cityAddTourSpot.execute(event.aggregateId(), event.getTourSpotId(),
-                event.getTourSpotName(),event.getLatitude(),event.getLongitude(),event.getDescription());
+        cityAddTourSpot.execute(event.aggregateId(), event.getTourSpotId(),event.getTourSpotName(),
+                event.getLatitude(),event.getLongitude(),event.getDescription(), event.getTourSpotPhotos());
     }
 }

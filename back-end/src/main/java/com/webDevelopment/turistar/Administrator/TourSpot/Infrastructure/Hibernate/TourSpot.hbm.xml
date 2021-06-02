@@ -29,5 +29,8 @@
         <component name="tourId" class="com.webDevelopment.turistar.Shared.Domain.Tour.TourId" access="field">
             <property name="value" column="tourId" length="36" access="field"/>
         </component>
+        <property name="photos" column="tourSpotPhotos" access="field">
+            <type name="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate.TourSpotCustomDetail"/>
+        </property>
     </class>
 </hibernate-mapping>

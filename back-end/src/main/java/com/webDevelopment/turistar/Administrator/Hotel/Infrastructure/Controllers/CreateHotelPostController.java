@@ -5,6 +5,7 @@ import com.webDevelopment.turistar.Administrator.Hotel.Application.Create.HotelC
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.Exceptions.*;
 import com.webDevelopment.turistar.Shared.Domain.BadInfoError;
 import com.webDevelopment.turistar.Shared.Domain.UUIDNotValid;
+import com.webDevelopment.turistar.Shared.Domain.InvalidPhotoFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

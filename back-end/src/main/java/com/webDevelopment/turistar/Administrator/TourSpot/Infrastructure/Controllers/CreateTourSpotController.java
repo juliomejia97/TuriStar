@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping(value="/admin")
@@ -22,7 +23,8 @@ public class CreateTourSpotController {
 
     @PostMapping(value = "/TourSpot/create")
     public ResponseEntity<HashMap> execute(@RequestBody CreateTourSpotController.Request request){
-        spotCreator.execute(request.getTourSpotId(),request.getCityId(),request.getTourName(),request.getCityName(),request.getDescription(), request.getTourId());
+        spotCreator.execute(request.getTourSpotId(),request.getCityId(),request.getTourName(),
+                request.getCityName(),request.getDescription(), request.getTourId(), request.getPhotos());
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
@@ -41,6 +43,7 @@ public class CreateTourSpotController {
         private String tourName;
         private String cityName;
         private String description;
+        private List<String> photos;
 
         public String getTourSpotId() {
             return tourSpotId;
@@ -88,6 +91,14 @@ public class CreateTourSpotController {
 
         public void setDescription(String description) {
             this.description = description;
+        }
+
+        public List<String> getPhotos() {
+            return photos;
+        }
+
+        public void setPhotos(List<String> photos) {
+            this.photos = photos;
         }
     }
 }

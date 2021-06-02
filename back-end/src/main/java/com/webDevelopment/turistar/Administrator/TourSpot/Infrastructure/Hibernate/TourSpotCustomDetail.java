@@ -1,7 +1,8 @@
-package com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.Hibernate;
+package com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhoto;
+import com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.TourSpotPhoto;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
@@ -11,13 +12,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class PhotoCustomDetail implements UserType {
+public class TourSpotCustomDetail implements UserType {
     @Override
     public int[] sqlTypes() {
         return new int[] {Types.LONGNVARCHAR};
@@ -40,13 +40,13 @@ public class PhotoCustomDetail implements UserType {
 
     @Override
     public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
-        List<HotelPhoto> response = null;
+        List<TourSpotPhoto> response = null;
         try {
             Optional<String> value = Optional.ofNullable(rs.getString(names[0]));
             if(value.isPresent()) {
                 List<String> objects = new ObjectMapper().readValue(value.get(), List.class);
-                response = objects.stream().map(hotelPhoto ->
-                        new HotelPhoto(hotelPhoto)).collect(Collectors.toList());
+                response = objects.stream().map(tourSpotPhoto ->
+                        new TourSpotPhoto(tourSpotPhoto)).collect(Collectors.toList());
             }
         }
         catch (Exception e){
@@ -57,14 +57,14 @@ public class PhotoCustomDetail implements UserType {
 
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
-        Optional<List<HotelPhoto>> hotelPhotos = (value == null) ? Optional.empty() : (Optional<List<HotelPhoto>>) value;
+        Optional<List<TourSpotPhoto>> hotelPhotos = (value == null) ? Optional.empty() : (Optional<List<TourSpotPhoto>>) value;
         try {
             if(hotelPhotos.isEmpty()) {
                 st.setNull(index, Types.VARCHAR);
             }
             else {
                 ObjectMapper mapper = new ObjectMapper();
-                List<String> objects = hotelPhotos.get().stream().map(hotelPhoto -> hotelPhoto.value()).collect(Collectors.toList());
+                List<String> objects = hotelPhotos.get().stream().map(tourSpotPhoto -> tourSpotPhoto.value()).collect(Collectors.toList());
                 String serializedList = mapper.writeValueAsString(objects).replace("\\", "");
                 st.setString(index, serializedList);
             }

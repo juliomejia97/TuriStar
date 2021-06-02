@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/admin/TourSpot")
@@ -20,7 +21,7 @@ public class UpdateTourSpotPutController {
 
     @PutMapping(value="/{idTourSpot}")
     public ResponseEntity<String> execute(@PathVariable String idTourSpot, @RequestBody UpdateTourSpotPutController.Request request){
-        spotModifier.execute(idTourSpot, request.getTourName(), request.getCityName(), request.getDescription());
+        spotModifier.execute(idTourSpot, request.getTourName(), request.getCityName(), request.getDescription(), request.photos);
         return ResponseEntity.status(HttpStatus.OK).body("Tour "+ request.getTourName()+" has been modified");
     }
 
@@ -36,6 +37,7 @@ public class UpdateTourSpotPutController {
         private String tourName;
         private String cityName;
         private String description;
+        private List<String> photos;
 
         public String getDescription() {
             return description;
@@ -59,6 +61,14 @@ public class UpdateTourSpotPutController {
 
         public void setCityName(String cityName) {
             this.cityName = cityName;
+        }
+
+        public List<String> getPhotos() {
+            return photos;
+        }
+
+        public void setPhotos(List<String> photos) {
+            this.photos = photos;
         }
     }
 }
