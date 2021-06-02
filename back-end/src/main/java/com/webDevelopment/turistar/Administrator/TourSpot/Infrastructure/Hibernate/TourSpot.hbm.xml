@@ -25,10 +25,6 @@
         <component name="tourSpotActive" class="com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.TourSpotActive" access="field">
             <property name="value" column="tourSpotActive" type="boolean" access="field"/>
         </component>
-
-        <property name="toursId" column="toursId" access="field">
-            <type name="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate.TourSpotToursCustomDetail"/>
-        </property>
         <property name="photos" column="tourSpotPhotos" access="field">
             <type name="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate.TourSpotPhotoCustomDetail"/>
         </property>

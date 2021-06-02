@@ -33,7 +33,7 @@ public class TourSpotModifier {
         }
         TourSpot tourSpotToUpdate = tourUpdated.get();
         List<Double> latlong = latLangInfo.execute(tourName,cityName);
-        List<TourSpotPhoto> tourSpotPhotos = photos.stream().map(s -> new TourSpotPhoto(s)).collect(Collectors.toList());
+        List<TourSpotPhoto> tourSpotPhotos = photos.stream().map(TourSpotPhoto::new).collect(Collectors.toList());
         tourSpotToUpdate.updateTour(tourName,latlong.get(0),latlong.get(1), cityDescription, tourSpotPhotos);
         this.tourSpotRepository.update(tourSpotToUpdate);
         eventBus.publish(tourSpotToUpdate.pullDomainEvents());
