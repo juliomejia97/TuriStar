@@ -18,7 +18,6 @@ public class CityAddTourSpot {
         Optional<City> cityOptional = repository.find(aggregateId);
         if(cityOptional.isEmpty()){
             throw new CityNotExist("The City which of the Tour Spot Created has not been created yet, talk with the admin of the DB");
-            //TODO: Hacer un rollback (eventos?)
         }
         City finalCity = cityOptional.get();
         finalCity.addTourSpots(tourSpotName,idTourSpot,description,latitude,longitude);

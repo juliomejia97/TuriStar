@@ -52,7 +52,7 @@ public class HotelCustomDetail implements UserType {
                                 (String) hotel.get("hotelName"),
                                 (Double) hotel.get("hotelStars"),
                                 (String) hotel.get("hotelAddress"),
-                                (List<HashMap<String, Object>>) hotel.get("hotelPhotos"))).collect(Collectors.toList());
+                                (List<String>) hotel.get("hotelPhotos"))).collect(Collectors.toList());
             }
         }
         catch (Exception e){

@@ -89,7 +89,8 @@ public class City extends AggregateRoot {
         this.tourSpots = Optional.of(tourSpotDetails);
     }
 
-    public void addHotel(String hotelId, String hotelName, String hotelAddress, Double hotelStars, List<HashMap<String, Object>> hotelPhotos) {
+    public void addHotel(String hotelId, String hotelName, String hotelAddress,
+                         Double hotelStars, List<String> hotelPhotos) {
         List<HotelDetail> hotelDetails = this.hotels.isEmpty() ?
                 new ArrayList<>():this.hotels.get();
         hotelDetails.add(new HotelDetail(hotelId,hotelName,hotelStars,hotelAddress,hotelPhotos));
@@ -97,7 +98,7 @@ public class City extends AggregateRoot {
     }
 
     public void updateHotelDetail(String hotelId, String hotelName, String hotelAddress,
-                                   Double hotelStars, List<HashMap<String, Object>> hotelPhotos){
+                                   Double hotelStars, List<String> hotelPhotos){
         HotelDetail newHotelDetail = new HotelDetail(hotelId,hotelName,hotelStars,hotelAddress,hotelPhotos);
         List<HotelDetail> hotelDetails = this.hotels.get();
         HotelDetail hotelDetailActual = hotelDetails.stream()

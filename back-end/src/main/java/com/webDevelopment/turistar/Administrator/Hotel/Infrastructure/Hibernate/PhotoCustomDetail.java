@@ -44,11 +44,9 @@ public class PhotoCustomDetail implements UserType {
         try {
             Optional<String> value = Optional.ofNullable(rs.getString(names[0]));
             if(value.isPresent()) {
-                List<HashMap<String, Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
+                List<String> objects = new ObjectMapper().readValue(value.get(), List.class);
                 response = objects.stream().map(hotelPhoto ->
-                        new HotelPhoto(
-                                (Integer) hotelPhoto.get("idPhoto"),
-                                (String) hotelPhoto.get("urlPhoto"))).collect(Collectors.toList());
+                        new HotelPhoto(hotelPhoto)).collect(Collectors.toList());
             }
         }
         catch (Exception e){
@@ -59,14 +57,14 @@ public class PhotoCustomDetail implements UserType {
 
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
-        Optional<List<HotelPhoto>> tours = (value == null) ? Optional.empty() : (Optional<List<HotelPhoto>>) value;
+        Optional<List<HotelPhoto>> hotelPhotos = (value == null) ? Optional.empty() : (Optional<List<HotelPhoto>>) value;
         try {
-            if(tours.isEmpty()) {
+            if(hotelPhotos.isEmpty()) {
                 st.setNull(index, Types.VARCHAR);
             }
             else {
                 ObjectMapper mapper = new ObjectMapper();
-                List<HashMap<String, Object>> objects = tours.get().stream().map(HotelPhoto::data).collect(Collectors.toList());
+                List<String> objects = hotelPhotos.get().stream().map(hotelPhoto -> hotelPhoto.value()).collect(Collectors.toList());
                 String serializedList = mapper.writeValueAsString(objects).replace("\\", "");
                 st.setString(index, serializedList);
             }

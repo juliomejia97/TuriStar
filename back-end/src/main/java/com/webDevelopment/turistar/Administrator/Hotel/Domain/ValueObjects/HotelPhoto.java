@@ -1,39 +1,23 @@
 package com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects;
 
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.Exceptions.InvalidPhotoFormat;
+import com.webDevelopment.turistar.Shared.Domain.StringValueObject;
 
 import java.util.HashMap;
 
-public class HotelPhoto {
-    private Integer idPhoto;
-    private String urlPhoto;
+public class HotelPhoto extends StringValueObject {
 
-    public HotelPhoto(Integer idPhoto, String urlPhoto) {
-        this.validate(idPhoto,urlPhoto);
-        this.idPhoto = idPhoto;
-        this.urlPhoto = urlPhoto;
+    public HotelPhoto(String urlPhoto) {
+        this.validate(urlPhoto);
+        this.value = urlPhoto;
     }
 
-    private void validate(Integer idPhoto, String urlPhoto) {
-        if(idPhoto < 0 || urlPhoto.length()  < 0) {
+    private void validate(String urlPhoto) {
+        if(urlPhoto.length()  < 0) {
             throw new InvalidPhotoFormat("The photo is invalid, the id has to be an integer and the url must be not null");
         }
     }
 
     private HotelPhoto(){}
-    public HashMap<String, Object> data() {
-        HashMap<String, Object> data = new HashMap<String, Object>() {{
-            put("idPhoto", idPhoto);
-            put("urlPhoto", urlPhoto);
-        }};
-        return data;
-    }
 
-    public Integer getIdPhoto() {
-        return idPhoto;
-    }
-
-    public String getUrlPhoto() {
-        return urlPhoto;
-    }
 }

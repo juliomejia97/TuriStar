@@ -17,7 +17,7 @@ public class CityAddHotel {
     }
 
     public void execute(String aggregateId, String hotelId, String hotelName, String hotelAddress,
-                        Double hotelStars, List<HashMap<String, Object>> hotelPhotos) {
+                        Double hotelStars, List<String> hotelPhotos) {
         Optional<City> optionalCity = repository.find(aggregateId);
         if(optionalCity.isEmpty()){
             throw new CityNotExist("The City of the hotel that you have been created does not exists, please contact with your admin");
