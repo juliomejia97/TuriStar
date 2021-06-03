@@ -3,7 +3,7 @@ package com.webDevelopment.turistar.User.User.Application.Create;
 import com.webDevelopment.turistar.Shared.Domain.User.UserId;
 import com.webDevelopment.turistar.User.User.Domain.Exceptions.UserAlreadyExists;
 import com.webDevelopment.turistar.User.User.Domain.Exceptions.UserNotExist;
-import com.webDevelopment.turistar.User.User.Domain.Ports.UserDomainFinder;
+import com.webDevelopment.turistar.User.User.Domain.Ports.UserDomainFinderById;
 import com.webDevelopment.turistar.User.User.Domain.Ports.UserRepository;
 import com.webDevelopment.turistar.User.User.Domain.Ports.UserValidateWords;
 import com.webDevelopment.turistar.User.User.Domain.Ports.ValidateWordService;
@@ -20,13 +20,13 @@ public class UserCreator {
     private UserRepository repository;
     private ValidateWordService service;
     private UserValidateWords validator;
-    private UserDomainFinder finder;
+    private UserDomainFinderById finder;
 
     public UserCreator(UserRepository repository, ValidateWordService service) {
         this.repository = repository;
         this.service = service;
         this.validator = new UserValidateWords(service);
-        this.finder = new UserDomainFinder(repository);
+        this.finder = new UserDomainFinderById(repository);
     }
 
     public void execute(String userId, String userFirstName, String userLastName, String userEmail, String userPassword)

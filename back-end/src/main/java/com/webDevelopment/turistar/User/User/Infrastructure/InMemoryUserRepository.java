@@ -39,4 +39,9 @@ public class InMemoryUserRepository implements UserRepository {
         this.users.remove(user);
         this.users.add(user);
     }
+
+    @Override
+    public Optional<User> findByEmail(String userEmail) {
+        return Optional.empty();
+    }
 }

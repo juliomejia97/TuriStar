@@ -12,4 +12,5 @@ public interface UserRepository {
     Optional<User> find(String userId);
 
     void update(User user);
+    Optional<User> findByEmail(String userEmail);
 }

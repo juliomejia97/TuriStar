@@ -2,7 +2,7 @@ package com.webDevelopment.turistar.User.User.Application.Update;
 
 
 
-import com.webDevelopment.turistar.User.User.Domain.Ports.UserDomainFinder;
+import com.webDevelopment.turistar.User.User.Domain.Ports.UserDomainFinderById;
 import com.webDevelopment.turistar.User.User.Domain.Ports.UserRepository;
 import com.webDevelopment.turistar.User.User.Domain.Ports.UserValidateWords;
 import com.webDevelopment.turistar.User.User.Domain.Ports.ValidateWordService;
@@ -16,14 +16,14 @@ import java.util.Optional;
 public class UserModifier {
 
     private UserRepository repository;
-    private UserDomainFinder finder;
+    private UserDomainFinderById finder;
     private UserValidateWords validator;
     private ValidateWordService service;
 
     public UserModifier(UserRepository repository, ValidateWordService service) {
         this.repository = repository;
         this.service = service;
-        this.finder = new UserDomainFinder(repository);
+        this.finder = new UserDomainFinderById(repository);
         this.validator = new UserValidateWords(service);
     }
 
