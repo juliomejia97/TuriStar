@@ -1,16 +1,20 @@
 package com.webDevelopment.turistar.User.User.Infrastructure.Hibernate;
 
 
+import com.webDevelopment.turistar.Administrator.City.Domain.City;
 import com.webDevelopment.turistar.Shared.Domain.User.UserId;
 import com.webDevelopment.turistar.User.User.Domain.Ports.UserRepository;
 import com.webDevelopment.turistar.User.User.Domain.User;
 import com.webDevelopment.turistar.User.User.Domain.ValueObjects.UserEmail;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Transactional("transactional-manager")
@@ -44,18 +48,11 @@ public class HibernateUserRepository implements UserRepository {
 
     @Override
     public Optional<User> findByEmail(String userEmail) {
-        /*
-        userEmail = "\'" + userEmail + "\'";
-        String sqlQuery = "SELECT * FROM users WHERE users.userEmail = " + userEmail ;
-        System.out.println( sqlQuery + " la query ");
-        Query query = sessionFactory.getCurrentSession().createSQLQuery(sqlQuery);
-        System.out.println(query.setResultTransformer(Transformers.aliasToBean(aggregateClass)) + " Restirno");
-        return Optional.ofNullable( (User)query.setResultTransformer(Transformers.aliasToBean(aggregateClass)) );
-      */
 
+        Query query = sessionFactory.getCurrentSession().createQuery("FROM User WHERE userEmail = \'"+userEmail+"\'");
+        User user= (User) query.uniqueResult();
 
-        return Optional.ofNullable((User) sessionFactory.getCurrentSession().createQuery("from User where userEmail = :userEmail").
-                setParameter("userEmail",userEmail).uniqueResult());
+        return Optional.ofNullable(user);
 
     }
 
