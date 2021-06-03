@@ -3,6 +3,7 @@
     <SearchBar msg="This is a search bar" />
     <Filters msg="This is a filter" />
     <Tours msg=" Tours" />
+    
   </div>
 </template>
 
@@ -17,7 +18,7 @@ export default defineComponent({
   components: {
     SearchBar,
     Filters,
-    Tours
+    Tours,
   },
 });
 </script>
