@@ -26,8 +26,7 @@ public class TourBookingCreator {
                 new TourBookingInitDate(tourBookingInitDate), new TourBookingEndDate(tourBookingEndDate), new TourId(tourId),
                 new UserId(userId));
         repository.save(tourBooking);
-        //TODO:Arreglar el evento del usuario
-        //eventBus.publish(tourBooking.pullDomainEvents());
+        eventBus.publish(tourBooking.pullDomainEvents());
     }
 
 }

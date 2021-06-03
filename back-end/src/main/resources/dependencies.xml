@@ -75,10 +75,12 @@
     <bean id="tourBookingDelete" class="com.webDevelopment.turistar.Tour.TourBooking.Application.Delete.TourBookingDelete">
         <constructor-arg ref="hibernateTourBookingRepository"/>
     </bean>
-    <bean id="tourUpdateTourSpotEvent" class="com.webDevelopment.turistar.Tour.Tour.Infrastructure.DomainEventsSubscribers.TourUpdateTourSpotOnChanged">
-
+    <bean id="updateTourBookingQuantity" class="com.webDevelopment.turistar.Tour.Tour.Application.Update.UpdateTourBookingQuantity">
+        <constructor-arg ref="hibernateTourRepository"/>
     </bean>
-
+    <bean id="eventUpdateTourBooking" class="com.webDevelopment.turistar.Tour.Tour.Infrastructure.DomainEventsSubscribers.UpdateQuantityOnBooked">
+        <constructor-arg ref="updateTourBookingQuantity"/>
+    </bean>
     <!---Hotel inyections-->
     <bean id="hotelCreate" class="com.webDevelopment.turistar.Administrator.Hotel.Application.Create.HotelCreator">
         <constructor-arg ref="hibernateHotelRepository"/>
@@ -178,7 +180,7 @@
     <bean id="UpdateTourBookingSerialized" class="com.webDevelopment.turistar.User.User.Application.Update.UpdateTourBooking">
         <constructor-arg ref="hibernateUserRepository"/>
     </bean>
-    <bean id="updateTourbookingOnBooked" class="com.webDevelopment.turistar.User.User.Application.Update.UpdateTourBookingOnTourBooked">
+    <bean id="updateTourbookingOnBooked" class="com.webDevelopment.turistar.User.User.Infrastructure.DomainEventsSubscribers.UpdateTourBookingOnTourBooked">
         <constructor-arg ref="UpdateTourBookingSerialized"/>
     </bean>
 </beans>
