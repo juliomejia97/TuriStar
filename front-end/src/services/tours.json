@@ -1,0 +1,35 @@
+[
+    {
+        "price": 60.9,
+        "name": "Bogota Cultural Tour",
+        "tourSpotsId": [
+            "534ae290-c401-11eb-8529-0242ac130003",
+            "534ae02e-c401-11eb-8529-0242ac130003"
+        ],
+        "description": "Un tour para que todas las personas aprendan sobre ciencia y la cultura en Bogotá",
+        "id": "5a4ddbe4-c409-11eb-8529-0242ac130003",
+        "bookings": 5
+    },
+    {
+        "price": 100.99,
+        "name": "Santa Marta Beach Tour",
+        "tourSpotsId": [
+            "291de514-c404-11eb-8529-0242ac130003",
+            "291de2e4-c404-11eb-8529-0242ac130003"
+        ],
+        "description": "Un tour para pasear por las playas más lindas de Santa Marta y sus alrededores",
+        "id": "5a4dde3c-c409-11eb-8529-0242ac130003",
+        "bookings": 20
+    },
+    {
+        "price": 50.9,
+        "name": "Bogota Adventure Tour",
+        "tourSpotsId": [
+            "f995c7cc-b1dd-11eb-8529-0242ac130003",
+            "534adf48-c401-11eb-8529-0242ac130003"
+        ],
+        "description": "Un tour alocado por Bogotá, pasaremos por muchas atracciones una chimba, máximo de personas",
+        "id": "5c6cf0ce-c407-11eb-8529-0242ac130003",
+        "bookings": 10
+    }
+]
