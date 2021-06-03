@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import LogIn from "../views/LogIn.vue";
 import Register from "../views/Register.vue";
 import MyBookings  from "../views/MyBookings.vue";
+import Tour from "../views/TourDetail.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -24,6 +25,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/myBookings",
     name: "MyBookings",
     component: MyBookings
+  },
+  {
+    path: "/tour",
+    name: "Tours",
+    component: Tour
   },
 
 ];

@@ -20,7 +20,7 @@ export default defineComponent({
   components: {
     SearchBar,
     Filters,
-    Tours
+    Tours,
   },
   methods: {
      fetchData () {
