@@ -30,7 +30,7 @@ public class CreateTourSpotController {
 
     @ExceptionHandler({TourSpotDuplicated.class, UUIDNotValid.class, TourSpotNameNotValid.class,
             BadInfoError.class, TourDescriptionNotValid.class})
-    public  ResponseEntity<HashMap> informationNorvalid(Exception exception){
+    public  ResponseEntity<HashMap> informationNotvalid(Exception exception){
         HashMap<String,String> response = new HashMap<>(){{
             put("error",exception.getMessage());
         }};

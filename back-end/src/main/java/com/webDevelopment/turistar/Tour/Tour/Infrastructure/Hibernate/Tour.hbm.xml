@@ -12,6 +12,9 @@
             <property name="value" column="tourName" access="field" type="string"/>
         </component>
 
+        <component name="tourDescription" class="com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects.TourDescription" access="field">
+            <property name="value" column="tourDescription" access="field" length="255"/>
+        </component>
         <component name="tourBookings" class="com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects.TourBookings" access="field">
             <property name="value" column="tourBookings" access="field" type="integer"/>
         </component>
@@ -21,7 +24,7 @@
         </component>
 
         <property name="tourSpots" column="tourSpots" access="field">
-            <type name="com.webDevelopment.turistar.Administrator.City.Infrastructure.Hibernate.TourSpotCustomDetail"/>
+            <type name="com.webDevelopment.turistar.Tour.Tour.Infrastructure.Hibernate.HibernateTourIdsCustomDetail"/>
         </property>
     </class>
 </hibernate-mapping>

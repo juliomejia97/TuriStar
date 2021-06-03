@@ -35,7 +35,7 @@ public class TourSpotCreator {
             throw new TourSpotDuplicated("The Tour Spot already exists");
         }
         List<Double> latlong = latLangInfo.execute(tourSpotName,cityName);
-        List<TourSpotPhoto> tourSpotPhotos = photos.stream().map(s -> new TourSpotPhoto(s)).collect(Collectors.toList());
+        List<TourSpotPhoto> tourSpotPhotos = photos.stream().map(TourSpotPhoto::new).collect(Collectors.toList());
         TourSpot tourSpot = TourSpot.create(new TourSpotId(tourSpotId), new CityId(cityId),new TourSpotName(tourSpotName),
                 new TourSpotLatitude(latlong.get(0)), new TourSpotLongitude(latlong.get(1)),
                 new TourSpotDescription(cityDescription), tourSpotPhotos);
