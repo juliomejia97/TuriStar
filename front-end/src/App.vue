@@ -25,5 +25,18 @@ body{
   margin: 0;
   padding: 0;
 }
+button {
+        background: #c64756;
+        color: #fff;
+        border-color: transparent;
+        text-decoration: none;
+        border-radius: 6rem;
+        font-size: 1em;
+        padding: 1rem 1.5rem;
+    }
+    button:hover{
+        background: #fad586;
+        color: #000;
+    }
 
 </style>

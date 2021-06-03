@@ -11,11 +11,10 @@
 
         </div>
         <div class="tourSpots">
-        <TourSpotCard/>
-        <TourSpotCard/>
-        <TourSpotCard/>
-        <TourSpotCard/>
-        
+            <TourSpotCard/>
+            <TourSpotCard/>
+            <TourSpotCard/>
+            <TourSpotCard/>
         </div>
     </div>
     
@@ -63,19 +62,10 @@ export default defineComponent({
     align-items: center; 
     justify-content: center;
     #pricetag {
-        background: #c64756;
-        color: #fff;
-        border-color: transparent;
         font-size: 2em;
         text-decoration: none;
-        border-radius: 6rem;
         padding: 1.5rem 2rem;
     }
-    #pricetag:hover{
-        background: #fad586;
-        color: #000;
-    }
-
 }
 .tourSpots{
   width: 100%;

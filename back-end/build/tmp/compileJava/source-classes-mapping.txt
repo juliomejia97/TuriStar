@@ -295,8 +295,8 @@ com/webDevelopment/turistar/Hotel/HotelPlan/Infrastructure/Controllers/UpdateHot
 com/webDevelopment/turistar/Administrator/TourSpot/Infrastructure/Controllers/FindTourSpotGetController.java
  com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Controllers.FindTourSpotGetController
  com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Controllers.FindTourSpotGetController$1
-com/webDevelopment/turistar/Tour/Tour/Application/Find/TourFinderResponse.java
- com.webDevelopment.turistar.Tour.Tour.Application.Find.TourFinderResponse
+com/webDevelopment/turistar/Tour/Tour/Infrastructure/Controllers/AllToursGetController.java
+ com.webDevelopment.turistar.Tour.Tour.Infrastructure.Controllers.AllToursGetController
 com/webDevelopment/turistar/User/User/Infrastructure/Controllers/UpdateUserPutController.java
  com.webDevelopment.turistar.User.User.Infrastructure.Controllers.UpdateUserPutController
  com.webDevelopment.turistar.User.User.Infrastructure.Controllers.UpdateUserPutController$1
@@ -580,5 +580,5 @@ com/webDevelopment/turistar/Tour/Tour/Domain/Ports/TourRepository.java
 com/webDevelopment/turistar/Tour/TourBooking/Infrastructure/Controllers/AllTourBookingsGetController.java
  com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Controllers.AllTourBookingsGetController
  com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Controllers.AllTourBookingsGetController$1
-com/webDevelopment/turistar/Tour/Tour/Infrastructure/Controllers/AllToursGetController.java
- com.webDevelopment.turistar.Tour.Tour.Infrastructure.Controllers.AllToursGetController
+com/webDevelopment/turistar/Tour/Tour/Application/Find/TourFinderResponse.java
+ com.webDevelopment.turistar.Tour.Tour.Application.Find.TourFinderResponse
