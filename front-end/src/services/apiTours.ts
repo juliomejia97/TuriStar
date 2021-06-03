@@ -13,7 +13,7 @@ export const apiTours = {
     const url = process.env.VUE_APP_BASE_URL.concat(tours_all);
     const config = {
       method: "GET",
-      header: {"Access-Control-Allow-Origin": "GET"}
+      header: {"mode": "no-cors"}
 
     };
     return fetch(url, config)

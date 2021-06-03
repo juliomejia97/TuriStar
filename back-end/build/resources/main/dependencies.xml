@@ -58,6 +58,10 @@
     <!---Tour inyections-->
     <bean id="hibernateTourRepository" class="com.webDevelopment.turistar.Tour.Tour.Infrastructure.Hibernate.HibernateTourRepository"/>
 
+    <bean id="createTour" class="com.webDevelopment.turistar.Tour.Tour.Application.Create.TourCreator">
+        <constructor-arg ref="hibernateTourRepository"/>
+    </bean>
+
     <bean id="toursAll" class="com.webDevelopment.turistar.Tour.Tour.Application.All.ToursAll">
         <constructor-arg ref="hibernateTourRepository"/>
     </bean>
@@ -74,6 +78,7 @@
     <bean id="tourUpdateTourSpotEvent" class="com.webDevelopment.turistar.Tour.Tour.Infrastructure.DomainEventsSubscribers.TourUpdateTourSpotOnChanged">
 
     </bean>
+
     <!---Hotel inyections-->
     <bean id="hotelCreate" class="com.webDevelopment.turistar.Administrator.Hotel.Application.Create.HotelCreator">
         <constructor-arg ref="hibernateHotelRepository"/>

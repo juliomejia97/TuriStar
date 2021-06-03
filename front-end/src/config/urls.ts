@@ -1,2 +1,2 @@
 //export const login_path = "/users/login"
-export const tours_all = "/Tours/"
+export const tours_all = "/Tour/"

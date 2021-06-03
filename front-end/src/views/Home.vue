@@ -4,7 +4,7 @@
      @filterByName="filterByName"
     />
     <Filters msg="This is a filter" />
-    <Tours msg=" Tours" :tours="filtered_tours"/>
+    <Tours msg=" Tours" :tours="tours"/>
   </div>
 </template>
 
