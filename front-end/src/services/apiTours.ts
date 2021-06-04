@@ -27,4 +27,23 @@ export const apiTours = {
         throw error;
       });
   },
+
+  getTourApi(id: string): Promise<Tour> {
+    const url = process.env.VUE_APP_BASE_URL.concat(tours_all + "/" + id);
+    const config = {
+      method: "GET",
+      header: {"mode": "no-cors"}
+
+    };
+    return fetch(url, config)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error al cargar el tour");
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }
 };

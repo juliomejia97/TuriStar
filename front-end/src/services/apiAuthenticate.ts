@@ -1,6 +1,7 @@
 import { login_path } from "@/config/urls";
 import { User } from "@/types/User";
 
+
 export const apiAuthenticate = {
 
     authenticate(user: User) {
@@ -16,6 +17,7 @@ export const apiAuthenticate = {
                 if(!response.ok) {
                     alert(response.status)
                 }else{
+                    localStorage.id = response.json()
                     alert("Autenticado")
                 }
             })

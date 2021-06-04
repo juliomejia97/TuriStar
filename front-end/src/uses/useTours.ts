@@ -7,6 +7,7 @@ export function useTours() {
 
   onMounted(async () => {
     tours.value = await apiTours.getToursApi();
+    
   });
 
   return { tours };

@@ -5,21 +5,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.HashMap;
 
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class CreateTourBookingPostController {
 
     @Autowired
     private TourBookingCreator creator;
 
-    @PostMapping(value = "/TourBooking/",produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/TourBooking/")
     public ResponseEntity execute(@RequestBody Request request) {
         creator.execute(request.getTourBookingId(), request.getTourBookingInitDate(), request.getTourBookingEndDate(), request.getTourId(), request.getUserId());
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
