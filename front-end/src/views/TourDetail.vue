@@ -11,10 +11,13 @@
 
         </div>
         <div class="tourSpots">
-            <TourSpotCard/>
-            <TourSpotCard/>
-            <TourSpotCard/>
-            <TourSpotCard/>
+            <TourSpotCard 
+            v-for="tourSpot in tourSpots"
+            :key='tourSpot.id'
+            :photo="tourSpot.photos[0]"
+            :title="tourSpot.name"
+            :description="tourSpot.description  "
+            />
         </div>
     </div>
     
@@ -26,6 +29,8 @@ import { defineComponent } from "vue";
 import TourSpotCard from "../components/Tours/TourSpotCard.vue"; // @ is an alias to /src
 import { useTour } from "@/uses/useTour";
 import { useRoute } from 'vue-router'
+import { useTourSpot } from "@/uses/useTourSpot";
+import { TourSpot } from "@/types/TourSpot";
 
 export default defineComponent({
   name: "Tour",
@@ -36,8 +41,8 @@ export default defineComponent({
     const route = useRoute()
     let id = route.params.id
     const { tour } = useTour(id.toString())
-    console.log(tour)
-    return {tour}
+    const {tourSpots} = useTourSpot()
+    return {tour, tourSpots}
   },
   data(){
       return {

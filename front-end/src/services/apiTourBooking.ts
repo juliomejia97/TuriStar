@@ -15,10 +15,8 @@ export const apiTourBookings = {
     };
     return fetch(url, config)
       .then((response) => {
-        if (!response.ok) {
-          throw new Error("Error al reservar el tours");
-        }
-        console.log(response.json())
+        
+        alert("Reserva exitosa")
         return response.json();
       })
       .catch((error) => {

@@ -2,13 +2,15 @@ import { onMounted, ref, Ref } from "vue";
 import { TourBooking } from "../types/TourBooking";
 import { apiTourBookings } from "../services/apiTourBooking";
 import { tour_booking } from "../config/urls";
+import router from "@/router";
 
 export function useTourBooking() {
-  const tourBooking: Ref<TourBooking> = ref({tourBookingId:"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432735", tourBookingInitDate:new Date(), tourBookingEndDate:new Date(), tourId:"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432735", userId:"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432735"});
+  const tourBooking: Ref<TourBooking> = ref({tourBookingId:"", tourBookingInitDate:new Date(), tourBookingEndDate:new Date(), tourId:"", userId:""});
 
   async function bookTour(){
     
     await apiTourBookings.bookTourApi(tourBooking.value)
+    router.push("/")
 }
 
   return { tourBooking,bookTour };

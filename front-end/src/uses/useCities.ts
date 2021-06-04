@@ -1,5 +1,5 @@
 import { onMounted, ref, Ref } from "vue";
-import { City } from "@/types/City";
+import { City } from '@/types/City';
 import { apiCities } from "@/services/apiCities";
 
 export function useCities() {

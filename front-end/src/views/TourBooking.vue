@@ -19,7 +19,7 @@ import { useTour } from "@/uses/useTour";
 
 export default defineComponent({
     setup(){
-      const { tourBooking,bookTour } = useTourBooking()    
+      let { tourBooking,bookTour } = useTourBooking()    
       const route = useRoute()
       let id = route.params.id
       const { tour } = useTour(id.toString())
@@ -27,7 +27,6 @@ export default defineComponent({
       tourBooking.tourId = tour.id
       tourBooking.userId = "bb5f8ac3-b90d-40ec-b3e2-e0ca3f432735"
       
-      console.log("Holiiii")
       return {tour, tourBooking, bookTour}
     },
     data(){
