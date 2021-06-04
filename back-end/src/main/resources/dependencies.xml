@@ -22,11 +22,6 @@
     <bean id="inMemoryHotelRepository" class="com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.InMemoryHotelRepository"/>
     <bean id="SpringApplicationEventBus" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Spring.SpringApplicationEventBus"/>
     <bean id="hibernateHotelRepository" class="com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.Hibernate.HibernateHotelRepository"/>
-    <!---Rabbit MQ inyections-->
-    <bean id="rabbitMqPublisher" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqPublisher"/>
-    <bean id="rabbitMqEventBus" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqEventBus">
-        <constructor-arg ref="rabbitMqPublisher"/>
-    </bean>
     <!---City inyections-->
     <bean id="citiesAll" class="com.webDevelopment.turistar.Administrator.City.Application.All.CitiesAll">
         <constructor-arg ref="hibernateCityRepository"/>
@@ -89,7 +84,7 @@
     <bean id="hotelCreate" class="com.webDevelopment.turistar.Administrator.Hotel.Application.Create.HotelCreator">
         <constructor-arg ref="hibernateHotelRepository"/>
         <constructor-arg ref="geoCodeInfoService"/>
-        <constructor-arg ref="SpringApplicationEventBus"/>
+        <constructor-arg ref="rabbitMqEventBus"/>
     </bean>
     <bean id="hotelAll" class="com.webDevelopment.turistar.Administrator.Hotel.Application.All.HotelAll">
         <constructor-arg ref="hibernateHotelRepository"/>
@@ -188,4 +183,17 @@
         <constructor-arg ref="UpdateTourBookingSerialized"/>
     </bean>
 
+    <!---Rabbit MQ inyections-->
+    <bean id="rabbitMqPublisher" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqPublisher"/>
+    <bean id="rabbitMqEventBus" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqEventBus">
+        <constructor-arg ref="rabbitMqPublisher"/>
+    </bean>
+    <bean id="domainEventsInformation" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.DomainEventsInformation"/>
+    <bean id="domainEventJsonDeserializer" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.Serializable.DomainEventJsonDeserializer">
+        <constructor-arg ref="domainEventsInformation"/>
+    </bean>
+    <bean id="RabbitMqDomainEventsConsumer" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqDomainEventsConsumer">
+        <constructor-arg ref="domainEventJsonDeserializer"/>
+        <constructor-arg ref="domainEventsInformation"/>
+    </bean>
 </beans>
