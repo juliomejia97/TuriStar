@@ -7,6 +7,7 @@ export function useLogin() {
   
     async function login(){
         await apiAuthenticate.authenticate(user.value)
+        localStorage.setItem('logged', "true")
     }
 
     return { 

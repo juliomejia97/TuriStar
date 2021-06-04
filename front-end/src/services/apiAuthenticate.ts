@@ -8,22 +8,24 @@ export const apiAuthenticate = {
         const url = process.env.VUE_APP_BASE_URL.concat(login_path)
         const config = {
             method: "POST",
-            header: {mode: "no-cors"},
-            body: JSON.stringify(user)
+            headers: {
+                "mode": "no-cors",
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({ email: user.email, password: user.password })
         }
         return fetch(url, config)
-            .then( (response) => {
+            .then((response) => {
                 alert(response)
-                if(!response.ok) {
+                if (!response.ok) {
                     alert(response.status)
-                }else{
-                    localStorage.id = response.json()
-                    alert("Autenticado")
+                } else {
+                    alert("Autenticado" + localStorage.logged)
                 }
             })
             .catch((error) => {
                 console.log(error)
                 throw error
             });
-        }
+    }
 }

@@ -12,12 +12,13 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/users")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class LogUserPostController {
     @Autowired
     private UserLogger userLogger;
     @PostMapping(value ="/login")
 
-    public ResponseEntity execute(@RequestBody Request request)
+    public ResponseEntity execute(@RequestBody LogUserPostController.Request request)
     {
         Token token = null;
         HttpStatus code = HttpStatus.FORBIDDEN;
@@ -51,5 +52,25 @@ public class LogUserPostController {
             put("error", exception.getMessage());
         }};
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+    }
+    private static class Request {
+        private String email;
+        private String password;
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
     }
 }

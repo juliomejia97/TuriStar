@@ -29,7 +29,7 @@ export const apiTours = {
   },
 
   getTourApi(id: string): Promise<Tour> {
-    const url = process.env.VUE_APP_BASE_URL.concat(tours_all + "/" + id);
+    const url = process.env.VUE_APP_BASE_URL.concat(tours_all + id);
     const config = {
       method: "GET",
       header: {"mode": "no-cors"}
