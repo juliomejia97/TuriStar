@@ -23,6 +23,7 @@ public class UserLogger {
         Optional<User> user = this.repository.findByEmail(userEmail);
         if(!user.isEmpty())
         {
+            System.out.println(user.get());
             User currentUser = user.get();
             return currentUser.authPassword(userPassword);
         }
