@@ -29,7 +29,7 @@ public class HibernateUserRepository implements UserRepository {
     protected final SessionFactory sessionFactory;
     protected final Class<User>  aggregateClass;
     private final String SECRET = "web_inventory";
-    private final String ID = "inventoryAppToken";
+    private final String ID = "projectAppToken";
     private final String CLAIM = "authorities";
     private final int validity = 60000;
     private final String PREFIX = "Bearer ";
@@ -81,7 +81,7 @@ public class HibernateUserRepository implements UserRepository {
 
         Query query = sessionFactory.getCurrentSession().createQuery("FROM User WHERE userEmail = \'"+userEmail+"\'");
         User user= (User) query.uniqueResult();
-
+        System.out.println(user);
         return Optional.ofNullable(user);
 
     }

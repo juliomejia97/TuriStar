@@ -26,6 +26,7 @@ public class LogUserPostController {
         {
             if(userLogger.execute(request.getEmail(),request.getPassword()))
             {
+                System.out.println("entro");
                 String tokenJWT = this.userLogger.getToken(request.getEmail());
                 token = new Token(tokenJWT);
                 code = HttpStatus.OK;
