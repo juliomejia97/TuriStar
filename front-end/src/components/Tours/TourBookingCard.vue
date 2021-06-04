@@ -1,15 +1,8 @@
 <template>
   <div class="tourcard">
-    <h2>{{ title }}</h2>
-    <h6>{{ description }}</h6>
-    <h4>{{ price }}</h4>
-    <h4>{{ bookings }} Available</h4>
-
-    <div class="tourcard_spots">
-      <h6 v-for="spot in spotsArray" :key="spot.name" :spot="spot">
-        {{ spot }}
-      </h6>
-    </div>
+    <h2>{{ initDate }}</h2>
+    <h6>{{ endDate }}</h6>
+    <h4>{{ tourId }}</h4>
     <button class="red_button" @click="detailTour(title)">Ver mas...</button>
   </div>
 </template>
@@ -17,11 +10,10 @@
 <script>
 export default {
   props: {
-    title: String,
-    description: String,
-    price: String,
-    ["spots-array"]: Array,
-    bookings: String,
+    key: String,
+    initDate: String,
+    endDate: String,
+    tourId: String,
   },
   methods: {
     detailTour(title){

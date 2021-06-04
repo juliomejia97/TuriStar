@@ -35,7 +35,6 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0.5rem;
   a {
     font-weight: bold;
     color: #184d47;

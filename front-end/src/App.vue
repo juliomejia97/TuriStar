@@ -10,7 +10,6 @@ export default defineComponent({
   components: {
     Navbar,
   },
-  
 });
 
 </script>
@@ -25,7 +24,7 @@ body{
   margin: 0;
   padding: 0;
 }
-button {
+.red_button {
         background: #c64756;
         color: #fff;
         border-color: transparent;
