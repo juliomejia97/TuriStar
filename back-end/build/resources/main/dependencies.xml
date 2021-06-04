@@ -97,7 +97,7 @@
     <bean id="hotelCreate" class="com.webDevelopment.turistar.Administrator.Hotel.Application.Create.HotelCreator">
         <constructor-arg ref="hibernateHotelRepository"/>
         <constructor-arg ref="geoCodeInfoService"/>
-        <constructor-arg ref="SpringApplicationEventBus"/>
+        <constructor-arg ref="rabbitMqEventBus"/>
     </bean>
     <bean id="hotelAll" class="com.webDevelopment.turistar.Administrator.Hotel.Application.All.HotelAll">
         <constructor-arg ref="hibernateHotelRepository"/>
@@ -123,7 +123,7 @@
     <bean id="tourSpotCreator" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.Create.TourSpotCreator">
         <constructor-arg ref="hibernateTourSpotRepository"/>
         <constructor-arg ref="geoCodeInfoService"/>
-        <constructor-arg ref="SpringApplicationEventBus"/>
+        <constructor-arg ref="rabbitMqEventBus"/>
     </bean>
     <bean id="tourSpotAll" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.All.TourSpotAll">
         <constructor-arg ref="hibernateTourSpotRepository"/>

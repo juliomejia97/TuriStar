@@ -12,7 +12,6 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/users")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class LogUserPostController {
     @Autowired
     private UserLogger userLogger;
@@ -53,6 +52,7 @@ public class LogUserPostController {
         }};
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
+
     private static class Request {
         private String email;
         private String password;
