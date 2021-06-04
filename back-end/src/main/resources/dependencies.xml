@@ -22,6 +22,19 @@
     <bean id="inMemoryHotelRepository" class="com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.InMemoryHotelRepository"/>
     <bean id="SpringApplicationEventBus" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Spring.SpringApplicationEventBus"/>
     <bean id="hibernateHotelRepository" class="com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.Hibernate.HibernateHotelRepository"/>
+    <!---Rabbit MQ inyections-->
+    <bean id="rabbitMqPublisher" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqPublisher"/>
+    <bean id="rabbitMqEventBus" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqEventBus">
+        <constructor-arg ref="rabbitMqPublisher"/>
+    </bean>
+    <bean id="domainEventsInformation" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.DomainEventsInformation"/>
+    <bean id="domainEventJsonDeserializer" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.Serializable.DomainEventJsonDeserializer">
+        <constructor-arg ref="domainEventsInformation"/>
+    </bean>
+    <bean id="RabbitMqDomainEventsConsumer" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqDomainEventsConsumer">
+        <constructor-arg ref="domainEventJsonDeserializer"/>
+        <constructor-arg ref="domainEventsInformation"/>
+    </bean>
     <!---City inyections-->
     <bean id="citiesAll" class="com.webDevelopment.turistar.Administrator.City.Application.All.CitiesAll">
         <constructor-arg ref="hibernateCityRepository"/>
@@ -110,7 +123,7 @@
     <bean id="tourSpotCreator" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.Create.TourSpotCreator">
         <constructor-arg ref="hibernateTourSpotRepository"/>
         <constructor-arg ref="geoCodeInfoService"/>
-        <constructor-arg ref="SpringApplicationEventBus"/>
+        <constructor-arg ref="rabbitMqEventBus"/>
     </bean>
     <bean id="tourSpotAll" class="com.webDevelopment.turistar.Administrator.TourSpot.Application.All.TourSpotAll">
         <constructor-arg ref="hibernateTourSpotRepository"/>
@@ -183,17 +196,4 @@
         <constructor-arg ref="UpdateTourBookingSerialized"/>
     </bean>
 
-    <!---Rabbit MQ inyections-->
-    <bean id="rabbitMqPublisher" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqPublisher"/>
-    <bean id="rabbitMqEventBus" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqEventBus">
-        <constructor-arg ref="rabbitMqPublisher"/>
-    </bean>
-    <bean id="domainEventsInformation" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.DomainEventsInformation"/>
-    <bean id="domainEventJsonDeserializer" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.Serializable.DomainEventJsonDeserializer">
-        <constructor-arg ref="domainEventsInformation"/>
-    </bean>
-    <bean id="RabbitMqDomainEventsConsumer" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqDomainEventsConsumer">
-        <constructor-arg ref="domainEventJsonDeserializer"/>
-        <constructor-arg ref="domainEventsInformation"/>
-    </bean>
 </beans>
