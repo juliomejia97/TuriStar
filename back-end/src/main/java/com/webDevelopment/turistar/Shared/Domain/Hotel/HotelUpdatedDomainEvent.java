@@ -13,7 +13,7 @@ public class HotelUpdatedDomainEvent extends DomainEvent {
     private String hotelName;
     private Double hotelStars;
     private String hotelAddress;
-    private ArrayList<HashMap<String,Object>> hotelPhotos;
+    private ArrayList<String> hotelPhotos;
 
     public HotelUpdatedDomainEvent() {
         this.hotelId = "";
@@ -24,7 +24,7 @@ public class HotelUpdatedDomainEvent extends DomainEvent {
     }
 
     public HotelUpdatedDomainEvent(String aggregateId, String hotelId, String hotelName,
-                                   Double hotelStars, String hotelAddress, ArrayList<HashMap<String,Object>> hotelPhotos) {
+                                   Double hotelStars, String hotelAddress, ArrayList<String> hotelPhotos) {
         super(aggregateId);
         this.hotelId = hotelId;
         this.hotelName = hotelName;
@@ -34,7 +34,7 @@ public class HotelUpdatedDomainEvent extends DomainEvent {
     }
 
     public HotelUpdatedDomainEvent(String aggregateId, String eventId, String occurredOn,
-                                   String hotelId, String hotelName, Double hotelStars, String hotelAddress, ArrayList<HashMap<String,Object>> hotelPhotos) {
+                                   String hotelId, String hotelName, Double hotelStars, String hotelAddress, ArrayList<String> hotelPhotos) {
         super(aggregateId, eventId, occurredOn);
         this.hotelId = hotelId;
         this.hotelName = hotelName;
@@ -66,7 +66,7 @@ public class HotelUpdatedDomainEvent extends DomainEvent {
                 (String) body.get("hotelName"),
                 (Double)body.get("hotelStars"),
                 (String)body.get("hotelAddress"),
-                (ArrayList<HashMap<String,Object>>) body.get("hotelPhotos"));
+                (ArrayList<String>) body.get("hotelPhotos"));
     }
 
     public String getHotelId() {
@@ -85,7 +85,7 @@ public class HotelUpdatedDomainEvent extends DomainEvent {
         return hotelAddress;
     }
 
-    public List<HashMap<String, Object>> getHotelPhotos() {
+    public List<String> getHotelPhotos() {
         return hotelPhotos;
     }
 

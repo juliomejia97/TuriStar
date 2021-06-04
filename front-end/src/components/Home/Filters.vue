@@ -1,6 +1,12 @@
 <template>
   <div class="filters">
-    <h1>---</h1>
+    
+    <div class="filters_bookings">
+      <input type="number" name="holi" id="vlue" placeholder="Min # reservas" v-on:input= "select($event.target.value)">
+    </div>
+    <div class="filters_price">
+      <input type="number" name="holi" id="vlue" placeholder="Max precio" v-on:input= "select($event.target.value)">
+    </div>
   </div>
 </template>
 
@@ -19,5 +25,7 @@ export default defineComponent({
 <style scoped lang="scss">
 .filters{
     margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
 }
 </style>

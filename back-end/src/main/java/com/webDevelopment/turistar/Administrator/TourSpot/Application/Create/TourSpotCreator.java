@@ -13,6 +13,7 @@ import com.webDevelopment.turistar.Shared.Intrastructure.Services.GeoCodeInfoSer
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class TourSpotCreator {
     private TourSpotRepository tourSpotRepository;
@@ -27,15 +28,17 @@ public class TourSpotCreator {
         this.eventBus = eventBus;
     }
 
-    public void execute(String tourSpotId, String cityId,String tourSpotName, String cityName, String cityDescription, String tourId) throws TourSpotNotExists {
+    public void execute(String tourSpotId, String cityId,String tourSpotName,
+                        String cityName, String cityDescription, List<String> photos) throws TourSpotNotExists {
         Optional<TourSpot> tourDuplicated = tourSpotRepository.find(tourSpotId);
         if(tourDuplicated.isPresent()){
             throw new TourSpotDuplicated("The Tour Spot already exists");
         }
         List<Double> latlong = latLangInfo.execute(tourSpotName,cityName);
+        List<TourSpotPhoto> tourSpotPhotos = photos.stream().map(TourSpotPhoto::new).collect(Collectors.toList());
         TourSpot tourSpot = TourSpot.create(new TourSpotId(tourSpotId), new CityId(cityId),new TourSpotName(tourSpotName),
                 new TourSpotLatitude(latlong.get(0)), new TourSpotLongitude(latlong.get(1)),
-                new TourSpotDescription(cityDescription), new TourId(tourId) );
+                new TourSpotDescription(cityDescription), tourSpotPhotos);
         tourSpotRepository.save(tourSpot);
         eventBus.publish(tourSpot.pullDomainEvents());
     }

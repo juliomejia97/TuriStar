@@ -17,7 +17,7 @@ public class CityUpdateTourSpotOnTourSpotChanged {
     public void on(TourSpotUpdatedDomainEvent event){
         if(!event.getTourEventType()){
             updateTourSpots.execute(event.aggregateId(),event.getTourSpotId(),event.getTourSpotName(),
-                    event.getLatitude(),event.getLongitude(),event.getDescription());
+                    event.getLatitude(),event.getLongitude(),event.getDescription(), event.getTourSpotPhotos());
         }
     }
 }

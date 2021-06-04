@@ -6,16 +6,15 @@
                 <p>{{description}}</p>
             </div>
             <div class="tourbooking">
-                <button id="pricetag">Reserva ya por {{price}}!</button>
+                <button id="pricetag" class="red_button" @click="bookTour">Reserva ya por {{price}}!</button>
             </div>
 
         </div>
         <div class="tourSpots">
-        <TourSpotCard/>
-        <TourSpotCard/>
-        <TourSpotCard/>
-        <TourSpotCard/>
-        
+            <TourSpotCard/>
+            <TourSpotCard/>
+            <TourSpotCard/>
+            <TourSpotCard/>
         </div>
     </div>
     
@@ -40,7 +39,12 @@ export default defineComponent({
         description: "Iniciamos la experiencia, recogiendo a los viajeros en Unicentro un centro comercial muy tradicional de Bogotá. Posteriormente saldremos de la ciudad por la Autopista Norte, con rumbo a nuestra extraordinaria experiencia. Alrededor de una hora y media después, llegaremos a nuestro primer destino, La laguna de Guatavita, en el que realizaremos una visita guiada por nativos de la zona.",
         price: "$180.000 COP"
     }
-  }
+  },
+  methods: {
+      bookTour(){
+      this.$router.push('/tourBooking')
+    }
+  },
 });
 </script>
 
@@ -63,19 +67,10 @@ export default defineComponent({
     align-items: center; 
     justify-content: center;
     #pricetag {
-        background: #c64756;
-        color: #fff;
-        border-color: transparent;
         font-size: 2em;
         text-decoration: none;
-        border-radius: 6rem;
         padding: 1.5rem 2rem;
     }
-    #pricetag:hover{
-        background: #fad586;
-        color: #000;
-    }
-
 }
 .tourSpots{
   width: 100%;

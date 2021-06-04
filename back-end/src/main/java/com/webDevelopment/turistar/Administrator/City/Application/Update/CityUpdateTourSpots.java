@@ -4,6 +4,7 @@ import com.webDevelopment.turistar.Administrator.City.Domain.City;
 import com.webDevelopment.turistar.Administrator.City.Domain.Exceptions.CityNotExist;
 import com.webDevelopment.turistar.Administrator.City.Domain.Ports.CityRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class CityUpdateTourSpots {
@@ -13,13 +14,13 @@ public class CityUpdateTourSpots {
         this.cityRepository = cityRepository;
     }
 
-    public void execute(String aggregateId, String tourSpotId, String tourSpotName, Double latitude, Double longitude, String description) {
+    public void execute(String aggregateId, String tourSpotId, String tourSpotName, Double latitude, Double longitude, String description, List<String> photos) {
         Optional<City> cityOptional = cityRepository.find(aggregateId);
         if(cityOptional.isEmpty()){
             throw new CityNotExist("The City of the Tour Spot does not exists, please talk with the admin");
         }
         City finalCity = cityOptional.get();
-        finalCity.updateTourSpotsDetail(tourSpotId,tourSpotName,latitude,longitude,description);
+        finalCity.updateTourSpotsDetail(tourSpotId,tourSpotName,latitude,longitude,description,photos);
         cityRepository.update(finalCity);
     }
 }

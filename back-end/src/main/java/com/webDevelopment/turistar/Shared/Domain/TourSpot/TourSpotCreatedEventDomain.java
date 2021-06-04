@@ -3,6 +3,7 @@ package com.webDevelopment.turistar.Shared.Domain.TourSpot;
 import com.webDevelopment.turistar.Shared.Domain.Bus.Event.DomainEvent;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -13,10 +14,10 @@ public class TourSpotCreatedEventDomain extends DomainEvent {
     private Double longitude;
     private String description;
     private Boolean tourSpotActive;
+    private ArrayList<String> tourSpotPhotos;
 
 
     public TourSpotCreatedEventDomain() {
-        this.tourSpotId = "";
         this.tourSpotName = "";
         this.latitude = 0.0;
         this.longitude = 0.0;
@@ -24,25 +25,26 @@ public class TourSpotCreatedEventDomain extends DomainEvent {
         this.tourSpotActive = false;
     }
 
-    public TourSpotCreatedEventDomain(String aggregateId,
-                                      String tourSpotId, String tourSpotName, Double latitude, Double longitude, String description, Boolean tourSpotActive) {
+    public TourSpotCreatedEventDomain(String aggregateId, String tourSpotId,String tourSpotName, Double latitude, Double longitude, String description, ArrayList<String> tourSpotPhotos,Boolean tourSpotActive) {
         super(aggregateId);
         this.tourSpotId = tourSpotId;
         this.tourSpotName = tourSpotName;
         this.latitude = latitude;
         this.longitude = longitude;
         this.description = description;
+        this.tourSpotPhotos = tourSpotPhotos;
         this.tourSpotActive = tourSpotActive;
     }
 
     public TourSpotCreatedEventDomain(String aggregateId, String eventId, String occurredOn,
-                                      String tourSpotId, String tourSpotName, Double latitude, Double longitude, String description, Boolean tourSpotActive) {
+                                      String tourSpotId, String tourSpotName, Double latitude, Double longitude, String description, ArrayList<String> tourSpotPhotos,Boolean tourSpotActive) {
         super(aggregateId, eventId, occurredOn);
         this.tourSpotId = tourSpotId;
         this.tourSpotName = tourSpotName;
         this.latitude = latitude;
         this.longitude = longitude;
         this.description = description;
+        this.tourSpotPhotos = tourSpotPhotos;
         this.tourSpotActive = tourSpotActive;
     }
 
@@ -71,9 +73,14 @@ public class TourSpotCreatedEventDomain extends DomainEvent {
         return description;
     }
 
+    public ArrayList<String> getTourSpotPhotos() {
+        return tourSpotPhotos;
+    }
+
     public Boolean getTourSpotActive() {
         return tourSpotActive;
     }
+
 
     @Override
     public HashMap<String, Serializable> toPrimitive() {
@@ -84,17 +91,19 @@ public class TourSpotCreatedEventDomain extends DomainEvent {
             put("longitude",longitude);
             put("description",description);
             put("tourSpotActive",tourSpotActive);
+            put("photos",tourSpotPhotos);
         }};
     }
 
     @Override
     public DomainEvent fromPrimitive(String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn) {
         return new TourSpotCreatedEventDomain(aggregateId, eventId, occurredOn,
-                (String) body.get("tourSpotId"),
-                (String) body.get("tourSpotName"),
+                (String)body.get("tourSpotId"),
+                (String)body.get("tourSpotName"),
                 (Double)body.get("latitude"),
-                (Double) body.get("longitude"),
-                (String) body.get("description"),
+                (Double)body.get("longitude"),
+                (String)body.get("description"),
+                (ArrayList<String>)body.get("photos"),
                 (Boolean) body.get("tourSpotActive"));
     }
 
@@ -103,16 +112,16 @@ public class TourSpotCreatedEventDomain extends DomainEvent {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TourSpotCreatedEventDomain that = (TourSpotCreatedEventDomain) o;
-        return Objects.equals(tourSpotId, that.tourSpotId) &&
-                Objects.equals(tourSpotName, that.tourSpotName) &&
+        return  Objects.equals(tourSpotName, that.tourSpotName) &&
                 Objects.equals(latitude, that.latitude) &&
                 Objects.equals(longitude, that.longitude) &&
                 Objects.equals(description, that.description) &&
-                Objects.equals(tourSpotActive, that.tourSpotActive);
+                Objects.equals(tourSpotActive, that.tourSpotActive) &&
+                Objects.equals(tourSpotPhotos,that.tourSpotPhotos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tourSpotId, tourSpotName, latitude, longitude, description, tourSpotActive);
+        return Objects.hash(tourSpotName, latitude, longitude, description, tourSpotPhotos,tourSpotActive);
     }
 }

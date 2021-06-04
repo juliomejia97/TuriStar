@@ -53,6 +53,10 @@ com/webDevelopment/turistar/Administrator/TourSpot/Domain/Exceptions/TourSpotNam
  com.webDevelopment.turistar.Administrator.TourSpot.Domain.Exceptions.TourSpotNameNotValid
 com/webDevelopment/turistar/Hotel/Ticket/Domain/ValueObjects/TicketDateReturn.java
  com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.TicketDateReturn
+com/webDevelopment/turistar/Tour/Tour/Infrastructure/Controllers/CreateTourPostController.java
+ com.webDevelopment.turistar.Tour.Tour.Infrastructure.Controllers.CreateTourPostController
+ com.webDevelopment.turistar.Tour.Tour.Infrastructure.Controllers.CreateTourPostController$1
+ com.webDevelopment.turistar.Tour.Tour.Infrastructure.Controllers.CreateTourPostController$Request
 com/webDevelopment/turistar/Tour/Tour/Infrastructure/Controllers/FindTourByIdGetController.java
  com.webDevelopment.turistar.Tour.Tour.Infrastructure.Controllers.FindTourByIdGetController
 com/webDevelopment/turistar/Shared/Domain/UUIDNotValid.java
@@ -94,8 +98,6 @@ com/webDevelopment/turistar/User/User/Domain/Ports/UserRepository.java
  com.webDevelopment.turistar.User.User.Domain.Ports.UserRepository
 com/webDevelopment/turistar/User/User/Infrastructure/Hibernate/TourBookingCustomDetail.java
  com.webDevelopment.turistar.User.User.Infrastructure.Hibernate.TourBookingCustomDetail
-com/webDevelopment/turistar/Administrator/Hotel/Domain/Exceptions/InvalidPhotoFormat.java
- com.webDevelopment.turistar.Administrator.Hotel.Domain.Exceptions.InvalidPhotoFormat
 com/webDevelopment/turistar/Shared/Intrastructure/Hibernate/HibernateConfigFactory.java
  com.webDevelopment.turistar.Shared.Intrastructure.Hibernate.HibernateConfigFactory
 com/webDevelopment/turistar/Tour/TourBooking/Domain/ValueObjects/TourBookingEndDate.java
@@ -194,6 +196,8 @@ com/webDevelopment/turistar/Administrator/Hotel/Infrastructure/Hibernate/Hiberna
  com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.Hibernate.HibernateHotelRepository
 com/webDevelopment/turistar/Administrator/TourSpot/Domain/Ports/TourSpotRepository.java
  com.webDevelopment.turistar.Administrator.TourSpot.Domain.Ports.TourSpotRepository
+com/webDevelopment/turistar/Tour/Tour/Domain/Exceptions/TourDescriptionError.java
+ com.webDevelopment.turistar.Tour.Tour.Domain.Exceptions.TourDescriptionError
 com/webDevelopment/turistar/Tour/TourBooking/Domain/ValueObjects/TourBookingActive.java
  com.webDevelopment.turistar.Tour.TourBooking.Domain.ValueObjects.TourBookingActive
 com/webDevelopment/turistar/Administrator/TourSpot/Infrastructure/Controllers/CreateTourSpotController.java
@@ -232,7 +236,6 @@ com/webDevelopment/turistar/Shared/Domain/BadInfoError.java
  com.webDevelopment.turistar.Shared.Domain.BadInfoError
 com/webDevelopment/turistar/Administrator/Hotel/Domain/ValueObjects/HotelPhoto.java
  com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhoto
- com.webDevelopment.turistar.Administrator.Hotel.Domain.ValueObjects.HotelPhoto$1
 com/webDevelopment/turistar/Hotel/HotelPlan/Application/All/HotelPlanAll.java
  com.webDevelopment.turistar.Hotel.HotelPlan.Application.All.HotelPlanAll
 com/webDevelopment/turistar/User/User/Domain/User.java
@@ -255,6 +258,8 @@ com/webDevelopment/turistar/Administrator/Hotel/Infrastructure/InMemoryHotelRepo
  com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.InMemoryHotelRepository
  com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.InMemoryHotelRepository$1
  com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.InMemoryHotelRepository$1$1
+com/webDevelopment/turistar/Tour/Tour/Infrastructure/Hibernate/HibernateTourIdsCustomDetail.java
+ com.webDevelopment.turistar.Tour.Tour.Infrastructure.Hibernate.HibernateTourIdsCustomDetail
 com/webDevelopment/turistar/Shared/Domain/TourSpot/TourSpotUpdatedDomainEvent.java
  com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotUpdatedDomainEvent
  com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotUpdatedDomainEvent$1
@@ -266,6 +271,8 @@ com/webDevelopment/turistar/Administrator/City/Domain/ValueObjects/HotelDetail.j
  com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.HotelDetail$1
 com/webDevelopment/turistar/User/User/Domain/Exceptions/LengthNotValid.java
  com.webDevelopment.turistar.User.User.Domain.Exceptions.LengthNotValid
+com/webDevelopment/turistar/Shared/Domain/InvalidPhotoFormat.java
+ com.webDevelopment.turistar.Shared.Domain.InvalidPhotoFormat
 com/webDevelopment/turistar/Tour/TourBooking/Domain/Exceptions/InvalidEndDate.java
  com.webDevelopment.turistar.Tour.TourBooking.Domain.Exceptions.InvalidEndDate
 com/webDevelopment/turistar/Administrator/TourSpot/Domain/Exceptions/TourDescriptionNotValid.java
@@ -296,8 +303,6 @@ com/webDevelopment/turistar/User/User/Infrastructure/Controllers/UpdateUserPutCo
  com.webDevelopment.turistar.User.User.Infrastructure.Controllers.UpdateUserPutController$2
 com/webDevelopment/turistar/Tour/TourBooking/Application/Create/TourBookingCreator.java
  com.webDevelopment.turistar.Tour.TourBooking.Application.Create.TourBookingCreator
-com/webDevelopment/turistar/Administrator/Hotel/Infrastructure/Hibernate/PhotoCustomDetail.java
- com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.Hibernate.PhotoCustomDetail
 com/webDevelopment/turistar/Shared/Domain/HotelPlan/HotelPlanId.java
  com.webDevelopment.turistar.Shared.Domain.HotelPlan.HotelPlanId
 com/webDevelopment/turistar/Tour/TourBooking/Domain/ValueObjects/TourBookingInitDate.java
@@ -310,6 +315,8 @@ com/webDevelopment/turistar/Shared/Application/Response.java
  com.webDevelopment.turistar.Shared.Application.Response
 com/webDevelopment/turistar/Administrator/City/Application/Update/CityUpdateTourSpots.java
  com.webDevelopment.turistar.Administrator.City.Application.Update.CityUpdateTourSpots
+com/webDevelopment/turistar/Tour/Tour/Domain/Exceptions/TourDuplicated.java
+ com.webDevelopment.turistar.Tour.Tour.Domain.Exceptions.TourDuplicated
 com/webDevelopment/turistar/Shared/Domain/Ticket/TicketId.java
  com.webDevelopment.turistar.Shared.Domain.Ticket.TicketId
 com/webDevelopment/turistar/Hotel/HotelPlanBooking/Domain/HotelPlanBooking.java
@@ -345,6 +352,8 @@ com/webDevelopment/turistar/Hotel/HotelPlanBooking/Domain/ValueObjects/HotelPlan
  com.webDevelopment.turistar.Hotel.HotelPlanBooking.Domain.ValueObjects.HotelPlanBookingActive
 com/webDevelopment/turistar/User/User/Domain/Ports/UserValidateWords.java
  com.webDevelopment.turistar.User.User.Domain.Ports.UserValidateWords
+com/webDevelopment/turistar/Administrator/TourSpot/Infrastructure/Hibernate/TourSpotToursCustomDetail.java
+ com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate.TourSpotToursCustomDetail
 com/webDevelopment/turistar/Administrator/City/Application/Find/CityFinder.java
  com.webDevelopment.turistar.Administrator.City.Application.Find.CityFinder
 com/webDevelopment/turistar/Shared/Intrastructure/Services/GeoCodeInfoService.java
@@ -439,6 +448,12 @@ com/webDevelopment/turistar/Administrator/Hotel/Application/Create/HotelCreator.
  com.webDevelopment.turistar.Administrator.Hotel.Application.Create.HotelCreator
 com/webDevelopment/turistar/Hotel/HotelPlan/Domain/Exceptions/InvalidQuantity.java
  com.webDevelopment.turistar.Hotel.HotelPlan.Domain.Exceptions.InvalidQuantity
+com/webDevelopment/turistar/Tour/Tour/Domain/ValueObjects/TourDescription.java
+ com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects.TourDescription
+com/webDevelopment/turistar/Administrator/Hotel/Infrastructure/Hibernate/HotelPhotoCustomDetail.java
+ com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.Hibernate.HotelPhotoCustomDetail
+com/webDevelopment/turistar/Administrator/TourSpot/Domain/ValueObjects/TourSpotPhoto.java
+ com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.TourSpotPhoto
 com/webDevelopment/turistar/Hotel/HotelPlan/Infrastructure/Controllers/AllHotelPlanGetController.java
  com.webDevelopment.turistar.Hotel.HotelPlan.Infrastructure.Controllers.AllHotelPlanGetController
 com/webDevelopment/turistar/Hotel/Ticket/Application/All/TicketsAll.java
@@ -478,11 +493,15 @@ com/webDevelopment/turistar/Tour/Tour/Domain/ValueObjects/TourPrice.java
  com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects.TourPrice
 com/webDevelopment/turistar/Hotel/Ticket/Domain/ValueObjects/TicketPrice.java
  com.webDevelopment.turistar.Hotel.Ticket.Domain.ValueObjects.TicketPrice
+com/webDevelopment/turistar/Administrator/TourSpot/Infrastructure/Hibernate/TourSpotPhotoCustomDetail.java
+ com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate.TourSpotPhotoCustomDetail
 com/webDevelopment/turistar/Shared/Domain/User/UserId.java
  com.webDevelopment.turistar.Shared.Domain.User.UserId
 com/webDevelopment/turistar/User/User/Infrastructure/BadWordsService.java
  com.webDevelopment.turistar.User.User.Infrastructure.BadWordsService
  com.webDevelopment.turistar.User.User.Infrastructure.Response
+com/webDevelopment/turistar/Tour/Tour/Application/Create/TourCreator.java
+ com.webDevelopment.turistar.Tour.Tour.Application.Create.TourCreator
 com/webDevelopment/turistar/Administrator/Hotel/Domain/Ports/HotelRepository.java
  com.webDevelopment.turistar.Administrator.Hotel.Domain.Ports.HotelRepository
 com/webDevelopment/turistar/Hotel/HotelPlanBooking/Domain/ValueObjects/HotelPlanBookingEndDate.java

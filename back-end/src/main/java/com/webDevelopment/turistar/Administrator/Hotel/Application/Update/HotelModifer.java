@@ -26,7 +26,7 @@ public class HotelModifer {
         this.eventBus = eventBus;
     }
 
-    public void execute(String idHotel, String hotelName, String cityName, Double hotelStars, HashMap<Integer, String> photos) {
+    public void execute(String idHotel, String hotelName, String cityName, Double hotelStars, List<String> photos) {
         Optional<Hotel> hotelOptional = repository.find(idHotel);
         if(hotelOptional.isEmpty()){
             throw new HotelNotExists("The hotel that you are trying to update does not exists");
@@ -37,7 +37,7 @@ public class HotelModifer {
             hotelAddress = inforService.execute(hotelName,cityName);
             hotelUpdate.clearPhotos();
         }
-        List<HotelPhoto> photosAsList = photos.entrySet().stream().map(p -> new HotelPhoto(p.getKey(),p.getValue())).collect(Collectors.toList());
+        List<HotelPhoto> photosAsList = photos.stream().map(photo -> new HotelPhoto(photo)).collect(Collectors.toList());
         hotelUpdate.updateHotel(hotelName,hotelStars,photosAsList,hotelAddress);
         repository.update(hotelUpdate);
         eventBus.publish(hotelUpdate.pullDomainEvents());
