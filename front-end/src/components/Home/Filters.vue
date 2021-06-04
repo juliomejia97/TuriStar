@@ -28,6 +28,4 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
 }
-.filters_bookings{
-}
 </style>

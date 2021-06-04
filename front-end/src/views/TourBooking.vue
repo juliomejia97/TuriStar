@@ -1,18 +1,32 @@
 <template>
   <div class="login_container">
     <form class="login">
-        <label for="name">Username</label>
-        <input id="name" v-model="name" placeholder="write username" type="text" name="name" />
-        <label for="lastname">Lastname</label>
-        <input id="lastname" v-model="name" placeholder="write username" type="text" name="name" />
-        <label for="email">Email</label>
-        <input id="email" v-model="name" placeholder="write email" type="text" name="name" />
-        <label for="password">Password</label>
-        <input id="password" v-model="age" placeholder="write password" type="password" />
-        <button class="red_button" type="submit" value="Enviar">Iniciar sesión</button>
+        <label for="dateInit">Start date</label>
+        <input id="dateInit" v-model="name" placeholder="write username" type="date" name="name" />
+        <label for="dateEnd">End date</label>
+        <input id="dateEnd" v-model="name" placeholder="write username" type="date" name="name" />
+        <label>The total is ${{numberWithCommas( price )}} COP</label>
+        <button class="red_button" type="submit" value="Enviar">Book</button>
     </form>
   </div>
 </template>
+
+<script>
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+    data(){
+      return{
+        price: 180000
+      }
+    },
+    methods: {
+      numberWithCommas(x) {
+       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+    },
+})
+</script>
 
 <style lang="scss">
 

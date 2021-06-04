@@ -5,6 +5,7 @@ import Register from "../views/Register.vue";
 import MyBookings  from "../views/MyBookings.vue";
 import Tour from "../views/TourDetail.vue";
 import TourSpots from "../views/TourSpots.vue";
+import TourBooking from "../views/TourBooking.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -36,6 +37,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/tourSpots",
     name: "Tour Spots",
     component: TourSpots
+  },
+  {
+    path: "/tourBooking",
+    name: "Tour Booking",
+    component: TourBooking
   }
 ];
 
