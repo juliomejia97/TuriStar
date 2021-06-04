@@ -20,7 +20,7 @@ export default defineComponent({
   name: "SearchBar",
   data(){
     return{
-      logged:false
+      logged:true
     }
   }
 });
