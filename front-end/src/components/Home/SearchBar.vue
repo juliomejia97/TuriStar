@@ -21,7 +21,6 @@ export default defineComponent({
   methods: {
       select: function(event: any) {
           this.$emit('filterByName',event)
-          
       }
   },
 });

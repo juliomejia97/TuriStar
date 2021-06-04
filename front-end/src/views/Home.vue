@@ -3,7 +3,7 @@
     <SearchBar msg="This is a search bar"      
      @filterByName="filterByName"
     />
-    <Filters msg="This is a filter" />
+    <Filters msg="This is a filter" @filterByBookings="filterByBookings" @filterByPrice="filterByPrice" />
     <Tours msg=" Tours" :tours="tours_filtered.tours.value"/>
 
   </div>
@@ -27,10 +27,27 @@ export default defineComponent({
   methods: {
      
     filterByName(label: string): void {
-      console.log('aver')
       var PATTERN = label 
       this.tours_filtered.tours.value =this.tours.filter(function (str) { return str.name.includes(PATTERN); });
-    
+    },
+    filterByBookings(label: number): void {
+     if (label) {
+       this.tours_filtered.tours.value =this.tours.filter(function (str) { return str.bookings<=label });
+     }
+     else{
+        this.tours_filtered.tours.value =this.tours
+
+      }
+    },
+    filterByPrice(label: number): void {
+      console.log('aver3',label)
+
+      if (label) {
+        this.tours_filtered.tours.value =this.tours.filter(function (str) { return str.price<label });
+      }else{
+        this.tours_filtered.tours.value =this.tours
+
+      }
     }
   },
   
