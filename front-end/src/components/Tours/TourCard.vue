@@ -10,13 +10,14 @@
         {{ spot }}
       </h6>
     </div>
-    <button class="red_button" @click="detailTour(title)">Ver mas...</button>
+    <button class="red_button" @click="detailTour(id)">Ver mas...</button>
   </div>
 </template>
 
 <script>
 export default {
   props: {
+    id: String,
     title: String,
     description: String,
     price: String,
@@ -24,8 +25,8 @@ export default {
     bookings: String,
   },
   methods: {
-    detailTour(title){
-      this.$router.push('/tour')
+    detailTour(id){
+      this.$router.push('/tour/'+id)
     }
   },
 };

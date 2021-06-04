@@ -3,6 +3,7 @@
     <TourCard 
       v-for="tour in tours"
       :key="tour.id"
+      :id="tour.id"
       :title="tour.name"
       :description="tour.description"
       :price="tour.price"

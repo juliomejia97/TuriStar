@@ -29,8 +29,9 @@ const routes: Array<RouteRecordRaw> = [
     component: MyBookings
   },
   {
-    path: "/tour",
+    path: "/tour/:id",
     name: "Tours",
+    props: true,
     component: Tour
   },
   {
@@ -39,7 +40,7 @@ const routes: Array<RouteRecordRaw> = [
     component: TourSpots
   },
   {
-    path: "/tourBooking",
+    path: "/tourBooking/:id",
     name: "Tour Booking",
     component: TourBooking
   }
