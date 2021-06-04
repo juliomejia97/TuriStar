@@ -1,9 +1,7 @@
 com/webDevelopment/turistar/Tour/TourBooking/Domain/Ports/TourBookingRepository.java
  com.webDevelopment.turistar.Tour.TourBooking.Domain.Ports.TourBookingRepository
-com/webDevelopment/turistar/Tour/TourBooking/Infrastructure/Controllers/CreateTourBookingPostController.java
- com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Controllers.CreateTourBookingPostController
- com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Controllers.CreateTourBookingPostController$1
- com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Controllers.CreateTourBookingPostController$Request
+com/webDevelopment/turistar/Tour/Tour/Infrastructure/Controllers/FindTourByIdGetController.java
+ com.webDevelopment.turistar.Tour.Tour.Infrastructure.Controllers.FindTourByIdGetController
 com/webDevelopment/turistar/Administrator/TourSpot/Domain/ValueObjects/TourSpotDescription.java
  com.webDevelopment.turistar.Administrator.TourSpot.Domain.ValueObjects.TourSpotDescription
 com/webDevelopment/turistar/User/User/Application/Find/UserFinderResponse.java
@@ -54,8 +52,8 @@ com/webDevelopment/turistar/Tour/Tour/Infrastructure/Controllers/CreateTourPostC
  com.webDevelopment.turistar.Tour.Tour.Infrastructure.Controllers.CreateTourPostController
  com.webDevelopment.turistar.Tour.Tour.Infrastructure.Controllers.CreateTourPostController$1
  com.webDevelopment.turistar.Tour.Tour.Infrastructure.Controllers.CreateTourPostController$Request
-com/webDevelopment/turistar/Tour/Tour/Infrastructure/Controllers/FindTourByIdGetController.java
- com.webDevelopment.turistar.Tour.Tour.Infrastructure.Controllers.FindTourByIdGetController
+com/webDevelopment/turistar/Tour/Tour/Application/Find/TourFinderResponse.java
+ com.webDevelopment.turistar.Tour.Tour.Application.Find.TourFinderResponse
 com/webDevelopment/turistar/Shared/Domain/UUIDNotValid.java
  com.webDevelopment.turistar.Shared.Domain.UUIDNotValid
 com/webDevelopment/turistar/Administrator/City/Domain/Ports/CityRepository.java
@@ -591,5 +589,7 @@ com/webDevelopment/turistar/Tour/Tour/Domain/Ports/TourRepository.java
 com/webDevelopment/turistar/Tour/TourBooking/Infrastructure/Controllers/AllTourBookingsGetController.java
  com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Controllers.AllTourBookingsGetController
  com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Controllers.AllTourBookingsGetController$1
-com/webDevelopment/turistar/Tour/Tour/Application/Find/TourFinderResponse.java
- com.webDevelopment.turistar.Tour.Tour.Application.Find.TourFinderResponse
+com/webDevelopment/turistar/Tour/TourBooking/Infrastructure/Controllers/CreateTourBookingPostController.java
+ com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Controllers.CreateTourBookingPostController
+ com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Controllers.CreateTourBookingPostController$1
+ com.webDevelopment.turistar.Tour.TourBooking.Infrastructure.Controllers.CreateTourBookingPostController$Request

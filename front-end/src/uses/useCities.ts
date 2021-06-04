@@ -7,7 +7,7 @@ export function useCities() {
 
   onMounted(async () => {
     // products.value = await apiProducts.getProducts();
-    cities.value = await apiCities.getToursApi();
+    cities.value = await apiCities.getCitiesApi();
   });
 
   return { cities };

@@ -2,19 +2,34 @@
   <div class="login_container">
     <form class="login">
         <label for="dateInit">Start date</label>
-        <input id="dateInit" v-model="name" placeholder="write username" type="date" name="name" />
+        <input id="dateInit" v-model="tourBooking.tourBookingInitDate" placeholder="write username" type="date" name="name" />
         <label for="dateEnd">End date</label>
-        <input id="dateEnd" v-model="name" placeholder="write username" type="date" name="name" />
-        <label>The total is ${{numberWithCommas( price )}} COP</label>
-        <button class="red_button" type="submit" value="Enviar">Book</button>
+        <input id="dateEnd" v-model="tourBooking.tourBookingEndDate" placeholder="write username" type="date" name="name" />
+        <label>The total is ${{numberWithCommas( tour.price )}} COP</label>
+        <input @click="bookTour" class="red_button" type="button" value="Book">
     </form>
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
+import { useTourBooking } from '@/uses/useTourBooking'
+import { useRoute } from 'vue-router'
+import { useTour } from "@/uses/useTour";
 
 export default defineComponent({
+    setup(){
+      const { tourBooking,bookTour } = useTourBooking()    
+      const route = useRoute()
+      let id = route.params.id
+      const { tour } = useTour(id.toString())
+      console.log(tour)
+      tourBooking.tourId = tour.id
+      tourBooking.userId = "bb5f8ac3-b90d-40ec-b3e2-e0ca3f432735"
+      
+      console.log("Holiiii")
+      return {tour, tourBooking, bookTour}
+    },
     data(){
       return{
         price: 180000

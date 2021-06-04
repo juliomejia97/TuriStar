@@ -2,11 +2,11 @@
     <div class="tourInfo">
         <div class="tourdetail">
             <div class="tourtitle">
-                <h1>{{title}}</h1>
-                <p>{{description}}</p>
+                <h1>{{tour.name}}</h1>
+                <p>{{tour.description}}</p>
             </div>
             <div class="tourbooking">
-                <button id="pricetag" class="red_button" @click="bookTour">Reserva ya por {{price}}!</button>
+                <button id="pricetag" class="red_button" @click="bookTour">Reserva ya por ${{tour.price}} COP!</button>
             </div>
 
         </div>
@@ -24,14 +24,20 @@
 
 import { defineComponent } from "vue";
 import TourSpotCard from "../components/Tours/TourSpotCard.vue"; // @ is an alias to /src
+import { useTour } from "@/uses/useTour";
+import { useRoute } from 'vue-router'
 
 export default defineComponent({
   name: "Tour",
   components: {
     TourSpotCard,
   },
-  props: {
-    spots: Array
+  setup(){    
+    const route = useRoute()
+    let id = route.params.id
+    const { tour } = useTour(id.toString())
+    console.log(tour)
+    return {tour}
   },
   data(){
       return {
@@ -42,7 +48,7 @@ export default defineComponent({
   },
   methods: {
       bookTour(){
-      this.$router.push('/tourBooking')
+      this.$router.push('/tourBooking/'+this.$route.params.id)
     }
   },
 });

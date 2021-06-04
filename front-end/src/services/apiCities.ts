@@ -4,7 +4,7 @@ import { cities_all } from "@/config/urls";
 
 export const apiCities = {
 
-  getToursApi(): Promise<City[]> {
+  getCitiesApi(): Promise<City[]> {
     const url = process.env.VUE_APP_BASE_URL.concat(cities_all);
     const config = {
       method: "GET",
