@@ -41,7 +41,7 @@
     margin-bottom: 0.5rem;
   }
 
-  input {
+  .input {
     padding-left: 2rem;
     height: 3rem;
     border-style: none;

@@ -1,14 +1,33 @@
 <template>
   <div class="login_container">
     <form class="login">
-        <label class="username">Username</label>
-        <input id="name" v-model="name" placeholder="write username" type="text" name="name" />
+        <label for="email">Email</label>
+        <input id="email" class="textfield" v-model="user.email" placeholder="write email" type="text" name="email" />
         <label for="password">Password</label>
-        <input id="password" v-model="age" placeholder="write password" type="password" />
-        <button class="red_button" type="submit" value="Enviar">Iniciar sesión</button>
+        <input id="password" class="textfield" v-model="user.password" placeholder="write password" type="password" />
+        <input @click="login" type="button" class="red_button" value="Iniciar sesión" :disabled="submitEnabled" />
     </form>
   </div>
 </template>
+
+<script>
+import { useLogin } from '@/uses/useLogin';
+import { computed, defineComponent } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const { user, login } = useLogin();
+
+    const submitEnabled = computed(() => {
+      let emailValidate = user.value.email !== null && user.value.email !== "";
+      let passwordValidate = user.value.password !== null && user.value.password !== "";
+      return !(emailValidate && passwordValidate)
+    });
+    return {user, login, submitEnabled}
+  },
+})
+</script>
+
 
 <style lang="scss">
 
@@ -37,7 +56,7 @@
     margin-bottom: 0.5rem;
   }
 
-  input {
+  .textfield {
     padding-left: 2rem;
     height: 3rem;
     border-style: none;

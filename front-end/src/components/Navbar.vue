@@ -8,7 +8,6 @@
         <router-link v-if="!logged" to="/register">Register</router-link> 
         <router-link v-if="logged" to="/mybookings">My Bookings</router-link>
         <router-link v-if="logged" to="/logOut">Logout</router-link>
-         
     </div>
   </div>
   <router-view />
@@ -21,7 +20,7 @@ export default defineComponent({
   name: "SearchBar",
   data(){
     return{
-      logged:true
+      logged:false
     }
   }
 });

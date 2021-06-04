@@ -33,9 +33,12 @@ body{
         font-size: 1em;
         padding: 1rem 1.5rem;
     }
-    button:hover{
+    .red_button:hover:enabled{
         background: #fad586;
         color: #000;
+    }
+    [disabled]{
+      background: grey;
     }
 
 </style>
