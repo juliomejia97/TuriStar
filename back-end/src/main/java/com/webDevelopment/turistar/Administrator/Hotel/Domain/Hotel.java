@@ -33,7 +33,7 @@ public class Hotel extends AggregateRoot {
         Hotel newHotel  = new Hotel(hotelId,cityId,hotelName,hotelStars,hotelAddress,hotelPhotos);
         newHotel.record(new HotelCreatedDomainEvent(cityId.value(),hotelId.value(),hotelName.value(),
                 hotelStars.value(), hotelAddress.value(),
-                newHotel.dataHotelPhotos().get()));
+                newHotel.dataHotelPhotos()));
         return newHotel;
     }
     private Hotel(){}
@@ -63,10 +63,11 @@ public class Hotel extends AggregateRoot {
         }};
         return data;
     }
-    public Optional<ArrayList<HashMap<String, Object>>> dataHotelPhotos(){
-        Optional<ArrayList<HashMap<String, Object>>> response = Optional.empty();
+    public ArrayList<String> dataHotelPhotos(){
+        ArrayList<String> response = new ArrayList<>();
         if(this.hotelPhotos.isPresent()) {
-            response = Optional.of((ArrayList<HashMap<String, Object>>) this.hotelPhotos.get().stream().map(HotelPhoto::data).collect(Collectors.toList()));
+            List<HotelPhoto> photos  = this.hotelPhotos.get();
+            photos.stream().forEach(hotelPhoto -> response.add(hotelPhoto.value()));
         }
         return response;
     }
@@ -76,7 +77,7 @@ public class Hotel extends AggregateRoot {
         this.hotelAddress = !hotelAddress.isEmpty() ?  new HotelAddress(hotelAddress):this.hotelAddress;
         this.hotelPhotos.get().addAll(hotelPhotos);
         this.record(new HotelUpdatedDomainEvent(cityId.value(), hotelId.value(),
-                hotelName,hotelStars,hotelAddress,dataHotelPhotos().get()));
+                hotelName,hotelStars,hotelAddress,dataHotelPhotos()));
     }
 
     public Boolean AddressWillChange(String hotelName){

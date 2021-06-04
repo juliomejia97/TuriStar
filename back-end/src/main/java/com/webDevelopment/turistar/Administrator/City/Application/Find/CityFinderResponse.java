@@ -16,7 +16,6 @@ public class CityFinderResponse implements Response {
     @Override
     public HashMap<String, Object> response() {
         this.response = city.data();
-        //TODO: Create and return the data of TourSpots and Hotels
         return response;
     }
 }

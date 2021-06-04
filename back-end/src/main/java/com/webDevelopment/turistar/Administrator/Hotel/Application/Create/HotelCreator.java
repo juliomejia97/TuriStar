@@ -26,13 +26,13 @@ public class HotelCreator {
         this.eventBus = eventBus;
     }
 
-    public void execute(String hotelId, String cityId, String hotelName, String cityName, Double hotelStars,HashMap<Integer, String> photos) {
+    public void execute(String hotelId, String cityId, String hotelName, String cityName, Double hotelStars,List<String> photos) {
         Optional<Hotel> hotelDuplicated = repository.find(hotelId);
         if(hotelDuplicated.isPresent()){
             throw new HotelAlreadyExists("The hotel is duplicated");
         }
         String hotelAddress = inforService.execute(hotelName,cityName);
-        List<HotelPhoto> photosAsList = photos.entrySet().stream().map(p -> new HotelPhoto(p.getKey(),p.getValue())).collect(Collectors.toList());
+        List<HotelPhoto> photosAsList = photos.stream().map(photo -> new HotelPhoto(photo)).collect(Collectors.toList());
         Hotel hotel = Hotel.create(new HotelId(hotelId), new CityId(cityId), new HotelName(hotelName),
                 new HotelStars(hotelStars),new HotelAddress(hotelAddress), photosAsList);
         repository.save(hotel);

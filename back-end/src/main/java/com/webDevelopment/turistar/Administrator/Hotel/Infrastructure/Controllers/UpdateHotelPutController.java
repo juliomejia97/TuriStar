@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping(value="/admin/Hotel")
@@ -37,7 +38,7 @@ public class UpdateHotelPutController {
         private Double hotelStars;
         private String hotelName;
         private String cityName;
-        private HashMap<Integer,String> photos;
+        private List<String> photos;
 
         public Double getHotelStars() {
             return hotelStars;
@@ -63,11 +64,11 @@ public class UpdateHotelPutController {
             this.cityName = cityName;
         }
 
-        public HashMap<Integer, String> getPhotos() {
+        public List<String> getPhotos() {
             return photos;
         }
 
-        public void setPhotos(HashMap<Integer, String> photos) {
+        public void setPhotos(List<String> photos) {
             this.photos = photos;
         }
     }

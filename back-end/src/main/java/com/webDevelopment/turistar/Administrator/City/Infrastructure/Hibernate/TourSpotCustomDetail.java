@@ -11,10 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class TourSpotCustomDetail implements UserType {
@@ -51,7 +48,8 @@ public class TourSpotCustomDetail implements UserType {
                                 (String) tourSpot.get("name"),
                                 (Double) tourSpot.get("latitude"),
                                 (Double) tourSpot.get("longitude"),
-                                (String) tourSpot.get("description"))).collect(Collectors.toList());
+                                (String) tourSpot.get("description"),
+                                (ArrayList<String>) tourSpot.get("photos"))).collect(Collectors.toList());
             }
         }
         catch (Exception e){

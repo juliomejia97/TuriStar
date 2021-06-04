@@ -9,9 +9,10 @@ public class HotelDetail {
     private String hotelName;
     private Double hotelStars;
     private String hotelAddress;
-    List<HashMap<String, Object>> hotelPhotos;
+    List<String> hotelPhotos;
 
-    public HotelDetail(String hotelId,String hotelName, Double hotelStars, String hotelAddress, List<HashMap<String, Object>> hotelPhotos) {
+    public HotelDetail(String hotelId,String hotelName,
+                       Double hotelStars, String hotelAddress, List<String> hotelPhotos) {
         this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.hotelStars = hotelStars;

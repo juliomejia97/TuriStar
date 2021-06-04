@@ -14,15 +14,14 @@ public class UpdateTourBooking {
     public UpdateTourBooking(UserRepository repository) {
         this.repository = repository;
     }
-    public void execute(String userId, String tourBookingId, LocalDate tourBookingInitDate,
-                        LocalDate tourBookingEndDate,Boolean tourBookingActive) {
+    public void execute(String userId,String tourBookingId,String tourBookingInitDate,
+                        String tourBookingEndDate) {
         Optional<User> userOptional = repository.find(userId);
         if(userOptional.isEmpty()){
             throw new UserNotExist("The user does not exists");
-            //TODO: Hacer un roll back (evento?)
         }
         User finalUser = userOptional.get();
-        finalUser.addTourBookings(new TourBookingDetail(tourBookingId,tourBookingInitDate,tourBookingEndDate,tourBookingActive));
+        finalUser.addTourBookings(new TourBookingDetail(tourBookingId,tourBookingInitDate,tourBookingEndDate));
         this.repository.update(finalUser);
     }
 }

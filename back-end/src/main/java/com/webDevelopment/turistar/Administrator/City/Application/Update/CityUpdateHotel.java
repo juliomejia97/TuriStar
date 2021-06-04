@@ -16,7 +16,7 @@ public class CityUpdateHotel {
     }
 
     public void execute(String aggregateId, String hotelId, String hotelName, Double hotelStars,
-                        String hotelAddress, List<HashMap<String, Object>> hotelPhotos) {
+                        String hotelAddress, List<String> hotelPhotos) {
         Optional<City> cityOptional = repository.find(aggregateId);
         if(cityOptional.isEmpty()){
             throw new CityNotExist("The City of the updated Hotel does not exists, please talk with the admin");

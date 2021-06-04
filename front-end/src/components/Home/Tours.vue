@@ -1,12 +1,15 @@
 <template>
   <div class="tours">
-    <TourCard title="Mi primer tour" description="Esta es mi descripcion que es bien larga" price='2000' index="index" :spots-array="spots.map(a => a.name)"/>
-    <TourCard title="Mi primer tour" description="Esta es mi descripcion que es bien larga" price='2000' index="index" :spots-array="spots.map(a => a.name)"/>
-    <TourCard title="Mi primer tour" description="Esta es mi descripcion que es bien larga" price='2000' index="index" :spots-array="spots.map(a => a.name)"/>
-    <TourCard title="Mi primer tour" description="Esta es mi descripcion que es bien larga" price='2000' index="index" :spots-array="spots"/>
-    <TourCard title="Mi primer tour" description="Esta es mi descripcion que es bien larga" price='2000' index="index" :spots-array="spots.map(a => a.name)"/>
-    <TourCard title="Mi primer tour" description="Esta es mi descripcion que es bien larga" price='2000' index="index" :spots-array="spots.map(a => a.name)"/>
-
+    <TourCard 
+      v-for="tour in tours"
+      :key="tour.id"
+      :title="tour.name"
+      :description="tour.description"
+      :price="tour.price"
+      :spots-array="tour.tourSpotsId"
+      :bookings="tour.bookings"
+        />
+  
   </div>
 </template>
 
@@ -21,28 +24,15 @@ export default defineComponent({
   },
   props: {
     msg: String,
+    tours: Array
   },
-  data () {
-    return {
-      spots: [
-        {
-          name: 'Isla morada',
-          required: 1,
-          vMode1: ''
-        },
-        {
-          name: 'Cartago',
-          required: 3,
-          vMode1: ''
-        },
-        {
-          name: 'Ciudad Amurallada',
-          required: 1,
-          vMode1: ''
-        }
-      ]
+  methods: {
+    filterByName(label: string) {
+      console.log('nuenas',label)
+        //this.tours = []
     }
-  }
+  },
+ 
 });
 </script>
 

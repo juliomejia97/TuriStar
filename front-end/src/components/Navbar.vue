@@ -3,21 +3,27 @@
     <img src="https://image.shutterstock.com/image-photo/couple-kayaking-together-mangrove-river-260nw-1325112503.jpg"/>
     <div class="nav_links">
         <router-link to="/">Home</router-link> 
-
-        <router-link to="/logOut">Logout</router-link>
-        <router-link to="/logIn">Login</router-link>
-
-        <router-link to="/register">Register</router-link> 
-        <router-link to="/mybookings">My Bookings</router-link> 
+        <router-link to="/tourSpots">Tour Spots</router-link> 
+        <router-link v-if="!logged" to="/logIn">Login</router-link>
+        <router-link v-if="!logged" to="/register">Register</router-link> 
+        <router-link v-if="logged" to="/mybookings">My Bookings</router-link>
+        <router-link v-if="logged" to="/logOut">Logout</router-link>
     </div>
   </div>
   <router-view />
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue"
 
-}
+export default defineComponent({
+  name: "SearchBar",
+  data(){
+    return{
+      logged:true
+    }
+  }
+});
 </script>
 
 <style  lang="scss">
@@ -28,7 +34,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0.5rem;
   a {
     font-weight: bold;
     color: #184d47;

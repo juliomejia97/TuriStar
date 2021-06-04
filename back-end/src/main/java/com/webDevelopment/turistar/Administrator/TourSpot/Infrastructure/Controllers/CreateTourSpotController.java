@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping(value="/admin")
@@ -22,13 +23,14 @@ public class CreateTourSpotController {
 
     @PostMapping(value = "/TourSpot/create")
     public ResponseEntity<HashMap> execute(@RequestBody CreateTourSpotController.Request request){
-        spotCreator.execute(request.getTourSpotId(),request.getCityId(),request.getTourName(),request.getCityName(),request.getDescription(), request.getTourId());
+        spotCreator.execute(request.getTourSpotId(),request.getCityId(),request.getTourName(),
+                request.getCityName(),request.getDescription(), request.getPhotos());
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
     @ExceptionHandler({TourSpotDuplicated.class, UUIDNotValid.class, TourSpotNameNotValid.class,
             BadInfoError.class, TourDescriptionNotValid.class})
-    public  ResponseEntity<HashMap> informationNorvalid(Exception exception){
+    public  ResponseEntity<HashMap> informationNotvalid(Exception exception){
         HashMap<String,String> response = new HashMap<>(){{
             put("error",exception.getMessage());
         }};
@@ -36,11 +38,11 @@ public class CreateTourSpotController {
     }
     private static class Request{
         private String tourSpotId;
-        private String tourId;
         private String cityId;
         private String tourName;
         private String cityName;
         private String description;
+        private List<String> photos;
 
         public String getTourSpotId() {
             return tourSpotId;
@@ -48,14 +50,6 @@ public class CreateTourSpotController {
 
         public void setTourSpotId(String tourSpotId) {
             this.tourSpotId = tourSpotId;
-        }
-
-        public String getTourId() {
-            return tourId;
-        }
-
-        public void setTourId(String tourId) {
-            this.tourId = tourId;
         }
 
         public String getCityId() {
@@ -88,6 +82,14 @@ public class CreateTourSpotController {
 
         public void setDescription(String description) {
             this.description = description;
+        }
+
+        public List<String> getPhotos() {
+            return photos;
+        }
+
+        public void setPhotos(List<String> photos) {
+            this.photos = photos;
         }
     }
 }

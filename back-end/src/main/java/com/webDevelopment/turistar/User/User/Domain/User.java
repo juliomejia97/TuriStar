@@ -1,5 +1,6 @@
 package com.webDevelopment.turistar.User.User.Domain;
 
+import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.TourSpotDetail;
 import com.webDevelopment.turistar.Shared.Domain.User.UserId;
 import com.webDevelopment.turistar.User.User.Domain.ValueObjects.*;
 
@@ -46,15 +47,24 @@ public class User {
         return this.userId.equals(new UserId(otherId));
     }
 
-    public HashMap<String, String> data()
+    public HashMap<String, Object> data()
     {
-        HashMap<String, String> data = new HashMap<String, String>() {{
+        return  new HashMap<>() {{
             put("id", userId.value());
             put("name", userFirstName.value());
             put("lastname", userLastName.value());
             put("email", userEmail.value());
+            put("tourBookings",dataTourBookings());
         }};
-        return data;
+    }
+
+    public Optional<List<HashMap<String, Object>>> dataTourBookings(){
+        Optional<List<HashMap<String, Object>>> response = Optional.empty();
+        if(this.tourBookingDetails.isPresent()) {
+            response = Optional.of(this.tourBookingDetails.get().stream().map(TourBookingDetail::data)
+                    .collect(Collectors.toList()));
+        }
+        return response;
     }
 
     public Optional<List<HashMap<String, Object>>> getHotelPlanBookings() {

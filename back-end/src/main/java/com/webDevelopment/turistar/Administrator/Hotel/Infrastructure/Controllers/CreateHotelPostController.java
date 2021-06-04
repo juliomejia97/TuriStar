@@ -5,12 +5,14 @@ import com.webDevelopment.turistar.Administrator.Hotel.Application.Create.HotelC
 import com.webDevelopment.turistar.Administrator.Hotel.Domain.Exceptions.*;
 import com.webDevelopment.turistar.Shared.Domain.BadInfoError;
 import com.webDevelopment.turistar.Shared.Domain.UUIDNotValid;
+import com.webDevelopment.turistar.Shared.Domain.InvalidPhotoFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/admin")
@@ -41,7 +43,7 @@ public class CreateHotelPostController {
         private Double hotelStars;
         private String hotelName;
         private String cityName;
-        private HashMap<Integer,String> photos;
+        private List<String> photos;
 
         public String getHotelId() {
             return hotelId;
@@ -75,11 +77,11 @@ public class CreateHotelPostController {
             this.cityName = cityName;
         }
 
-        public HashMap<Integer, String> getPhotos() {
+        public List<String> getPhotos() {
             return photos;
         }
 
-        public void setPhotos(HashMap<Integer, String> photos) {
+        public void setPhotos(List<String> photos) {
             this.photos = photos;
         }
 
