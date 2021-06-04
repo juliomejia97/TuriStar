@@ -5,11 +5,7 @@
     <h4>{{ price }}</h4>
     <h4>{{ bookings }} Available</h4>
 
-    <div class="tourcard_spots">
-      <h6 v-for="spot in spotsArray" :key="spot.name" :spot="spot">
-        {{ spot }}
-      </h6>
-    </div>
+   
     <button class="red_button" @click="detailTour(id)">Ver mas...</button>
   </div>
 </template>

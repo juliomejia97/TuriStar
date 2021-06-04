@@ -27,13 +27,7 @@ export default defineComponent({
     msg: String,
     tours: Array
   },
-  methods: {
-    filterByName(label: string) {
-      console.log('nuenas',label)
-        //this.tours = []
-    }
-  },
- 
+  
 });
 </script>
 
