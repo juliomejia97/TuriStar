@@ -2,23 +2,27 @@
   <div class="filterTitle">
     <h1>Search by country</h1>
     <select class="select-items">
-      <option class="select-items" value="0">All</option>
-      <option class="select-items" value="1">Colombia</option>
-      <option class="select-items" value="2">US</option>
-      <option class="select-items" value="3">Spain</option>
+      <option>Select here</option>
+      <option  v-for="choice in cities " v-bind:key="choice.id" >{{ choice.country }}</option>
     </select>
   </div>
-  <div class="tourSpots">
-    <TourSpotCard />
-    <TourSpotCard />
-    <TourSpotCard />
-    <TourSpotCard />
+  <div class="tourSpots" v-for="choice in cities " v-bind:key="choice.id"  >
+
+    <TourSpotCard 
+      v-for="tourSpot in choice.tourSpots"
+      :key='tourSpot.id'
+      :photo="tourSpot.photos[0]"
+      :title="tourSpot.name"
+      :description="tourSpot.description  "
+        />
+    
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import TourSpotCard from "../components/Tours/TourSpotCard.vue"; // @ is an alias to /src
+import { useCities } from "@/uses/useCities";
 
 export default defineComponent({
   name: "Tour",
@@ -28,13 +32,10 @@ export default defineComponent({
   props: {
     spots: Array,
   },
-  data() {
-    return {
-      title: "3 Increíbles Destinos en Bogotá!!",
-      description:
-        "Iniciamos la experiencia, recogiendo a los viajeros en Unicentro un centro comercial muy tradicional de Bogotá. Posteriormente saldremos de la ciudad por la Autopista Norte, con rumbo a nuestra extraordinaria experiencia. Alrededor de una hora y media después, llegaremos a nuestro primer destino, La laguna de Guatavita, en el que realizaremos una visita guiada por nativos de la zona.",
-      price: "$180.000 COP",
-    };
+  setup() {
+    const { cities } = useCities();
+    console.log(cities)
+    return { cities };
   },
 });
 </script>

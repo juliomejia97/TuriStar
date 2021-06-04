@@ -4,16 +4,18 @@
      @filterByName="filterByName"
     />
     <Filters msg="This is a filter" />
-    <Tours msg=" Tours" :tours="tours"/>
+    <Tours msg=" Tours" :tours="tours_filtered.tours.value"/>
+
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent,computed  } from "vue";
 import SearchBar from "@/components/Home/SearchBar.vue"; // @ is an alias to /src
 import Filters from "@/components/Home/Filters.vue"; // @ is an alias to /src
 import Tours from "@/components/Home/Tours.vue"; // @ is an alias to /src
 import { useTours } from "@/uses/useTours";
+import { Tour } from "@/types/Tour";
 
 export default defineComponent({
   name: "Home",
@@ -23,42 +25,20 @@ export default defineComponent({
     Tours,
   },
   methods: {
-     fetchData () {
-      this.error = this.post = null
-      this.loading = true
-      const fetchedId = this.$route.params.id
-      // replace `getPost` with your data fetching util / API wrapper
-    
-    },
+     
     filterByName(label: string): void {
-
-      var PATTERN = label
-      let filtered: { price: number; name: string; id: 
-      string; bookings: number; description: string;
-      tourSpotsId: string[]; }[]
-      = this.tours.filter(function (str) { return str.name.includes(PATTERN); });
-      this.filtered_tours=filtered
+      console.log('aver')
+      var PATTERN = label 
+      this.tours_filtered.tours.value =this.tours.filter(function (str) { return str.name.includes(PATTERN); });
+    
     }
   },
-  computed: {
-    // a computed getter
-    reversedMessage: function (label:any):any {
-      // `this` points to the vm instance
-      var PATTERN = label
-      var filtered = this.tours.filter(function (str) { return str.name.includes(PATTERN); });
-      console.log('nuenas',filtered)
-      return filtered
-    }
-  },
-  created () {
-    // fetch the data when the view is created and the data is
-    // already being observed
-    this.fetchData()
-  },
+  
   setup() {
     const { tours } = useTours();
-    console.log(tours)
-    return { tours };
+    const tours_filtered  = useTours();
+    console.log(tours_filtered.tours)
+    return {tours,tours_filtered};
   },
 
    data () {
@@ -66,92 +46,7 @@ export default defineComponent({
       loading: false,
       post: null,
       error: null,
-
-      filtered_tours: [
-        {
-          price: 25000.0,
-          name: "TestTour",
-          id: "5ade9d58-ac73-11eb-8529-0242ac130003",
-          bookings: 20,
-          description:"Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga",
-          tourSpotsId:[]
-        },
-        {
-          price: 30000.0,
-          name: "TestTour2",
-          id: "5ade9d58-ac73-11eb-8529-0242ac130005",
-          bookings: 20,
-          description:"Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga",
-          tourSpotsId:[
-            "UUID",
-            "UUID",
-            "UUID",
-          ]
-        },
-        {
-          price: 35000.0,
-          name: "TestTour4",
-          id: "5ade9d58-ac73-11eb-8529-0242ac130006",
-          bookings: 10,
-          description:"Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga",
-          tourSpotsId:[]
-        },
-        {
-          price: 30000.0,
-          name: "TestTour2",
-          id: "5ade9d58-ac73-11eb-8529-0242ac130005",
-          bookings: 20,
-          description:"Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga",
-          tourSpotsId:[
-            "UUID",
-            "UUID",
-            "UUID",
-          ]
-        }
-      ],
-      // tours: [
-      //   {
-      //     price: 25000.0,
-      //     name: "TestTour",
-      //     id: "5ade9d58-ac73-11eb-8529-0242ac130003",
-      //     bookings: 20,
-      //     description:"Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga",
-      //     tourSpotsId:[]
-      //   },
-      //   {
-      //     price: 30000.0,
-      //     name: "TestTour2",
-      //     id: "5ade9d58-ac73-11eb-8529-0242ac130005",
-      //     bookings: 20,
-      //     description:"Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga",
-      //     tourSpotsId:[
-      //       "UUID",
-      //       "UUID",
-      //       "UUID",
-      //     ]
-      //   },
-      //   {
-      //     price: 35000.0,
-      //     name: "TestTour4",
-      //     id: "5ade9d58-ac73-11eb-8529-0242ac130006",
-      //     bookings: 10,
-      //     description:"Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga",
-      //     tourSpotsId:[]
-      //   },
-      //   {
-      //     price: 30000.0,
-      //     name: "TestTour2",
-      //     id: "5ade9d58-ac73-11eb-8529-0242ac130005",
-      //     bookings: 20,
-      //     description:"Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga Esta es mi descripcion que es bien larga",
-      //     tourSpotsId:[
-      //       "UUID",
-      //       "UUID",
-      //       "UUID",
-      //     ]
-      //   }
-        
-      // ],
+      filtered: ''
     }
   }
 });
