@@ -3,6 +3,7 @@ package com.webDevelopment.turistar.User.User.Domain;
 import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.TourSpotDetail;
 import com.webDevelopment.turistar.Shared.Domain.User.UserId;
 import com.webDevelopment.turistar.User.User.Domain.ValueObjects.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -35,6 +36,11 @@ public class User {
         return new User(userId,userFirstName,userLastName,userEmail,userPassword,null,null);
     }
 
+    public boolean authPassword( String userPassword)
+    {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+        return encoder.matches(userPassword,this.userPassword.value());
+    }
     public void updateUser(UserName userFirstName, UserLastName userLastName, UserEmail userEmail)
     {
         this.userFirstName = userFirstName;

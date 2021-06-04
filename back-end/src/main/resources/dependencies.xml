@@ -177,6 +177,9 @@
     <bean id="userFinder" class="com.webDevelopment.turistar.User.User.Application.Find.UserFinder">
         <constructor-arg ref="hibernateUserRepository"/>
     </bean>
+    <bean id="userLogger" class="com.webDevelopment.turistar.User.User.Application.Login.UserLogger">
+        <constructor-arg ref="hibernateUserRepository"/>
+    </bean>
     <bean id="userModifier" class="com.webDevelopment.turistar.User.User.Application.Update.UserModifier">
         <constructor-arg ref="hibernateUserRepository"/>
         <constructor-arg ref="badWordService"/>

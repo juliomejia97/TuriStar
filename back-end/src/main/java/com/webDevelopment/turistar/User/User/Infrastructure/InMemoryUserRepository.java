@@ -25,6 +25,11 @@ public class InMemoryUserRepository implements UserRepository {
     }};
 
     @Override
+    public String getToken(String userEmail) {
+        return null;
+    }
+
+    @Override
     public void save(User user) {
         this.users.add(user);
     }

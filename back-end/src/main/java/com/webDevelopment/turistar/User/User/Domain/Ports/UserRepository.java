@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface UserRepository {
 
+    String getToken(String userEmail) throws Exception;
     void save(User user);
 
     Optional<User> find(String userId);
