@@ -21,8 +21,12 @@
     <bean id="hibernateTourSpotRepository" class="com.webDevelopment.turistar.Administrator.TourSpot.Infrastructure.Hibernate.HibernateTourSpotRepository"/>
     <bean id="inMemoryHotelRepository" class="com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.InMemoryHotelRepository"/>
     <bean id="SpringApplicationEventBus" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Spring.SpringApplicationEventBus"/>
-
     <bean id="hibernateHotelRepository" class="com.webDevelopment.turistar.Administrator.Hotel.Infrastructure.Hibernate.HibernateHotelRepository"/>
+    <!---Rabbit MQ inyections-->
+    <bean id="rabbitMqPublisher" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqPublisher"/>
+    <bean id="rabbitMqEventBus" class="com.webDevelopment.turistar.Shared.Intrastructure.Bus.Event.Rabbit.RabbitMqEventBus">
+        <constructor-arg ref="rabbitMqPublisher"/>
+    </bean>
     <!---City inyections-->
     <bean id="citiesAll" class="com.webDevelopment.turistar.Administrator.City.Application.All.CitiesAll">
         <constructor-arg ref="hibernateCityRepository"/>
@@ -183,4 +187,5 @@
     <bean id="updateTourbookingOnBooked" class="com.webDevelopment.turistar.User.User.Infrastructure.DomainEventsSubscribers.UpdateTourBookingOnTourBooked">
         <constructor-arg ref="UpdateTourBookingSerialized"/>
     </bean>
+
 </beans>
