@@ -1,7 +1,7 @@
 package com.webDevelopment.turistar.Tour.TourBooking.Domain;
 
 import com.webDevelopment.turistar.Shared.Domain.Aggregate.AggregateRoot;
-import com.webDevelopment.turistar.Shared.Domain.Tour.TourBookedEventDomain;
+import com.webDevelopment.turistar.Shared.Domain.TourBooking.TourBookedEventDomain;
 import com.webDevelopment.turistar.Shared.Domain.Tour.TourId;
 import com.webDevelopment.turistar.Shared.Domain.TourBooking.TourBookingId;
 import com.webDevelopment.turistar.Shared.Domain.User.UserId;
@@ -9,6 +9,9 @@ import com.webDevelopment.turistar.Tour.TourBooking.Domain.ValueObjects.TourBook
 import com.webDevelopment.turistar.Tour.TourBooking.Domain.ValueObjects.TourBookingEndDate;
 import com.webDevelopment.turistar.Tour.TourBooking.Domain.ValueObjects.TourBookingInitDate;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.HashMap;
 
 public class TourBooking extends AggregateRoot {
@@ -32,8 +35,12 @@ public class TourBooking extends AggregateRoot {
     public static TourBooking create(TourBookingId tourBookingId, TourBookingInitDate tourBookingInitDate, TourBookingEndDate tourBookingEndDate, TourId tourId, UserId userId){
         TourBookingActive active = new TourBookingActive(true);
         TourBooking tourBooking =  new TourBooking(tourBookingId,tourBookingInitDate,tourBookingEndDate,tourId,userId);
-        tourBooking.record(new TourBookedEventDomain(userId.value(), tourBookingId.value(),
-                tourBookingInitDate.value(),tourBookingEndDate.value(),active.value()));
+        tourBooking.record(new TourBookedEventDomain(userId.value(),
+                tourId.value(),
+                tourBooking.formatDate(tourBookingInitDate.value()),
+                tourBooking.formatDate(tourBookingEndDate.value())));
+        tourBooking.record(new TourBookedEventDomain(tourId.value(),
+                null, null, null));
         return tourBooking;
     }
 
@@ -53,9 +60,8 @@ public class TourBooking extends AggregateRoot {
     }
 
     //TODO: Formatear la fecha para devovler crear el JSON
-    private String formatDate(){
-        String date="";
-        return date;
+    private String formatDate(LocalDate date){
+        return date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL));
     }
     private TourBooking(){}
 }

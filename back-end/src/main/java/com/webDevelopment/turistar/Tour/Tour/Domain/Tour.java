@@ -3,6 +3,7 @@ package com.webDevelopment.turistar.Tour.Tour.Domain;
 import com.webDevelopment.turistar.Administrator.City.Domain.ValueObjects.TourSpotDetail;
 import com.webDevelopment.turistar.Shared.Domain.Tour.TourId;
 import com.webDevelopment.turistar.Shared.Domain.TourSpot.TourSpotId;
+import com.webDevelopment.turistar.Tour.Tour.Domain.Exceptions.NegativeNumber;
 import com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects.TourBookings;
 import com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects.TourDescription;
 import com.webDevelopment.turistar.Tour.Tour.Domain.ValueObjects.TourName;
@@ -68,4 +69,10 @@ public class Tour {
         return response;
     }
 
+    public void updateQuantity() {
+        if(tourBookings.value()-1<0){
+            throw new NegativeNumber("There are not more available bookings");
+        }
+        tourBookings = new TourBookings(tourBookings.value()-1);
+    }
 }

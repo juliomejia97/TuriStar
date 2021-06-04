@@ -7,16 +7,13 @@ import java.util.Objects;
 
 public class TourBookingDetail {
     private String tourBookingId;
-    private LocalDate tourBookingInitDate;
-    private LocalDate tourBookingEndDate;
-    private Boolean tourBookingActive;
+    private String tourBookingInitDate;
+    private String tourBookingEndDate;
 
-    public TourBookingDetail(String tourBookingId, LocalDate tourBookingInitDate, LocalDate tourBookingEndDate,
-                             Boolean tourBookingActive) {
+    public TourBookingDetail(String tourBookingId, String tourBookingInitDate, String tourBookingEndDate) {
         this.tourBookingId = tourBookingId;
         this.tourBookingInitDate = tourBookingInitDate;
         this.tourBookingEndDate = tourBookingEndDate;
-        this.tourBookingActive = tourBookingActive;
     }
 
     public HashMap <String,Object> data()
@@ -26,7 +23,6 @@ public class TourBookingDetail {
             put("id", tourBookingId);
             put("initDate", tourBookingInitDate);
             put("endDate", tourBookingEndDate);
-            put("isActive", tourBookingActive);
 
         }};
         return data;
@@ -40,13 +36,12 @@ public class TourBookingDetail {
         TourBookingDetail that = (TourBookingDetail) o;
         return Objects.equals(tourBookingId, that.tourBookingId) &&
                 Objects.equals(tourBookingInitDate, that.tourBookingInitDate) &&
-                Objects.equals(tourBookingEndDate, that.tourBookingEndDate) &&
-                Objects.equals(tourBookingActive, that.tourBookingActive);
+                Objects.equals(tourBookingEndDate, that.tourBookingEndDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tourBookingId, tourBookingInitDate, tourBookingEndDate, tourBookingActive);
+        return Objects.hash(tourBookingId, tourBookingInitDate, tourBookingEndDate);
     }
     private TourBookingDetail(){}
 }

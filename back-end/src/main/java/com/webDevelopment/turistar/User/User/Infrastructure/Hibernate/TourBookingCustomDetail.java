@@ -48,9 +48,8 @@ public class TourBookingCustomDetail implements UserType {
                 List<HashMap<String, Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
                 response = objects.stream().map(tourBooking ->
                         new TourBookingDetail((String) tourBooking.get("id"),
-                                (LocalDate) tourBooking.get("initDate"),
-                                (LocalDate) tourBooking.get("endDate"),
-                                (Boolean) tourBooking.get("isActive"))).collect(Collectors.toList());
+                                (String) tourBooking.get("initDate"),
+                                (String) tourBooking.get("endDate"))).collect(Collectors.toList());
             }
         }
         catch (Exception e){

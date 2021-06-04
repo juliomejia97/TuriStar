@@ -1,7 +1,8 @@
-package com.webDevelopment.turistar.User.User.Application.Update;
+package com.webDevelopment.turistar.User.User.Infrastructure.DomainEventsSubscribers;
 
 import com.webDevelopment.turistar.Shared.Domain.Bus.Event.DomainEventSubscriber;
-import com.webDevelopment.turistar.Shared.Domain.Tour.TourBookedEventDomain;
+import com.webDevelopment.turistar.Shared.Domain.TourBooking.TourBookedEventDomain;
+import com.webDevelopment.turistar.User.User.Application.Update.UpdateTourBooking;
 import org.springframework.context.event.EventListener;
 
 @DomainEventSubscriber({TourBookedEventDomain.class})
@@ -15,7 +16,9 @@ public class UpdateTourBookingOnTourBooked {
 
     @EventListener
     public void on(TourBookedEventDomain event){
-        updateTourBooking.execute(event.aggregateId(),event.getTourBookingId(),event.getTourBookingInitDate(),
-                event.getTourBookingEndDate(),event.getTourBookingActive());
+        if(event.getTourBookingId() !=null){
+            updateTourBooking.execute(event.aggregateId(),event.getTourBookingId(),event.getTourBookingInitDate(),
+                    event.getTourBookingEndDate());
+        }
     }
 }
