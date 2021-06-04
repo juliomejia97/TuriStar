@@ -5,11 +5,11 @@ import com.webDevelopment.turistar.User.User.Domain.User;
 
 import java.util.Optional;
 
-public class UserDomainFinder {
+public class UserDomainFinderById {
 
     private UserRepository repository;
 
-    public UserDomainFinder(UserRepository repository) {
+    public UserDomainFinderById(UserRepository repository) {
         this.repository = repository;
     }
 

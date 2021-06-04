@@ -25,6 +25,11 @@ public class InMemoryUserRepository implements UserRepository {
     }};
 
     @Override
+    public String getToken(String userEmail) {
+        return null;
+    }
+
+    @Override
     public void save(User user) {
         this.users.add(user);
     }
@@ -38,5 +43,10 @@ public class InMemoryUserRepository implements UserRepository {
     public void update(User user) {
         this.users.remove(user);
         this.users.add(user);
+    }
+
+    @Override
+    public Optional<User> findByEmail(String userEmail) {
+        return Optional.empty();
     }
 }

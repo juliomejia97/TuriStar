@@ -18,9 +18,10 @@ public class FindUserByIdGetController
     @Autowired
     private UserFinder userFinder;
 
-    @GetMapping(value="find/{userId}")
-    public ResponseEntity<HashMap> execute(@PathVariable("userId") String id)
+    @GetMapping(value="find/{userEmail}")
+    public ResponseEntity<HashMap> execute(@PathVariable("userEmail") String id)
     {
+        System.out.println(id + "este correo");
         UserFinderResponse response = new UserFinderResponse(userFinder.execute(id));
         return ResponseEntity.status(HttpStatus.OK).body(response.response());
     }
