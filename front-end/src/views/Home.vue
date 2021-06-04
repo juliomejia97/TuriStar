@@ -54,7 +54,6 @@ export default defineComponent({
   setup() {
     const { tours } = useTours();
     const tours_filtered  = useTours();
-    console.log(tours_filtered.tours)
     return {tours,tours_filtered};
   },
 

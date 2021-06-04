@@ -6,7 +6,6 @@
         <router-link to="/tourSpots">Tour Spots</router-link> 
         <router-link v-if="!logged" to="/logIn">Login</router-link>
         <router-link v-if="!logged" to="/register">Register</router-link> 
-        <router-link v-if="logged" to="/mybookings">My Bookings</router-link>
         <router-link v-if="logged" to="/logOut">Logout</router-link>
     </div>
   </div>
